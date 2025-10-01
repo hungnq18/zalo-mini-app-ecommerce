@@ -59,7 +59,7 @@ const Layout = () => {
     console.log('Using ZMP UI layout...');
     
     // Test step by step
-    const testStep = 1; // Change this to test different components
+    const testStep = 2; // Change this to test different components
     
     if (testStep === 1) {
       console.log('Testing App component only...');
