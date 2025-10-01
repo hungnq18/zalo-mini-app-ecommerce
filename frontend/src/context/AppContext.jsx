@@ -181,28 +181,30 @@ const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(appReducer, initialState);
   
-  // Actions
+  // Actions - using useCallback to prevent infinite re-renders
+  const loadProducts = useCallback(async (filters = {}) => {
+    // Avoid refetch if data already loaded and no filters
+    if (!filters || Object.keys(filters).length === 0) {
+      if (state.products && state.products.length > 0) {
+        return;
+      }
+    }
+    dispatch({ type: ActionTypes.SET_LOADING, payload: { products: true } });
+    try {
+      const response = await ApiService.getProducts(filters);
+      if (response.success) {
+        dispatch({ type: ActionTypes.SET_PRODUCTS, payload: response.data });
+      }
+    } catch (error) {
+      console.error('Error loading products:', error);
+    } finally {
+      dispatch({ type: ActionTypes.SET_LOADING, payload: { products: false } });
+    }
+  }, [state.products]);
+
   const actions = {
     // Products
-    loadProducts: async (filters = {}) => {
-      // Avoid refetch if data already loaded and no filters
-      if (!filters || Object.keys(filters).length === 0) {
-        if (state.products && state.products.length > 0) {
-          return;
-        }
-      }
-      dispatch({ type: ActionTypes.SET_LOADING, payload: { products: true } });
-      try {
-        const response = await ApiService.getProducts(filters);
-        if (response.success) {
-          dispatch({ type: ActionTypes.SET_PRODUCTS, payload: response.data });
-        }
-      } catch (error) {
-        console.error('Error loading products:', error);
-      } finally {
-        dispatch({ type: ActionTypes.SET_LOADING, payload: { products: false } });
-      }
-    },
+    loadProducts,
     
     loadCategories: async () => {
       if (state.categories && state.categories.length > 0) {
@@ -431,7 +433,7 @@ export const AppProvider = ({ children }) => {
   // Load initial data
   useEffect(() => {
     actions.loadCategories();
-    actions.loadProducts();
+    loadProducts(); // Use the memoized version
     actions.loadPromotions();
     actions.loadUtilities();
     actions.loadHotProducts();
@@ -439,7 +441,7 @@ export const AppProvider = ({ children }) => {
     actions.loadUser();
     actions.loadCart();
     actions.loadOrders();
-  }, []);
+  }, [loadProducts]); // Add loadProducts to dependencies
   
   return (
     <AppContext.Provider value={{ state, actions }}>

@@ -54,7 +54,7 @@ const HomeProductSuggestions = () => {
     if (state.products.length === 0) {
       actions.loadProducts();
     }
-  }, [actions, state.products.length]);
+  }, [actions, state.products.length]); // actions is now memoized, safe to include
 
   // Get newest products from database (sorted by ID - higher ID = newer)
   const newestProducts = state.products

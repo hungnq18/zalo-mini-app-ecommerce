@@ -1,20 +1,14 @@
 {
-  "version": 2,
-  "name": "unionmart-frontend",
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    }
-  ],
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm install",
+  "devCommand": "npm run dev",
+  "env": {
+    "VITE_API_BASE_URL": "https://zalo-mini-app-ecommerce.onrender.com/api",
+    "VITE_APP_NAME": "UnionMart",
+    "VITE_APP_VERSION": "1.0.0"
+  },
   "routes": [
-    {
-      "src": "/static/(.*)",
-      "dest": "/static/$1"
-    },
     {
       "src": "/assets/(.*)",
       "dest": "/assets/$1"
@@ -23,13 +17,5 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  },
-  "build": {
-    "env": {
-      "VITE_API_BASE_URL": "https://zalo-mini-app-ecommerce.onrender.com/api"
-    }
-  }
+  ]
 }

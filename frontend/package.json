@@ -16,6 +16,9 @@
   ],
   "scripts": {
     "setup": "node setup-env.js",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "login": "zmp login",
     "start": "zmp start",
     "deploy": "zmp deploy"

@@ -4,7 +4,7 @@ import zaloMiniApp from "zmp-vite-plugin";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  root: "./src",
+  root: "./",
   base: "",
   plugins: [zaloMiniApp(), react()],
   server: {
@@ -12,6 +12,7 @@ export default defineConfig({
     host: true
   },
   build: {
+    outDir: "dist",
     assetsInlineLimit: 0,
   },
   define: {
