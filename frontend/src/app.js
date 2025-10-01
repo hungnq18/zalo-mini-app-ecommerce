@@ -19,6 +19,7 @@ if (typeof window !== 'undefined' && !window.APP_CONFIG) {
 
 // Mount the app
 import Layout from "./components/layout";
+import { AppProvider } from "./context/AppContext";
 
 // Error boundary component
 class ErrorBoundary extends React.Component {
@@ -82,46 +83,12 @@ if (!appElement) {
   appElement.innerHTML = '';
   
   const root = createRoot(appElement);
-  
-  // Test with simple component first
-  const SimpleTest = () => {
-    console.log('SimpleTest rendering...');
-    return React.createElement('div', {
-      style: {
-        padding: '20px',
-        backgroundColor: '#007aff',
-        color: 'white',
-        textAlign: 'center',
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        fontSize: '24px',
-        fontWeight: 'bold'
-      }
-    }, 'UnionMart - Simple Test Working!');
-  };
-  
-  // Try simple test first
-  root.render(React.createElement(SimpleTest));
-  
-  // Then try full app after 2 seconds
-  setTimeout(() => {
-    console.log('Switching to full app...');
-    root.render(
-      React.createElement(ErrorBoundary, null,
+  root.render(
+    React.createElement(ErrorBoundary, null,
+      React.createElement(AppProvider, null, 
         React.createElement(Layout)
       )
-    );
-  }, 2000);
+    )
+  );
   console.log('App mounted successfully');
-  
-  // Debug: Check if content is rendered after a delay
-  setTimeout(() => {
-    const content = appElement.innerHTML;
-    console.log('App content after mount:', content.length > 0 ? 'Content rendered' : 'No content rendered');
-    if (content.length === 0) {
-      console.error('No content rendered after mount!');
-    }
-  }, 1000);
 }
