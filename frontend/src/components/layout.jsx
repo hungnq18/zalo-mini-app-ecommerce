@@ -1,4 +1,3 @@
-import { getSystemInfo } from "zmp-sdk";
 import {
   AnimationRoutes,
   App,
@@ -7,21 +6,7 @@ import {
   ZMPRouter,
 } from "zmp-ui";
 
-import AddressFormPage from "../pages/addressForm";
-import AddressesPage from "../pages/addresses";
-import CartPage from "../pages/cart";
-import CheckoutPage from "../pages/checkout";
 import HomePage from "../pages/index";
-import MyVouchersPage from "../pages/myVouchers";
-import NotificationsPage from "../pages/notifications";
-import OrderDetailPage from "../pages/orderDetail";
-import OrdersPage from "../pages/orders";
-import PrivacyPage from "../pages/privacy";
-import ProductDetail from "../pages/productDetail";
-import ProductListPage from "../pages/productList";
-import ProfilePage from "../pages/profile";
-import SearchPage from "../pages/search";
-import VouchersPage from "../pages/vouchers";
 import TestComponent from "./TestComponent";
 
 const Layout = () => {
@@ -63,7 +48,7 @@ const Layout = () => {
   };
   
   // Test if simple layout works first
-  const useSimpleLayout = true; // Change to false to test ZMP UI
+  const useSimpleLayout = false; // Change to false to test ZMP UI
   
   if (useSimpleLayout) {
     console.log('Using simple layout...');
@@ -72,27 +57,88 @@ const Layout = () => {
   
   try {
     console.log('Using ZMP UI layout...');
+    
+    // Test step by step
+    const testStep = 1; // Change this to test different components
+    
+    if (testStep === 1) {
+      console.log('Testing App component only...');
+      return (
+        <App>
+          <div style={{
+            padding: '20px',
+            backgroundColor: '#28a745',
+            color: 'white',
+            textAlign: 'center',
+            minHeight: '100vh',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '24px'
+          }}>
+            ZMP App Component Working! ✓
+          </div>
+        </App>
+      );
+    }
+    
+    if (testStep === 2) {
+      console.log('Testing App + SnackbarProvider...');
+      return (
+        <App>
+          <SnackbarProvider>
+            <div style={{
+              padding: '20px',
+              backgroundColor: '#28a745',
+              color: 'white',
+              textAlign: 'center',
+              minHeight: '100vh',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '24px'
+            }}>
+              ZMP App + SnackbarProvider Working! ✓
+            </div>
+          </SnackbarProvider>
+        </App>
+      );
+    }
+    
+    if (testStep === 3) {
+      console.log('Testing App + SnackbarProvider + ZMPRouter...');
+      return (
+        <App>
+          <SnackbarProvider>
+            <ZMPRouter>
+              <div style={{
+                padding: '20px',
+                backgroundColor: '#28a745',
+                color: 'white',
+                textAlign: 'center',
+                minHeight: '100vh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '24px'
+              }}>
+                ZMP Router Working! ✓
+              </div>
+            </ZMPRouter>
+          </SnackbarProvider>
+        </App>
+      );
+    }
+    
+    // Full layout (testStep === 4)
+    console.log('Testing full ZMP layout...');
     return (
-      <App theme={getSystemInfo().zaloTheme}>
+      <App>
         <SnackbarProvider>
           <ZMPRouter>
             <AnimationRoutes>
               <Route path="/" element={<TestComponent />}></Route>
               <Route path="/home" element={<HomePage />}></Route>
-              <Route path="/search" element={<SearchPage />}></Route>
-              <Route path="/category/:categoryId" element={<ProductListPage />}></Route>
-              <Route path="/product/:id" element={<ProductDetail />}></Route>
-              <Route path="/orders" element={<OrdersPage />}></Route>
-              <Route path="/orders/:id" element={<OrderDetailPage />}></Route>
-              <Route path="/notifications" element={<NotificationsPage />}></Route>
-              <Route path="/privacy" element={<PrivacyPage />}></Route>
-              <Route path="/cart" element={<CartPage />}></Route>
-              <Route path="/checkout" element={<CheckoutPage />}></Route>
-              <Route path="/checkout/address" element={<AddressFormPage />}></Route>
-              <Route path="/addresses" element={<AddressesPage />}></Route>
-              <Route path="/vouchers" element={<VouchersPage />}></Route>
-              <Route path="/my-vouchers" element={<MyVouchersPage />}></Route>
-              <Route path="/profile" element={<ProfilePage />}></Route>
             </AnimationRoutes>
           </ZMPRouter>
         </SnackbarProvider>
