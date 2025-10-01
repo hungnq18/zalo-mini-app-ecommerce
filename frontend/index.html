@@ -17,8 +17,58 @@
     <title>UnionMart - Zalo Mini App</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <!-- Loading fallback -->
+      <div style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: #f8f9fa;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        flex-direction: column;
+      ">
+        <div style="
+          width: 40px;
+          height: 40px;
+          border: 4px solid #e3e3e3;
+          border-top: 4px solid #007aff;
+          border-radius: 50%;
+          animation: spin 1s linear infinite;
+          margin-bottom: 16px;
+        "></div>
+        <p style="color: #666; margin: 0;">Loading UnionMart...</p>
+      </div>
+    </div>
+    
+    <style>
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      body {
+        margin: 0;
+        padding: 0;
+        background: #f8f9fa;
+      }
+    </style>
+    
     <!-- built script files will be auto injected -->
     <script type="module" src="/src/app.js"></script>
+    
+    <script>
+      // Debug logging
+      console.log('Index.html loaded');
+      
+      // Error handling
+      window.addEventListener('error', function(e) {
+        console.error('Global error:', e.error);
+      });
+      
+      window.addEventListener('unhandledrejection', function(e) {
+        console.error('Unhandled promise rejection:', e.reason);
+      });
+    </script>
   </body>
 </html>

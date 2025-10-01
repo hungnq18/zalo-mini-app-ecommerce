@@ -14,9 +14,16 @@ export default defineConfig({
   build: {
     outDir: "dist",
     assetsInlineLimit: 0,
+    sourcemap: true,
     rollupOptions: {
       input: {
         main: './index.html'
+      },
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          zmp: ['zmp-ui']
+        }
       }
     }
   },
