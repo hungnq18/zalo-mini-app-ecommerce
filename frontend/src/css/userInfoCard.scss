@@ -1,0 +1,282 @@
+// User Info Card Component Styles
+.user-info-card {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  @media (max-width: 640px) {
+    padding: 16px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+  }
+}
+
+.user-info-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.user-greeting {
+  h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 0 4px 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+
+    @media (max-width: 640px) {
+      font-size: 16px;
+    }
+  }
+
+  p {
+    font-size: 14px;
+    opacity: 0.9;
+    margin: 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+
+    @media (max-width: 640px) {
+      font-size: 13px;
+    }
+  }
+}
+
+.user-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+
+  @media (max-width: 640px) {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+}
+
+.user-stats {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+
+  @media (max-width: 640px) {
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+}
+
+.user-points {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 8px 12px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+
+  @media (max-width: 640px) {
+    padding: 6px 10px;
+    gap: 6px;
+  }
+
+  .points-icon {
+    width: 16px;
+    height: 16px;
+
+    @media (max-width: 640px) {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  .points-text {
+    font-size: 14px;
+    font-weight: 600;
+
+    @media (max-width: 640px) {
+      font-size: 13px;
+    }
+  }
+}
+
+.user-level {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 6px 10px;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+
+  @media (max-width: 640px) {
+    padding: 4px 8px;
+    gap: 4px;
+  }
+
+  .level-icon {
+    width: 14px;
+    height: 14px;
+
+    @media (max-width: 640px) {
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  .level-text {
+    font-size: 12px;
+    font-weight: 500;
+
+    @media (max-width: 640px) {
+      font-size: 11px;
+    }
+  }
+}
+
+.user-actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+
+  @media (max-width: 640px) {
+    gap: 8px;
+  }
+}
+
+.user-action-button {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  border-radius: 12px;
+  padding: 12px 8px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @media (max-width: 640px) {
+    padding: 10px 6px;
+    gap: 4px;
+    border-radius: 10px;
+  }
+
+  .action-icon {
+    width: 20px;
+    height: 20px;
+
+    @media (max-width: 640px) {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  .action-text {
+    font-size: 11px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.2;
+
+    @media (max-width: 640px) {
+      font-size: 10px;
+    }
+  }
+}
+
+// Loading States
+.user-info-loading {
+  .user-greeting h3,
+  .user-greeting p {
+    background: rgba(255, 255, 255, 0.2);
+    height: 18px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+
+  .user-greeting h3 {
+    width: 60%;
+    height: 20px;
+  }
+
+  .user-greeting p {
+    width: 40%;
+    height: 14px;
+  }
+
+  .user-points,
+  .user-level {
+    background: rgba(255, 255, 255, 0.1);
+    height: 32px;
+    border-radius: 16px;
+  }
+
+  .user-action-button {
+    background: rgba(255, 255, 255, 0.1);
+    height: 60px;
+  }
+}
+
+// Accessibility
+.user-action-button {
+  &:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 2px;
+  }
+}
+
+// High contrast mode
+@media (prefers-contrast: high) {
+  .user-info-card {
+    background: #1d4ed8;
+    border: 2px solid white;
+  }
+
+  .user-action-button {
+    border: 1px solid white;
+  }
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .user-action-button {
+    transition: none;
+
+    &:hover {
+      transform: none;
+    }
+  }
+}

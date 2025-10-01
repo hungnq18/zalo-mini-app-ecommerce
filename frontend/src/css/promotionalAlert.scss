@@ -1,0 +1,199 @@
+// Promotional Alert Component Styles
+.promotional-alert {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -30%;
+    width: 100%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  @media (max-width: 640px) {
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    gap: 10px;
+  }
+}
+
+.promotional-alert-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+
+  @media (max-width: 640px) {
+    width: 20px;
+    height: 20px;
+  }
+
+  svg {
+    width: 14px;
+    height: 14px;
+
+    @media (max-width: 640px) {
+      width: 12px;
+      height: 12px;
+    }
+  }
+}
+
+.promotional-alert-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  @media (max-width: 640px) {
+    gap: 8px;
+  }
+}
+
+.promotional-alert-text {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 640px) {
+    font-size: 13px;
+  }
+}
+
+.promotional-alert-arrow {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateX(2px);
+  }
+
+  @media (max-width: 640px) {
+    width: 18px;
+    height: 18px;
+  }
+
+  svg {
+    width: 12px;
+    height: 12px;
+
+    @media (max-width: 640px) {
+      width: 10px;
+      height: 10px;
+    }
+  }
+}
+
+// Animation effects
+.promotional-alert {
+  animation: slideInFromTop 0.5s ease-out;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+  }
+}
+
+// Loading state
+.promotional-alert-loading {
+  .promotional-alert-text {
+    background: rgba(255, 255, 255, 0.2);
+    height: 16px;
+    border-radius: 4px;
+    width: 80%;
+  }
+
+  .promotional-alert-icon,
+  .promotional-alert-arrow {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+// Accessibility
+.promotional-alert {
+  &:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 2px;
+  }
+}
+
+.promotional-alert-arrow {
+  &:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 2px;
+  }
+}
+
+// High contrast mode
+@media (prefers-contrast: high) {
+  .promotional-alert {
+    background: #d97706;
+    border: 2px solid white;
+  }
+
+  .promotional-alert-icon,
+  .promotional-alert-arrow {
+    border: 1px solid white;
+  }
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .promotional-alert {
+    animation: none;
+
+    &:hover {
+      transform: none;
+    }
+  }
+
+  .promotional-alert-arrow {
+    transition: none;
+
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
+// Animation keyframes
+@keyframes slideInFromTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

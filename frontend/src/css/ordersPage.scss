@@ -1,0 +1,485 @@
+.orders-page {
+  background: #f5f5f5;
+  min-height: 100vh;
+  padding-bottom: 80px; // Thêm padding bottom để tránh bị che bởi bottom navigation
+  overflow-y: auto; // Đảm bảo có thể scroll
+  height: 100vh; // Đặt chiều cao cố định
+  position: relative;
+}
+
+.orders-container {
+  padding: 16px;
+  padding-bottom: 100px; // Tăng padding bottom để đảm bảo scroll được hết
+  max-height: calc(100vh - 60px); // Trừ đi chiều cao của header
+  overflow-y: auto; // Scroll cho container
+}
+
+.orders-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 12px 0;
+}
+
+.orders-filters {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  overflow-x: auto;
+  margin-bottom: 12px;
+}
+
+.orders-filter-btn {
+  background: #f3f4f6;
+  border: none;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 12px;
+  color: #374151;
+  white-space: nowrap;
+}
+
+.orders-filter-btn.active {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+.orders-empty {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: #6b7280;
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px; // Thêm margin bottom để đảm bảo scroll được hết
+}
+
+.order-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 8px;
+  text-align: left;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  
+  &:hover {
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    transform: translateY(-1px);
+    border-color: #3b82f6;
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+  
+  // Đảm bảo nội dung căn trái, trừ một số exceptions
+  .order-status-badge {
+    text-align: center;
+  }
+}
+
+// Order header trong card (khác với order detail header)
+.order-card .order-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  background: transparent;
+  padding: 0;
+  position: static;
+  box-shadow: none;
+}
+
+// Order detail header (giữ nguyên cho order detail page)  
+.order-detail-page .order-header {
+  background: #3b82f6;
+  color: white;
+  padding: 50px 20px 16px 20px; /* Extra top padding to avoid status bar */
+  margin: -16px -16px 16px -16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+  .back-button {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-1px);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+  
+  .header-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    flex: 1;
+    text-align: center;
+  }
+  
+  .header-spacer {
+    width: 40px; /* Same width as back button to center title */
+  }
+}
+
+.order-number {
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.order-status {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 10px;
+  border: 2px solid #e5e7eb;
+  border-radius: 999px;
+}
+
+.order-meta {
+  margin-top: 6px;
+  display: flex;
+  gap: 12px;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.order-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 6px;
+  border-top: 1px solid #f3f4f6;
+  
+  .order-total {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    margin-left: -3px; // Lệch trái hơn
+    
+    .total-label {
+      font-size: 11px;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 500;
+      text-align: left !important;
+    }
+    
+    .total-amount {
+      font-size: 15px;
+      font-weight: 700;
+      color: #dc2626;
+      text-align: left !important;
+    }
+  }
+  
+  .order-arrow {
+    background: #f3f4f6;
+    border-radius: 50%;
+    padding: 5px;
+    color: #6b7280;
+    transition: all 0.2s ease;
+  }
+}
+
+// Styles cho order card đẹp hơn
+.order-id {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1f2937;
+  font-family: 'Courier New', monospace;
+  text-align: left !important;
+  margin-left: -3px; // Lệch trái hơn
+}
+
+.order-status-badge {
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  text-align: center !important;
+}
+
+.order-info {
+  margin-bottom: 6px;
+  
+  .order-date, .order-items {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 3px;
+    width: 100%;
+    
+    .label {
+      font-size: 13px;
+      color: #6b7280;
+      font-weight: 500;
+      text-align: left !important;
+      flex-shrink: 0;
+      flex-grow: 0;
+      margin-left: -3px !important; // Tất cả lệch trái hơn
+    }
+    
+    .value {
+      font-size: 13px;
+      color: #1f2937;
+      font-weight: 600;
+      text-align: right !important;
+      flex-shrink: 0;
+      flex-grow: 0;
+      margin-left: auto !important;
+    }
+  }
+  
+  .order-items {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    
+    .label {
+      text-align: left !important;
+      order: 1;
+      margin-left: -3px !important; // Lệch trái hơn
+    }
+    
+    .value {
+      color: #3b82f6 !important;
+      text-align: right !important;
+      order: 2;
+      margin-left: auto !important;
+    }
+  }
+}
+
+.order-total {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+  
+  .total-label {
+    font-size: 12px;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    text-align: left;
+  }
+  
+  .total-amount {
+    font-size: 18px;
+    font-weight: 700;
+    color: #dc2626;
+    text-align: left;
+  }
+}
+
+.order-arrow {
+  background: #f3f4f6;
+  border-radius: 50%;
+  padding: 8px;
+  color: #6b7280;
+  transition: all 0.2s ease;
+}
+
+.order-card:hover .order-arrow {
+  background: #3b82f6;
+  color: white;
+  transform: translateX(2px);
+}
+
+// Override mạnh cho order items alignment - tất cả lệch trái hơn
+.orders-page .order-card .order-info .order-items {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  
+  .label {
+    text-align: left !important;
+    flex: none !important;
+    margin-left: -3px !important; // Lệch trái hơn
+    font-size: 13px !important; // To hơn
+  }
+  
+  .value {
+    text-align: right !important;
+    flex: none !important;
+    margin-left: auto !important;
+    color: #3b82f6 !important;
+    font-size: 13px !important; // To hơn
+  }
+}
+
+.order-detail-page .order-detail-container {
+  padding: 16px;
+}
+
+.order-summary {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.order-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin-bottom: 12px;
+}
+
+.timeline-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: #9ca3af;
+  background: transparent;
+  border: none;
+  padding: 8px 4px;
+}
+
+.timeline-step .timeline-time {
+  font-size: 10px;
+  color: #6b7280;
+  margin-top: 2px;
+  text-align: center;
+  line-height: 1.2;
+  font-weight: 500;
+  max-width: 80px;
+  word-wrap: break-word;
+}
+
+.order-section {
+  margin-top: 16px;
+}
+
+.order-section .section-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #111827;
+}
+
+.shipping-address {
+  color: #374151;
+  line-height: 1.5;
+}
+
+.totals {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.total-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #111827;
+}
+
+.total-row--grand {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.timeline-step .icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 9999px;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline-step .label {
+  font-size: 12px;
+  text-align: center;
+}
+
+.timeline-step.done {
+  color: #3b82f6;
+}
+
+.timeline-step.done .icon {
+  background: #e0ecff;
+}
+.order-summary .order-number {
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+.order-items {
+  background: white;
+  border-radius: 12px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.order-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 8px;
+  border-radius: 10px;
+  background: #f9fafb;
+}
+
+.order-item .item-name {
+  font-weight: 600;
+}
+
+.order-item .item-meta {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.order-item .item-total {
+  font-weight: 700;
+  color: #dc2626;
+}
+
+
+

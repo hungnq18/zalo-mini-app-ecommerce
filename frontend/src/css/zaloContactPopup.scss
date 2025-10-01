@@ -1,0 +1,193 @@
+// Zalo Contact Popup Styles
+.zalo-contact-popup {
+  position: fixed;
+  bottom: 120px; // Increased from 100px to avoid bottom navigation
+  right: 20px;
+  z-index: 100;
+  animation: slideInUp 0.3s ease-out;
+}
+
+.zalo-popup-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.zalo-popup-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0068ff 0%, #0047cc 100%);
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 104, 255, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 104, 255, 0.4);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+    border-radius: 50%;
+  }
+}
+
+.zalo-logo {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2px;
+  z-index: 1;
+
+  img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    filter: brightness(0) invert(1); // Make image white
+  }
+
+  svg {
+    color: white;
+    fill: currentColor;
+  }
+}
+
+.zalo-text {
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 1;
+}
+
+.zalo-close-button {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: scale(1.1);
+  }
+}
+
+// Animation
+@keyframes slideInUp {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// Pulse animation for attention
+.zalo-popup-button {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 4px 16px rgba(0, 104, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 16px rgba(0, 104, 255, 0.6), 0 0 0 10px rgba(0, 104, 255, 0.1);
+  }
+  100% {
+    box-shadow: 0 4px 16px rgba(0, 104, 255, 0.3);
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .zalo-contact-popup {
+    bottom: 100px; // Adjusted for mobile bottom navigation
+    right: 16px;
+  }
+
+  .zalo-popup-button {
+    width: 56px;
+    height: 56px;
+  }
+
+  .zalo-logo svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .zalo-logo img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .zalo-text {
+    font-size: 9px;
+  }
+
+  .zalo-close-button {
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .zalo-contact-popup {
+    bottom: 90px; // Adjusted for small mobile bottom navigation
+    right: 12px;
+  }
+
+  .zalo-popup-button {
+    width: 52px;
+    height: 52px;
+  }
+
+  .zalo-logo svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .zalo-logo img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .zalo-text {
+    font-size: 8px;
+  }
+}

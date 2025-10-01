@@ -1,0 +1,119 @@
+/* Sort Dropdown Styles */
+.search-sort-wrapper {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.sort-dropdown-menu {
+  position: static;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  animation: sortDropdownFadeIn 0.3s ease-out;
+  margin-top: 8px;
+  backdrop-filter: blur(8px);
+  
+  @media (max-width: 767px) {
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.16);
+    border-radius: 16px;
+    margin-top: 12px;
+  }
+}
+
+@keyframes sortDropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    max-height: 400px;
+  }
+}
+
+.sort-option {
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 15px;
+  font-weight: 500;
+  color: #374151;
+  background: #ffffff;
+  border: none;
+  border-bottom: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 52px;
+  position: relative;
+  
+  &:last-child {
+    border-bottom: none;
+  }
+  
+  @media (max-width: 767px) {
+    padding: 18px 24px;
+    font-size: 16px;
+    min-height: 56px;
+  }
+  
+  &:hover {
+    background: #f8fafc;
+    color: #1e40af;
+    transform: translateX(4px);
+  }
+
+  &.active {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: #ffffff;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+    
+    &:hover {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      transform: translateX(0);
+    }
+  }
+
+  /* Icon check cho active item */
+  &.active::after {
+    content: '✓';
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 12px;
+    
+    @media (max-width: 767px) {
+      font-size: 20px;
+      width: 26px;
+      height: 26px;
+    }
+  }
+  
+  /* Thêm icon mũi tên cho non-active items */
+  &:not(.active)::after {
+    content: '→';
+    font-size: 14px;
+    color: #9ca3af;
+    opacity: 0;
+    transition: all 0.2s ease;
+    transform: translateX(-8px);
+  }
+  
+  &:not(.active):hover::after {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

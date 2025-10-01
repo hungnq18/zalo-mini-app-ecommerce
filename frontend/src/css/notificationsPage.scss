@@ -1,0 +1,103 @@
+// Notifications Page Styles
+
+// Specific styles for notifications header to ensure full width
+.notifications-header {
+  /* Override any Tailwind classes and ensure full width */
+  background: #3b82f6 !important;
+  background-color: #3b82f6 !important;
+  
+  /* Force full width by breaking out of parent container */
+  position: relative !important;
+  left: 50% !important;
+  right: 50% !important;
+  margin-left: -50vw !important;
+  margin-right: -50vw !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  border-radius: 0 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  color: white !important;
+  padding: 50px 20px 20px 20px !important; /* Extra top padding to avoid status bar */
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  
+  /* Ensure content inside header is properly positioned */
+  > * {
+    position: relative !important;
+    z-index: 1 !important;
+  }
+  
+  /* Force proper content alignment within full-width header */
+  .back-button {
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+    border-radius: 6px !important;
+    
+    svg {
+      color: white !important;
+    }
+  }
+  
+  h1 {
+    color: white !important;
+    margin: 0 !important;
+    /* Compensate for full-width positioning */
+    max-width: calc(100vw - 80px) !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+  }
+  
+  /* Override any page container constraints */
+  box-sizing: border-box !important;
+}
+
+.settings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.settings-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  border-radius: 0; /* No border radius, full width */
+  padding: 12px 14px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.settings-text {
+  font-size: 14px;
+  color: #374151;
+  font-weight: 500;
+}
+
+/* Switch */
+.switch {
+  position: relative;
+  width: 48px;
+  height: 28px;
+  border-radius: 9999px;
+  background: #e5e7eb;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.switch.on { background: #3b82f6; }
+.switch.off { background: #e5e7eb; }
+
+.switch .thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  background: #ffffff;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.switch.on .thumb { transform: translateX(20px); }
