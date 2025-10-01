@@ -1,0 +1,28 @@
+{
+  "name": "unionmart-backend",
+  "version": "1.0.0",
+  "description": "JSON Server backend for UnionMart Zalo Mini App",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "json-server --watch db.json --port 3001 --host 0.0.0.0",
+    "build": "echo 'No build step required'",
+    "test": "echo 'No tests specified'"
+  },
+  "dependencies": {
+    "json-server": "^0.17.4",
+    "cors": "^2.8.5"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "keywords": [
+    "json-server",
+    "api",
+    "mock",
+    "unionmart",
+    "zalo-mini-app"
+  ],
+  "author": "UnionMart Team",
+  "license": "MIT"
+}

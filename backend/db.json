@@ -1018,7 +1018,7 @@
       "date": "2025-09-29"
     },
     {
-      "id": "1759216723071",
+      "id": 1759216723071,
       "items": [
         {
           "productId": "1",
@@ -1102,56 +1102,6 @@
       "freeShipping": true,
       "orderNumber": "UM1759216723071",
       "date": "2025-09-30"
-    },
-    {
-      "id": 1759288467178,
-      "items": [
-        {
-          "productId": "206",
-          "quantity": 1,
-          "price": 890000,
-          "product": {
-            "id": "206",
-            "name": "Đồng hồ nữ mặt tròn dây da Minimal",
-            "price": 890000,
-            "originalPrice": 1090000,
-            "discount": 18,
-            "image": "https://images.unsplash.com/photo-1518544801976-3e1883dbbef8?w=400&h=400&fit=crop",
-            "rating": 4.8,
-            "reviews": 540,
-            "description": "Phong cách tối giản, nhẹ tay, dễ phối đồ hằng ngày.",
-            "detailedDescription": "Mặt kính khoáng trong suốt, dây da mềm, máy Nhật bền bỉ.",
-            "stock": 120,
-            "categoryIds": [
-              "8",
-              "6"
-            ],
-            "searchKeywords": [
-              "đồng hồ nữ",
-              "dây da",
-              "minimal",
-              "thời trang"
-            ],
-            "isActive": true,
-            "isFeatured": false,
-            "createdAt": "2025-06-10T00:00:00Z",
-            "updatedAt": "2025-09-29T00:00:00Z",
-            "tags": [
-              "beauty"
-            ]
-          }
-        }
-      ],
-      "total": 920000,
-      "status": "pending",
-      "shippingAddress": "Nguyễn Văn A - 0123456789 - dfdf, dfdf, dfdf, dfdf",
-      "voucher": null,
-      "pointsUsed": 0,
-      "paymentMethod": "cod",
-      "shippingFee": 30000,
-      "freeShipping": false,
-      "orderNumber": "UM1759288467178",
-      "date": "2025-10-01"
     }
   ]
 }

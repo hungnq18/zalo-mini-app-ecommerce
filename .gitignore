@@ -118,7 +118,7 @@ frontend/.env.development.local
 frontend/.env.test.local
 frontend/.env.production.local
 
-# Backend specific (if applicable)
+# Backend specific
 backend/node_modules/
 backend/dist/
 backend/build/
