@@ -1,6 +1,8 @@
 import React, { createContext, useCallback, useContext, useEffect, useReducer } from 'react';
 import ApiService from '../services/apiService';
 
+// Force rebuild - useCallback fix v1.0.2
+
 // Initial state
 const initialState = {
   // Products
