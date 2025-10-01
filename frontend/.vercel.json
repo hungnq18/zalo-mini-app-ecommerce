@@ -12,7 +12,7 @@
   "env": {
     "VITE_API_BASE_URL": "https://zalo-mini-app-ecommerce.onrender.com/api",
     "VITE_APP_NAME": "UnionMart",
-    "VITE_APP_VERSION": "1.1.1",
+    "VITE_APP_VERSION": "1.1.2",
     "VITE_BUILD_TIME": "2025-01-10"
   },
   "routes": [

@@ -1,3 +1,5 @@
+import React from "react";
+import { BrowserRouter, Route as ReactRoute, Routes } from "react-router-dom";
 import { getSystemInfo } from "zmp-sdk";
 import {
   AnimationRoutes,
