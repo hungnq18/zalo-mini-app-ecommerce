@@ -29,10 +29,14 @@ const Layout = () => {
   // Check if running in Zalo environment
   const isZaloEnvironment = () => {
     try {
-      return typeof window !== 'undefined' && 
-             (window.ZaloJavaScriptInterface || 
-              navigator.userAgent.includes('ZaloTheme') ||
-              window.location.href.includes('zalo'));
+      // Force web browser mode for now to debug
+      return false;
+      
+      // Original detection (commented out for debugging)
+      // return typeof window !== 'undefined' && 
+      //        (window.ZaloJavaScriptInterface || 
+      //         navigator.userAgent.includes('ZaloTheme') ||
+      //         window.location.href.includes('zalo'));
     } catch (error) {
       return false;
     }
@@ -40,6 +44,7 @@ const Layout = () => {
 
   const isZalo = isZaloEnvironment();
   console.log('Environment:', isZalo ? 'Zalo' : 'Web Browser');
+  console.log('Force using web browser mode for debugging...');
 
   if (isZalo) {
     // Zalo Mini App Layout
