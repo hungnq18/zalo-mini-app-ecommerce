@@ -78,6 +78,10 @@ if (!appElement) {
   console.error('App element not found!');
 } else {
   console.log('Mounting app...');
+  
+  // Clear loading content first
+  appElement.innerHTML = '';
+  
   const root = createRoot(appElement);
   root.render(
     React.createElement(ErrorBoundary, null,
@@ -87,4 +91,13 @@ if (!appElement) {
     )
   );
   console.log('App mounted successfully');
+  
+  // Debug: Check if content is rendered after a delay
+  setTimeout(() => {
+    const content = appElement.innerHTML;
+    console.log('App content after mount:', content.length > 0 ? 'Content rendered' : 'No content rendered');
+    if (content.length === 0) {
+      console.error('No content rendered after mount!');
+    }
+  }, 1000);
 }

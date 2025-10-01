@@ -15,6 +15,7 @@ import ZaloContactPopup from '../components/zaloContactPopup';
 import { useApp } from '../context/AppContext';
 
 function HomePage() {
+  console.log('HomePage component rendering...');
   const navigate = useNavigate();
   const { state, actions } = useApp();
   const [isLoading, setIsLoading] = useState(true);
