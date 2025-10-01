@@ -27,7 +27,51 @@ import TestComponent from "./TestComponent";
 const Layout = () => {
   console.log('Layout component rendering...');
   
+  // Simple test first - bypass ZMP UI completely
+  const SimpleLayout = () => {
+    console.log('SimpleLayout rendering...');
+    return (
+      <div style={{
+        padding: '20px',
+        backgroundColor: '#007aff',
+        color: 'white',
+        textAlign: 'center',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}>
+        <h1 style={{ margin: '0 0 16px 0', fontSize: '32px' }}>UnionMart</h1>
+        <p style={{ margin: '0 0 20px 0', fontSize: '18px' }}>Simple Layout Working!</p>
+        <div style={{
+          width: '100px',
+          height: '100px',
+          backgroundColor: 'white',
+          borderRadius: '50%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: '#007aff',
+          fontSize: '48px',
+          fontWeight: 'bold'
+        }}>
+          ✓
+        </div>
+      </div>
+    );
+  };
+  
+  // Test if simple layout works first
+  const useSimpleLayout = true; // Change to false to test ZMP UI
+  
+  if (useSimpleLayout) {
+    console.log('Using simple layout...');
+    return <SimpleLayout />;
+  }
+  
   try {
+    console.log('Using ZMP UI layout...');
     return (
       <App theme={getSystemInfo().zaloTheme}>
         <SnackbarProvider>
