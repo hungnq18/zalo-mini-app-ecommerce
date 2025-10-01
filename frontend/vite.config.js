@@ -21,6 +21,7 @@ export default defineConfig({
     }
   },
   define: {
-    __DEFINES__: JSON.stringify({})
+    __DEFINES__: JSON.stringify({}),
+    __BUILD_TIME__: JSON.stringify(new Date().toISOString())
   }
 });

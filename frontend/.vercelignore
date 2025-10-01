@@ -1,0 +1,6 @@
+# Force clear cache - Build v1.0.2
+node_modules/
+.env*
+dist/
+.vite/
+.cache/

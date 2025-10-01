@@ -1,4 +1,4 @@
-// React core
+// React core - Build v1.0.2 - useCallback fix
 import React from "react";
 import { createRoot } from "react-dom/client";
 
