@@ -1,0 +1,4 @@
+# Force rebuild
+node_modules
+.env*
+dist
