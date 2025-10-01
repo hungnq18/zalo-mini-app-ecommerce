@@ -73,6 +73,6 @@
     }
   },
   "api": {
-    "baseUrl": "https://your-api-domain.com/api"
+    "baseUrl": "https://zalo-mini-app-ecommerce.onrender.com/api"
   }
 }

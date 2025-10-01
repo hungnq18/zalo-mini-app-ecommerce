@@ -15,6 +15,7 @@
     "Samsung >= 5"
   ],
   "scripts": {
+    "setup": "node setup-env.js",
     "login": "zmp login",
     "start": "zmp start",
     "deploy": "zmp deploy"

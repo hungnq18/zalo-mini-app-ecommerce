@@ -29,7 +29,7 @@
   },
   "build": {
     "env": {
-      "VITE_API_BASE_URL": "https://your-backend-domain.com/api"
+      "VITE_API_BASE_URL": "https://zalo-mini-app-ecommerce.onrender.com/api"
     }
   }
 }
