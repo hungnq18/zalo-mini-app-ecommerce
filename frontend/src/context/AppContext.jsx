@@ -443,7 +443,7 @@ export const AppProvider = ({ children }) => {
     actions.loadUser();
     actions.loadCart();
     actions.loadOrders();
-  }, [loadProducts]); // Add loadProducts to dependencies
+  }, []); // Remove loadProducts dependency to prevent infinite loop
   
   return (
     <AppContext.Provider value={{ state, actions }}>

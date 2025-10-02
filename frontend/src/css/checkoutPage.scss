@@ -18,7 +18,7 @@
   gap: 10px; 
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
-.checkout-header h1 { margin: 0; font-size: 22px; font-weight: 700; color: white; }
+.checkout-header h1 { margin: 0; font-size: 20px; font-weight: 700; color: white; }
 
 .checkout-content { background: #fff; border-radius: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); padding: 16px; }
 
@@ -49,12 +49,20 @@
 .totals .row { display: flex; justify-content: space-between; color: #dc2626; }
 .totals .row.grand { font-weight: 800; }
 
-.place-order-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 8px; }
-.place-order-btn { background: linear-gradient(135deg,#3b82f6,#1d4ed8) !important; color: #fff !important; }
+.place-order-bar { display: flex; justify-content: center; align-items: center; margin-top: 8px; }
+.place-order-btn { 
+  background: linear-gradient(135deg,#3b82f6,#1d4ed8) !important; 
+  color: #fff !important; 
+  width: 100%;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 12px;
+}
 
 .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); display: flex; align-items: center; justify-content: center; z-index: 14000; }
 .modal { background: #fff; width: 90%; max-width: 360px; border-radius: 14px; padding: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-.modal-title { font-weight: 700; font-size: 18px; color: #111827; }
+.modal-title { font-weight: 700; font-size: 16px; color: #111827; }
 .modal-text { color: #374151; margin-top: 6px; }
 .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 12px; }
 .btn-primary { background: #3b82f6; color: #fff; border: none; border-radius: 10px; padding: 8px 12px; }
@@ -65,7 +73,5 @@
   .address-form .row.three { grid-template-columns: 1fr; }
   .product-row { grid-template-columns: 48px 1fr auto; }
   .product-row img { width: 48px; height: 48px; }
-  .place-order-bar { flex-direction: column; align-items: stretch; }
-  .place-order-bar .summary { text-align: center; margin-bottom: 6px; }
 }
 

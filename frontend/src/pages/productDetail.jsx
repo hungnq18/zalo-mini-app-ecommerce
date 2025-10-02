@@ -59,12 +59,20 @@ const ProductDetail = () => {
       return;
     }
     setError('');
-    actions.addToCart(product.id, quantity).then((res) => {
-      if (res && res.success) {
-        navigate('/checkout');
-      } else {
-        snackbar.openSnackbar({ text: 'Không thể mua ngay lúc này', type: 'warning', duration: 2000 });
-      }
+    
+    // Tạo item cho sản phẩm đang chọn
+    const selectedItem = {
+      productId: product.id,
+      quantity: quantity,
+      price: discountPrice,
+      product: product
+    };
+    
+    // Chuyển đến checkout với chỉ sản phẩm đang chọn
+    navigate('/checkout', { 
+      state: { 
+        selectedItems: [selectedItem] 
+      } 
     });
   };
 

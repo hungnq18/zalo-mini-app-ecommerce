@@ -1,8 +1,10 @@
-import { ArrowLeft, Clock, Search, TrendingUp, X } from 'lucide-react';
+import { ArrowLeft, Search } from 'lucide-react';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Input, Page } from 'zmp-ui';
+import { Button, Page } from 'zmp-ui';
 import BottomNavigation from '../components/bottomNavigation';
+import HomeProductCard from '../components/HomeProductCard';
+import ProductCard from '../components/ProductCard';
 import { useApp } from '../context/AppContext';
 import '../css/searchPage.scss';
 
@@ -12,6 +14,7 @@ const SearchPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [recentSearches, setRecentSearches] = useState([]);
+  const [recentProducts, setRecentProducts] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [searchCache, setSearchCache] = useState(new Map());
@@ -21,13 +24,29 @@ const SearchPage = () => {
     navigate(-1);
   };
 
-  // Load recent searches from localStorage
+  // Load recent searches and products from localStorage
   useEffect(() => {
-    const saved = localStorage.getItem('recentSearches');
-    if (saved) {
-      setRecentSearches(JSON.parse(saved));
+    const savedSearches = localStorage.getItem('recentSearches');
+    if (savedSearches) {
+      setRecentSearches(JSON.parse(savedSearches));
     }
-  }, []);
+    
+    const savedProducts = localStorage.getItem('recentProducts');
+    if (savedProducts) {
+      setRecentProducts(JSON.parse(savedProducts));
+    } else {
+      // Load from state.products if no saved products
+      if (state.products && state.products.length > 0) {
+        const sampleProducts = state.products.slice(0, 4).map(product => ({
+          ...product,
+          rating: product.rating || 4.5,
+          reviews: product.reviews || Math.floor(Math.random() * 1000) + 100,
+          discount: product.discount || Math.floor(Math.random() * 30) + 10
+        }));
+        setRecentProducts(sampleProducts);
+      }
+    }
+  }, [state.products]);
 
   // Optimized search with caching and debouncing
   const handleSearch = useCallback(async (query) => {
@@ -135,91 +154,17 @@ const SearchPage = () => {
               <span>Trở lại</span>
             </button>
             <div className="search-input-container">
-              <div className="search-input-wrapper">
-                <Search className="search-icon" size={20} />
-                <Input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => {
-                    setSearchQuery(e.target.value);
-                    debouncedSearch(e.target.value);
-                    setShowSuggestions(e.target.value.length > 0);
-                  }}
-                  onFocus={() => setShowSuggestions(searchQuery.length > 0)}
-                  onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-                  placeholder="Tìm kiếm sản phẩm..."
-                  className="search-input"
-                />
-                {searchQuery && (
-                  <button 
-                    className="clear-search"
-                    onClick={() => {
-                      setSearchQuery('');
-                      setSearchResults([]);
-                      setShowSuggestions(false);
-                    }}
-                  >
-                    <X size={16} />
-                  </button>
-                )}
-              </div>
-              
-              {/* Search Suggestions */}
-              {showSuggestions && (searchSuggestions.length > 0 || recentSearches.length > 0) && (
-                <div className="search-suggestions">
-                  {searchSuggestions.length > 0 && (
-                    <div className="suggestion-group">
-                      <div className="suggestion-title">
-                        <TrendingUp size={14} />
-                        Gợi ý tìm kiếm
-                      </div>
-                      {searchSuggestions.map((suggestion, index) => (
-                        <button
-                          key={index}
-                          className="suggestion-item"
-                          onClick={() => {
-                            setSearchQuery(suggestion);
-                            handleSearch(suggestion);
-                            setShowSuggestions(false);
-                          }}
-                        >
-                          <Search size={14} />
-                          {suggestion}
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                  
-                  {recentSearches.length > 0 && (
-                    <div className="suggestion-group">
-                      <div className="suggestion-title">
-                        <Clock size={14} />
-                        Tìm kiếm gần đây
-                        <button 
-                          className="clear-recent"
-                          onClick={clearRecentSearches}
-                        >
-                          <X size={12} />
-                        </button>
-                      </div>
-                      {recentSearches.map((search, index) => (
-                        <button
-                          key={index}
-                          className="suggestion-item"
-                          onClick={() => {
-                            setSearchQuery(search);
-                            handleSearch(search);
-                            setShowSuggestions(false);
-                          }}
-                        >
-                          <Clock size={14} />
-                          {search}
-                        </button>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )}
+              <Search className="search-icon" size={20} />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  debouncedSearch(e.target.value);
+                }}
+                placeholder="Tìm kiếm sản phẩm..."
+                className="search-input"
+              />
             </div>
           </div>
         </div>
@@ -237,30 +182,25 @@ const SearchPage = () => {
                 Quan tâm ngay
               </Button>
             </div>
-            <div className="banner-badge">6/6</div>
           </div>
         )}
 
-        {/* Recent Searches */}
+        {/* Recent Products */}
         {!searchQuery && (
-          <div className="recent-searches-section">
-            <h3 className="recent-searches-title">Tìm kiếm sản phẩm gần đây</h3>
-            {recentSearches.length > 0 ? (
-              <div className="recent-searches-list">
-                {recentSearches.map((search, index) => (
-                  <div 
-                    key={index}
-                    className="recent-search-item"
-                    onClick={() => handleRecentSearch(search)}
-                  >
-                    <Search size={16} />
-                    <span>{search}</span>
-                  </div>
+          <div className="recent-products-section">
+            <h3 className="recent-products-title">Sản phẩm xem gần đây</h3>
+            {recentProducts.length > 0 ? (
+              <div className="recent-products-grid">
+                {recentProducts.slice(0, 4).map((product) => (
+                  <HomeProductCard
+                    key={product.id}
+                    product={product}
+                  />
                 ))}
               </div>
             ) : (
-              <div className="no-recent-searches">
-                <p>Chưa có tìm kiếm gần đây</p>
+              <div className="no-recent-products">
+                <p>Chưa có sản phẩm xem gần đây</p>
               </div>
             )}
           </div>
@@ -289,41 +229,14 @@ const SearchPage = () => {
                 ))}
               </div>
             ) : searchResults.length > 0 ? (
-              <div className="products-grid">
+              <div className="products-list">
                 {searchResults.map((product) => (
-                  <div 
-                    key={product.id} 
-                    className="product-card"
-                    onClick={() => navigate(`/product/${product.id}`)}
-                  >
-                    <div className="product-image">
-                      <img 
-                        src={product.image} 
-                        alt={product.name}
-                        onError={(e) => {
-                          e.target.src = 'https://via.placeholder.com/200x200?text=No+Image';
-                        }}
-                      />
-                    </div>
-                    <div className="product-info">
-                      <h4 className="product-name">{product.name}</h4>
-                      <div className="product-price">
-                        <span className="current-price">
-                          {product.price.toLocaleString()}đ
-                        </span>
-                        {product.originalPrice && (
-                          <span className="original-price">
-                            {product.originalPrice.toLocaleString()}đ
-                          </span>
-                        )}
-                      </div>
-                      <div className="product-rating">
-                        <span className="stars">⭐</span>
-                        <span className="rating">{product.rating}</span>
-                        <span className="reviews">({product.reviews})</span>
-                      </div>
-                    </div>
-                  </div>
+                  <ProductCard
+                    key={product.id}
+                    product={product}
+                    variant="list"
+                    showBuyButton={true}
+                  />
                 ))}
               </div>
             ) : (

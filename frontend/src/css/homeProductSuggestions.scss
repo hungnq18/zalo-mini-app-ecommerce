@@ -17,13 +17,13 @@
   margin-bottom: 16px;
 
   h2 {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     color: #1f2937;
     margin: 0;
 
     @media (max-width: 640px) {
-      font-size: 15px;
+      font-size: 16px;
     }
   }
 }
@@ -52,13 +52,17 @@
 }
 
 .home-product-suggestion-card {
-  min-width: 280px;
+  width: 280px;
+  height: 320px;
   background: #f9fafb;
   border-radius: 12px;
   overflow: hidden;
   transition: all 0.3s ease;
   cursor: pointer;
   position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
 
   &:hover {
     transform: translateY(-2px);
@@ -66,7 +70,8 @@
   }
 
   @media (max-width: 640px) {
-    min-width: 240px;
+    width: 240px;
+    height: 280px;
     border-radius: 10px;
   }
 }
@@ -95,7 +100,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .product-tags {
@@ -109,14 +114,14 @@
     .product-tag {
       background: rgba(239, 68, 68, 0.9);
       color: white;
-      font-size: 10px;
+      font-size: 8px;
       font-weight: 600;
       padding: 2px 6px;
       border-radius: 4px;
       backdrop-filter: blur(4px);
 
       @media (max-width: 640px) {
-        font-size: 9px;
+        font-size: 8px;
         padding: 1px 4px;
       }
     }
@@ -125,6 +130,10 @@
 
 .suggestion-content {
   padding: 12px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   @media (max-width: 640px) {
     padding: 10px;
@@ -136,14 +145,18 @@
   font-weight: 600;
   color: #1f2937;
   margin: 0 0 8px 0;
-  line-height: 1.3;
+  line-height: 1.4;
+  height: 39.2px; /* 14px * 1.4 * 2 lines = 39.2px */
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  text-overflow: ellipsis;
 
   @media (max-width: 640px) {
-    font-size: 13px;
+    font-size: 12px;
+    height: 33.6px; /* 12px * 1.4 * 2 lines = 33.6px */
     margin-bottom: 6px;
   }
 }
@@ -153,17 +166,18 @@
   margin-bottom: 10px;
 
   .description-text {
-    font-size: 12px;
+    font-size: 8px;
     color: #6b7280;
     line-height: 1.4;
     margin: 0;
     display: -webkit-box;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 
     @media (max-width: 640px) {
-      font-size: 11px;
+      font-size: 8px;
       -webkit-line-clamp: 2;
     }
   }
@@ -179,13 +193,13 @@
   .category-tag {
     background: #e5e7eb;
     color: #374151;
-    font-size: 10px;
+    font-size: 8px;
     padding: 2px 6px;
     border-radius: 4px;
     font-weight: 500;
 
     @media (max-width: 640px) {
-      font-size: 9px;
+      font-size: 8px;
       padding: 1px 4px;
     }
   }
@@ -217,13 +231,13 @@
     }
 
     .tag-text {
-      font-size: 11px;
+      font-size: 8px;
       font-weight: 500;
       color: #92400e;
       line-height: 1.2;
 
       @media (max-width: 640px) {
-        font-size: 10px;
+        font-size: 8px;
       }
     }
   }
@@ -246,22 +260,22 @@
   gap: 2px;
 
   .original-price {
-    font-size: 10px;
+    font-size: 8px;
     color: #9ca3af;
     text-decoration: line-through;
 
     @media (max-width: 640px) {
-      font-size: 9px;
+      font-size: 8px;
     }
   }
 
   .current-price {
-    font-size: 14px;
+    font-size: 8px;
     font-weight: bold;
     color: #dc2626;
 
     @media (max-width: 640px) {
-      font-size: 13px;
+      font-size: 8px;
     }
   }
 }
@@ -273,19 +287,19 @@
 
   .stars {
     color: #fbbf24;
-    font-size: 12px;
+    font-size: 8px;
 
     @media (max-width: 640px) {
-      font-size: 11px;
+      font-size: 8px;
     }
   }
 
   .rating-text {
-    font-size: 10px;
+    font-size: 8px;
     color: #6b7280;
 
     @media (max-width: 640px) {
-      font-size: 9px;
+      font-size: 8px;
     }
   }
 }
@@ -297,7 +311,7 @@
   border: none;
   border-radius: 8px;
   padding: 8px 12px;
-  font-size: 12px;
+  font-size: 8px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -313,7 +327,7 @@
 
   @media (max-width: 640px) {
     padding: 6px 10px;
-    font-size: 11px;
+    font-size: 8px;
   }
 }
 
@@ -431,5 +445,84 @@
 
   .skeleton {
     animation: none;
+  }
+}
+
+// New styles for updated card design
+.suggestion-footer {
+  margin: 8px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.price-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  flex: 1;
+  
+  .current-price {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ef4444;
+    line-height: 1.2;
+  }
+  
+  .original-price {
+    font-size: 12px;
+    color: #9ca3af;
+    text-decoration: line-through;
+    line-height: 1.2;
+  }
+}
+
+.rating-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  flex-shrink: 0;
+  
+  .stars {
+    display: flex;
+    gap: 2px;
+    justify-content: flex-end;
+  }
+  
+  .rating-text {
+    font-size: 12px;
+    color: #6b7280;
+    line-height: 1.2;
+  }
+}
+
+// Responsive design for mobile
+@media (max-width: 640px) {
+  .suggestion-footer {
+    gap: 8px;
+  }
+  
+  .price-section {
+    .current-price {
+      font-size: 14px;
+    }
+    
+    .original-price {
+      font-size: 10px;
+    }
+  }
+  
+  .rating-section {
+    .stars {
+      gap: 1px;
+    }
+    
+    .rating-text {
+      font-size: 10px;
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { Bell, Home, Search, ShoppingCart, User } from 'lucide-react';
+import { Home, Search, ShoppingCart, User } from 'lucide-react';
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
@@ -13,7 +13,6 @@ const BottomNavigation = () => {
   const navItems = [
     { icon: Home, label: 'Trang chủ', path: '/', badge: null },
     { icon: Search, label: 'Tìm kiếm', path: '/search', badge: null },
-    { icon: Bell, label: 'Thông báo', path: '/notifications', badge: null },
     { icon: ShoppingCart, label: 'Giỏ hàng', path: '/cart', badge: (state.cart?.items ? state.cart.items.length : 0) },
     { icon: User, label: 'Cá nhân', path: '/profile', badge: null }
   ];
@@ -28,12 +27,10 @@ const BottomNavigation = () => {
         return 0;
       case '/search':
         return 1;
-      case '/notifications':
-        return 2;
       case '/cart':
-        return 3;
+        return 2;
       case '/profile':
-        return 4;
+        return 3;
       default:
         return 0;
     }

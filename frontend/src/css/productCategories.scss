@@ -14,14 +14,14 @@
   margin-bottom: 12px;
 
   h2 {
-    font-size: 16px;
+    font-size: 8px;
     font-weight: bold;
     color: #1f2937;
   }
 
   .view-all-link {
     color: #3b82f6;
-    font-size: 14px;
+    font-size: 8px;
     font-weight: 500;
     text-decoration: none;
     transition: color 0.2s ease;
@@ -96,25 +96,25 @@
 }
 
 .product-category-name {
-  font-size: 12px;
+  font-size: 8px;
   font-weight: 500;
   color: #374151;
   line-height: 1.2;
   margin: 0;
 
   @media (max-width: 640px) {
-    font-size: 11px;
+    font-size: 8px;
   }
 }
 
 .product-category-count {
-  font-size: 10px;
+  font-size: 8px;
   color: #6b7280;
   margin-top: 2px;
   font-weight: 400;
 
   @media (max-width: 640px) {
-    font-size: 9px;
+    font-size: 8px;
   }
 }
 
@@ -124,7 +124,7 @@
   border-top: 1px solid #f3f4f6;
 
   .popular-categories-label {
-    font-size: 12px;
+    font-size: 8px;
     color: #6b7280;
     margin-bottom: 8px;
   }
@@ -139,7 +139,7 @@
       color: #2563eb;
       padding: 4px 8px;
       border-radius: 9999px;
-      font-size: 12px;
+      font-size: 8px;
       font-weight: 500;
       transition: all 0.2s ease;
       cursor: pointer;
@@ -150,7 +150,7 @@
       }
 
       @media (max-width: 640px) {
-        font-size: 11px;
+        font-size: 8px;
         padding: 3px 6px;
       }
     }

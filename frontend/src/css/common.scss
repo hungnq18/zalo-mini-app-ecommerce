@@ -276,6 +276,11 @@
   text-align: center;
 }
 
+/* Standardized Font Sizes */
+.text-xs {
+  font-size: 10px;
+}
+
 .text-sm {
   font-size: 12px;
 }
@@ -284,12 +289,44 @@
   font-size: 14px;
 }
 
-.text-lg {
+.text-md {
   font-size: 16px;
 }
 
-.text-xl {
+.text-lg {
   font-size: 18px;
+}
+
+.text-xl {
+  font-size: 20px;
+}
+
+.text-2xl {
+  font-size: 24px;
+}
+
+.text-3xl {
+  font-size: 28px;
+}
+
+.text-4xl {
+  font-size: 32px;
+}
+
+.text-5xl {
+  font-size: 48px;
+}
+
+.text-6xl {
+  font-size: 56px;
+}
+
+.text-7xl {
+  font-size: 80px;
+}
+
+.text-8xl {
+  font-size: 120px;
 }
 
 .font-medium {

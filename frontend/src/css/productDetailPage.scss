@@ -213,12 +213,11 @@
 }
 
 .product-name {
-  font-size: 56px;
+  font-size: 120px;
   font-weight: 900;
   color: #111827;
   margin: 0 0 16px 0;
   line-height: 1.2;
-  text-shadow: 2px 2px 4px rgba(17, 24, 39, 0.3);
   letter-spacing: -0.5px;
 }
 
@@ -258,8 +257,6 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: 5px 5px 15px rgba(185, 28, 28, 0.7);
-  filter: drop-shadow(4px 4px 8px rgba(185, 28, 28, 0.6));
   transform: scale(1.2);
   display: inline-block;
   animation: pulse-price 2s ease-in-out infinite alternate;
@@ -268,11 +265,9 @@
 @keyframes pulse-price {
   0% {
     transform: scale(1.2);
-    filter: drop-shadow(4px 4px 8px rgba(185, 28, 28, 0.6));
   }
   100% {
     transform: scale(1.25);
-    filter: drop-shadow(5px 5px 10px rgba(185, 28, 28, 0.8));
   }
 }
 
@@ -298,10 +293,11 @@
   margin-bottom: 20px;
 
   h3 {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     color: #1f2937;
     margin: 0 0 12px 0;
+    text-align: left;
   }
 }
 
@@ -701,13 +697,13 @@
 }
 
 .buy-now-btn {
-  background: linear-gradient(135deg, #ef4444, #dc2626) !important;
+  background: #3b82f6 !important;
   color: #fff !important;
   border: none !important;
-  border-radius: 12px !important;
-  padding: 14px 18px !important;
-  font-size: 16px !important;
-  font-weight: 700 !important;
+  border-radius: 6px !important;
+  padding: 4px 12px !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
 }
 
 /* Inline quantity under the button */
@@ -732,14 +728,15 @@
   font-size: 16px;
   font-weight: 600;
   color: #111827;
+  text-align: left;
 }
 
 .inline-quantity .quantity-btn {
   background: #f3f4f6;
   border: none;
-  border-radius: 10px;
-  width: 44px;
-  height: 44px;
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -747,9 +744,9 @@
 }
 
 .inline-quantity .quantity-value {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
-  min-width: 36px;
+  min-width: 28px;
   text-align: center;
 }
 
@@ -840,22 +837,19 @@
   }
 
   .product-name {
-    font-size: 48px; /* TO HƠN NỮA cho mobile */
+    font-size: 120px; /* TĂNG THÊM cho mobile */
     font-weight: 900;
     line-height: 1.2;
-    text-shadow: 2px 2px 4px rgba(17, 24, 39, 0.3);
     letter-spacing: -0.5px;
   }
 
   .current-price {
     font-size: 80px; /* CỰC KỲ TO cho mobile */
     font-weight: 900;
-    text-shadow: 4px 4px 10px rgba(185, 28, 28, 0.6);
     background: linear-gradient(135deg, #ef4444, #b91c1c, #dc2626);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(3px 3px 6px rgba(185, 28, 28, 0.5));
     transform: scale(1.15);
     display: inline-block;
   }

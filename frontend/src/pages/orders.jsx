@@ -33,8 +33,40 @@ function OrdersPage() {
 
   const orders = state.orders || [];
   const filteredOrders = useMemo(() => {
-    if (statusFilter === 'all') return orders;
-    return orders.filter(o => String(o.status) === String(statusFilter));
+    let filtered = orders;
+    
+    // Filter by status
+    if (statusFilter !== 'all') {
+      filtered = orders.filter(o => String(o.status) === String(statusFilter));
+    }
+    
+    // Sort by date (newest first)
+    return filtered.sort((a, b) => {
+      // Try to parse dates in different formats
+      const parseDate = (dateStr) => {
+        if (!dateStr) return new Date(0);
+        
+        // Handle different date formats
+        if (dateStr.includes('/')) {
+          // Format: DD/MM/YYYY or MM/DD/YYYY
+          const parts = dateStr.split('/');
+          if (parts.length === 3) {
+            // Assume DD/MM/YYYY format (Vietnamese)
+            return new Date(parts[2], parts[1] - 1, parts[0]);
+          }
+        }
+        
+        // Try ISO format or other standard formats
+        const parsed = new Date(dateStr);
+        return isNaN(parsed.getTime()) ? new Date(0) : parsed;
+      };
+      
+      const dateA = parseDate(a.date || a.createdAt || a.orderDate);
+      const dateB = parseDate(b.date || b.createdAt || b.orderDate);
+      
+      // Sort newest first (descending)
+      return dateB.getTime() - dateA.getTime();
+    });
   }, [orders, statusFilter]);
 
   return (

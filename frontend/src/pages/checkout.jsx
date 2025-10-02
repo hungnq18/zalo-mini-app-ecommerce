@@ -305,7 +305,6 @@ const CheckoutPage = () => {
               </div>
 
               <div className="place-order-bar">
-                <div className="summary">{items.length} sản phẩm • {total.toLocaleString('vi-VN')}₫</div>
                 <Button className="place-order-btn" onClick={placeOrder}>Đặt hàng</Button>
               </div>
             </>

@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useCallback, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Page } from "zmp-ui";
 import BottomNavigation from '../components/bottomNavigation';
 import Carousel from '../components/carousel';
 import Header from '../components/header';
+import HomeProductCard from '../components/HomeProductCard';
 import SuggestionsForYou from '../components/homeProductSuggestions';
 import PromotionalBanner from '../components/homePromotionalBanner';
 import ProductCategories from '../components/productCategories';
@@ -13,27 +14,38 @@ import SuggestedUtilities from '../components/suggestedUtilities';
 import UserInfoCard from '../components/userInfoCard';
 import ZaloContactPopup from '../components/zaloContactPopup';
 import { useApp } from '../context/AppContext';
+import '../css/homePage.scss';
 
-function HomePage() {
-  console.log('HomePage component rendering...');
+const HomePage = memo(() => {
   const navigate = useNavigate();
   const { state, actions } = useApp();
   const [isLoading, setIsLoading] = useState(true);
 
+  // Memoize hot products to prevent unnecessary re-renders
+  const hotProducts = useMemo(() => {
+    return state.hotProducts || [];
+  }, [state.hotProducts]);
+
+  // Memoize navigation handlers
+  const handleViewAllClick = useCallback(() => {
+    navigate('/category/all');
+  }, [navigate]);
+
   useEffect(() => {
-    // Load products from context
+    // Load products from context only if not already loaded
     const loadProducts = async () => {
-      try {
-        await actions.loadHotProducts();
-        setIsLoading(false);
-      } catch (error) {
-        console.error('Error loading products:', error);
-        setIsLoading(false);
+      if (!state.hotProducts || state.hotProducts.length === 0) {
+        try {
+          await actions.loadHotProducts();
+        } catch (error) {
+          console.error('Error loading products:', error);
+        }
       }
+      setIsLoading(false);
     };
 
     loadProducts();
-  }, [actions]);
+  }, []); // Remove dependencies to prevent infinite loop
 
   if (isLoading) {
     return (
@@ -79,68 +91,25 @@ function HomePage() {
           <SuggestionsForYou />
           
           {/* Featured Products - Enhanced */}
-          <div className="bg-white rounded-xl p-3 shadow-sm mb-3">
-            <div className="flex items-center justify-between mb-3">
-              <h2 className="text-base font-bold text-gray-800">Sản Phẩm Nổi Bật</h2>
-              <button 
-                className="text-xs text-blue-600 hover:text-blue-800 font-medium"
-                onClick={() => navigate('/category/all')}
-              >
-                Xem tất cả →
-              </button>
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              {state.hotProducts.slice(0, 4).map((product) => (
-                <div 
-                  key={product.id} 
-                  className="bg-gray-50 rounded-lg p-2 hover:shadow-md transition-all duration-200 hover:scale-105 cursor-pointer group"
-                  onClick={() => navigate(`/product/${product.id}`)}
+          <div className="home-page">
+            <div className="featured-products-section">
+              <div className="section-header">
+                <h2>Sản Phẩm Nổi Bật</h2>
+                <button 
+                  className="view-all-button"
+                  onClick={handleViewAllClick}
                 >
-                  <div className="w-full h-20 bg-gray-200 rounded-lg mb-2 flex items-center justify-center group-hover:bg-gray-300 transition-colors duration-200">
-                    <img 
-                      src={product.image} 
-                      alt={product.name}
-                      className="w-full h-full object-cover rounded-lg"
-                      onError={(e) => {
-                        e.target.style.display = 'none';
-                        e.target.nextSibling.style.display = 'flex';
-                      }}
-                    />
-                    <div className="w-full h-full bg-gray-300 rounded-lg flex items-center justify-center" style={{display: 'none'}}>
-                      <span className="text-2xl">📦</span>
-                    </div>
-                  </div>
-                  <h3 className="font-semibold text-gray-800 mb-1 text-xs group-hover:text-blue-600 transition-colors duration-200 line-clamp-2">
-                    {product.name}
-                  </h3>
-                  <div className="flex items-center mb-1">
-                    <div className="flex text-yellow-400 text-xs">
-                      {'★'.repeat(Math.floor(product.rating))}
-                    </div>
-                    <span className="text-gray-500 text-xs ml-1">({product.reviews})</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <div className="flex flex-col">
-                      {product.discount > 0 && (
-                        <span className="text-gray-400 text-xs line-through">
-                          {product.originalPrice?.toLocaleString()}₫
-                        </span>
-                      )}
-                      <span className="text-blue-600 font-bold text-xs">
-                        {product.price.toLocaleString()}₫
-                      </span>
-                    </div>
-                    {product.discount > 0 && (
-                      <span className="bg-red-500 text-white text-xs px-1 py-0.5 rounded">
-                        -{product.discount}%
-                      </span>
-                    )}
-                  </div>
-                  <button className="w-full mt-2 bg-blue-600 text-white px-2 py-1 rounded-lg text-xs hover:bg-blue-700 transition-colors duration-200 hover:scale-105">
-                    Mua ngay
-                  </button>
-                </div>
-              ))}
+                  Xem tất cả →
+                </button>
+              </div>
+              <div className="products-grid">
+                {hotProducts.slice(0, 4).map((product) => (
+                  <HomeProductCard
+                    key={product.id}
+                    product={product}
+                  />
+                ))}
+              </div>
             </div>
           </div>
 
@@ -156,6 +125,8 @@ function HomePage() {
       </div>
     </Page>
   );
-}
+});
+
+HomePage.displayName = 'HomePage';
 
 export default HomePage;

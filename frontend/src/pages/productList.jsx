@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { Page } from 'zmp-ui';
 import PageHeader from '../components/PageHeader';
+import ProductCard from '../components/ProductCard';
 import { useApp } from '../context/AppContext';
 import '../css/productListPage.scss';
 
@@ -162,7 +163,7 @@ const ProductListPage = () => {
     if (!state.products || state.products.length === 0) {
       actions.loadProducts();
     }
-  }, []);
+  }, []); // Empty dependency array to run only once
 
   // Sync URL param -> local active category when user lands or deep-links
   useEffect(() => {
@@ -372,59 +373,13 @@ const ProductListPage = () => {
             </div>
           ) : (
             sortedProducts.map(product => (
-              <div
+              <ProductCard
                 key={product.id}
-                className="product-card"
-                onClick={() => handleProductClick(product.id)}
-              >
-                <div className="product-image">
-                  <img src={product.image} alt={product.name} loading="lazy" />
-                  {product.discount && (
-                    <div className="discount-badge">
-                      -{product.discount}%
-                    </div>
-                  )}
-                </div>
-                
-                <div className="product-info">
-                  <h3 className="product-name">{product.name}</h3>
-                  
-                  {viewMode === 'list' && (
-                    <p className="product-description">
-                      {product.description}
-                    </p>
-                  )}
-                  
-                  <div className="product-rating">
-                    <span className="stars">
-                      {'★'.repeat(Math.floor(product.rating || 0))}
-                      {'☆'.repeat(5 - Math.floor(product.rating || 0))}
-                    </span>
-                    <span className="rating-text">
-                      ({product.rating || 0})
-                    </span>
-                  </div>
-                  
-                  <div className="product-price">
-                    <span className="current-price">
-                      {product.price?.toLocaleString('vi-VN')}đ
-                    </span>
-                    {product.originalPrice && (
-                      <span className="original-price">
-                        {product.originalPrice.toLocaleString('vi-VN')}đ
-                      </span>
-                    )}
-                  </div>
-                  
-                  {product.tags && product.tags.length > 0 && (
-                    <div className="product-tags">
-                      {product.tags.slice(0, 2).map(tag => (
-                        <span key={tag} className="tag">{tag}</span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
+                product={product}
+                variant={viewMode}
+                showBuyButton={true}
+                onClick={(product) => handleProductClick(product.id)}
+              />
             ))
           )}
         </div>
