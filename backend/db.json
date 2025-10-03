@@ -103,241 +103,6 @@
         "6",
         "7"
       ],
-      "searchKeywords": [
-        "nước giặt",
-        "sapika",
-        "tẩy rửa",
-        "gia dụng",
-        "hóa chất"
-      ],
-      "isActive": true,
-      "isFeatured": true,
-      "createdAt": "2025-01-01T00:00:00Z",
-      "updatedAt": "2025-01-29T00:00:00Z",
-      "tags": [
-        "hot",
-        "sale"
-      ]
-    },
-    {
-      "id": "201",
-      "name": "Viên uống Vitamin C 1000mg (60 viên)",
-      "price": 129000,
-      "originalPrice": 159000,
-      "discount": 19,
-      "image": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&h=400&fit=crop",
-      "rating": 4.7,
-      "reviews": 412,
-      "description": "Bổ sung Vitamin C giúp tăng cường miễn dịch, chống oxy hóa.",
-      "detailedDescription": "Vitamin C 1000mg hỗ trợ tăng sức đề kháng, làm đẹp da và chống oxy hóa mạnh mẽ.",
-      "stock": 120,
-      "categoryIds": [
-        "5",
-        "3"
-      ],
-      "searchKeywords": [
-        "vitamin c",
-        "sức khỏe",
-        "miễn dịch",
-        "thực phẩm chức năng"
-      ],
-      "isActive": true,
-      "isFeatured": true,
-      "createdAt": "2025-01-05T00:00:00Z",
-      "updatedAt": "2025-09-28T00:00:00Z",
-      "tags": [
-        "healthy",
-        "bestseller"
-      ]
-    },
-    {
-      "id": "202",
-      "name": "Collagen Peptide 10000mg (Hộp 10 ống)",
-      "price": 319000,
-      "originalPrice": 389000,
-      "discount": 18,
-      "image": "https://images.unsplash.com/photo-1582719478250-4b1f7d4cb3b0?w=400&h=400&fit=crop",
-      "rating": 4.8,
-      "reviews": 980,
-      "description": "Collagen Peptide giúp da săn chắc, mờ thâm nám, mịn màng.",
-      "detailedDescription": "Hàm lượng Collagen Peptide cao, hấp thụ nhanh, hỗ trợ làn da căng bóng và xương khớp khỏe mạnh.",
-      "stock": 65,
-      "categoryIds": [
-        "1",
-        "3"
-      ],
-      "searchKeywords": [
-        "collagen",
-        "sắc đẹp",
-        "da đẹp",
-        "peptide"
-      ],
-      "isActive": true,
-      "isFeatured": true,
-      "createdAt": "2025-02-01T00:00:00Z",
-      "updatedAt": "2025-09-28T00:00:00Z",
-      "tags": [
-        "beauty",
-        "hot"
-      ]
-    },
-    {
-      "id": "203",
-      "name": "Sữa rửa mặt dịu nhẹ pH 5.5 (150ml)",
-      "price": 99000,
-      "originalPrice": 129000,
-      "discount": 23,
-      "image": "https://tse3.mm.bing.net/th/id/OIP.dBbeX4LvxXS6v5zSuW93oQHaHa?pid=Api&P=0&h=220?w=400&h=400&fit=crop",
-      "rating": 4.6,
-      "reviews": 612,
-      "description": "Làm sạch sâu, dịu nhẹ, cân bằng độ pH, phù hợp mọi loại da.",
-      "detailedDescription": "Công thức dịu nhẹ loại bỏ bụi bẩn, dầu thừa mà không làm khô da.",
-      "stock": 240,
-      "categoryIds": [
-        "1"
-      ],
-      "searchKeywords": [
-        "sữa rửa mặt",
-        "làm sạch",
-        "skincare",
-        "sắc đẹp"
-      ],
-      "isActive": true,
-      "isFeatured": false,
-      "createdAt": "2025-03-15T00:00:00Z",
-      "updatedAt": "2025-09-28T00:00:00Z",
-      "tags": [
-        "beauty"
-      ]
-    },
-    {
-      "id": "204",
-      "name": "Kem chống nắng SPF50+ PA++++ (50ml)",
-      "price": 159000,
-      "originalPrice": 199000,
-      "discount": 20,
-      "image": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400&h=400&fit=crop",
-      "rating": 4.9,
-      "reviews": 1250,
-      "description": "Bảo vệ da tối ưu trước tia UVA/UVB, kiềm dầu, không nhờn rít.",
-      "detailedDescription": "Kết cấu nhẹ, thấm nhanh, phù hợp da nhạy cảm, không gây bít tắc.",
-      "stock": 180,
-      "categoryIds": [
-        "1"
-      ],
-      "searchKeywords": [
-        "kem chống nắng",
-        "spf50",
-        "sunscreen",
-        "skincare"
-      ],
-      "isActive": true,
-      "isFeatured": true,
-      "createdAt": "2025-04-10T00:00:00Z",
-      "updatedAt": "2025-09-28T00:00:00Z",
-      "tags": [
-        "beauty",
-        "hot"
-      ]
-    },
-    {
-      "id": "205",
-      "name": "Đồng hồ nam dây thép Olevs Chronograph",
-      "price": 1250000,
-      "originalPrice": 1590000,
-      "discount": 21,
-      "image": "https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=400&h=400&fit=crop",
-      "rating": 4.7,
-      "reviews": 830,
-      "description": "Thiết kế sang trọng, kính cứng chống xước, chống nước 3ATM.",
-      "detailedDescription": "Máy Quartz ổn định, mặt số chronograph, dây thép không gỉ cao cấp.",
-      "stock": 75,
-      "categoryIds": [
-        "8",
-        "6"
-      ],
-      "searchKeywords": [
-        "đồng hồ",
-        "olevs",
-        "chronograph",
-        "thời trang"
-      ],
-      "isActive": true,
-      "isFeatured": true,
-      "createdAt": "2025-05-20T00:00:00Z",
-      "updatedAt": "2025-09-29T00:00:00Z",
-      "tags": [
-        "hot",
-        "sale"
-      ]
-    },
-    {
-      "id": "206",
-      "name": "Đồng hồ nữ mặt tròn dây da Minimal",
-      "price": 890000,
-      "originalPrice": 1090000,
-      "discount": 18,
-      "image": "https://images.unsplash.com/photo-1518544801976-3e1883dbbef8?w=400&h=400&fit=crop",
-      "rating": 4.8,
-      "reviews": 540,
-      "description": "Phong cách tối giản, nhẹ tay, dễ phối đồ hằng ngày.",
-      "detailedDescription": "Mặt kính khoáng trong suốt, dây da mềm, máy Nhật bền bỉ.",
-      "stock": 120,
-      "categoryIds": [
-        "8",
-        "6"
-      ],
-      "searchKeywords": [
-        "đồng hồ nữ",
-        "dây da",
-        "minimal",
-        "thời trang"
-      ],
-      "isActive": true,
-      "isFeatured": false,
-      "createdAt": "2025-06-10T00:00:00Z",
-      "updatedAt": "2025-09-29T00:00:00Z",
-      "tags": [
-        "beauty"
-      ]
-    },
-    {
-      "id": "2",
-      "name": "Kính mát FIREBIRD F92209-60-C1",
-      "categories": [
-        "Phụ kiện",
-        "Thời trang",
-        "Bảo vệ mắt"
-      ],
-      "price": 671500,
-      "originalPrice": 790000,
-      "discount": 15,
-      "image": "https://images.unsplash.com/photo-1607082349566-187342175e2f?w=400&h=400&fit=crop",
-      "rating": 5,
-      "reviews": 890,
-      "reviewsList": [
-        {
-          "author": "Bảo Châu",
-          "avatar": "https://i.pravatar.cc/100?img=47",
-          "stars": 5,
-          "comment": "Kính đẹp, đeo nhẹ, chống chói tốt.",
-          "date": "2025-09-10"
-        },
-        {
-          "author": "Hữu Phước",
-          "avatar": "https://i.pravatar.cc/100?img=68",
-          "stars": 4,
-          "comment": "Phù hợp đi biển, chất lượng ổn.",
-          "date": "2025-09-08"
-        }
-      ],
-      "description": "Kính mát FIREBIRD cao cấp với thiết kế thời trang",
-      "detailedDescription": "Kính mát FIREBIRD F92209-60-C1 là sản phẩm cao cấp với thiết kế thời trang và công nghệ bảo vệ mắt tiên tiến. Kính có khả năng chống tia UV 100%, giảm chói mắt và bảo vệ mắt khỏi các tác động có hại từ ánh sáng mặt trời. Chất liệu nhẹ, bền và thiết kế sang trọng phù hợp với mọi phong cách.",
-      "stock": 25,
-      "categoryIds": [
-        "6",
-        "7"
-      ],
       "tags": [
         "hot",
         "sale"
@@ -637,44 +402,24 @@
   ],
   "utilities": [
     {
-      "id": "1",
-      "title": "Kho Sỉ Hội Viên",
-      "subtitle": "Mua sỉ giá tốt",
-      "icon": "📈",
-      "color": "bg-blue-100",
-      "iconColor": "text-blue-600"
-    },
-    {
-      "id": "2",
-      "title": "Đăng Ký Đại Lý",
-      "subtitle": "Trở thành đại lý",
-      "icon": "🏪",
-      "color": "bg-green-100",
-      "iconColor": "text-green-600"
-    },
-    {
       "id": "3",
       "title": "Vòng Quay May Mắn",
       "subtitle": "Quay thưởng ngay",
       "icon": "🎁",
       "color": "bg-purple-100",
-      "iconColor": "text-purple-600"
+      "iconColor": "text-purple-600",
+      "path": "/lucky-wheel",
+      "isNew": true
     },
     {
       "id": "4",
       "title": "Hội Viên Thân Thiết",
       "subtitle": "Ưu đãi đặc biệt",
-      "icon": "❤️",
+      "icon": "👑",
       "color": "bg-pink-100",
-      "iconColor": "text-pink-600"
-    },
-    {
-      "id": "5",
-      "title": "Lịch Sử Điểm Thưởng",
-      "subtitle": "Xem điểm tích lũy",
-      "icon": "🏆",
-      "color": "bg-yellow-100",
-      "iconColor": "text-yellow-600"
+      "iconColor": "text-pink-600",
+      "path": "/vip-member",
+      "isNew": true
     }
   ],
   "vouchers": [
@@ -712,12 +457,48 @@
       "percent": 20,
       "quantity": 150,
       "title": "Giảm 20% cho đơn đầu tiên"
+    },
+    {
+      "id": "wheel-voucher-50k",
+      "code": "WHEEL50K",
+      "amount": 50000,
+      "quantity": 100,
+      "title": "Voucher vòng quay 50.000đ",
+      "minOrderAmount": 200000,
+      "expiresInDays": 30,
+      "isExclusive": true
+    },
+    {
+      "id": "wheel-voucher-100k",
+      "code": "WHEEL100K",
+      "amount": 100000,
+      "quantity": 50,
+      "title": "Voucher vòng quay 100.000đ",
+      "minOrderAmount": 300000,
+      "expiresInDays": 30,
+      "isExclusive": true
+    },
+    {
+      "id": "wheel-voucher-vip",
+      "code": "WHEELVIP25",
+      "percent": 25,
+      "quantity": 20,
+      "title": "Voucher VIP giảm 25%",
+      "minOrderAmount": 500000,
+      "expiresInDays": 30,
+      "isExclusive": true
     }
   ],
   "user": {
+    "id": "user-001",
     "name": "Nguyễn Văn A",
     "phone": "0123456789",
-    "points": 1200,
+    "points": 70,
+    "level": "Bạc",
+    "vouchers": [
+      "wheel-voucher-vip",
+      "wheel-voucher-100k"
+    ],
     "addressObject": {
       "id": "1759156742392",
       "name": "dfdfd",
@@ -749,13 +530,917 @@
       }
     ],
     "defaultAddressId": "1759156742392",
-    "vouchers": [
-      "V002",
-      "V004"
-    ],
     "usedVouchers": [
       "V001",
       "V003"
+    ],
+    "dailySpins": 5,
+    "remainingSpins": 3,
+    "lastSpinDate": "2025-10-03",
+    "lastSpinAt": "2025-10-03T09:34:32.621Z",
+    "success": true,
+    "data": {
+      "id": "user-001",
+      "name": "Nguyễn Văn A",
+      "phone": "0123456789",
+      "points": 50,
+      "level": "Bạc",
+      "vouchers": [
+        "wheel-voucher-vip"
+      ],
+      "addressObject": {
+        "id": "1759156742392",
+        "name": "dfdfd",
+        "phone": "dfdf",
+        "street": "dfdf",
+        "ward": "dfdf",
+        "district": "dfdf",
+        "city": "dfdf"
+      },
+      "address": "dfdfd - dfdf - dfdf, dfdf, dfdf, dfdf",
+      "addresses": [
+        {
+          "id": "1759152929181",
+          "name": "Hưng",
+          "phone": "09222",
+          "street": "222",
+          "ward": "222",
+          "district": "222",
+          "city": "222"
+        },
+        {
+          "id": "1759156742392",
+          "name": "dfdfd",
+          "phone": "dfdf",
+          "street": "dfdf",
+          "ward": "dfdf",
+          "district": "dfdf",
+          "city": "dfdf"
+        }
+      ],
+      "defaultAddressId": "1759156742392",
+      "usedVouchers": [
+        "V001",
+        "V003"
+      ],
+      "dailySpins": 5,
+      "remainingSpins": 4,
+      "lastSpinDate": "2025-10-03",
+      "lastSpinAt": "2025-10-03T09:29:00.001Z",
+      "success": true,
+      "data": {
+        "id": "user-001",
+        "name": "Nguyễn Văn A",
+        "phone": "0123456789",
+        "points": 50,
+        "level": "Bạc",
+        "vouchers": [
+          "V002",
+          "V004",
+          "wheel-voucher-vip",
+          "wheel-voucher-100k",
+          "test-voucher-1759481798344"
+        ],
+        "addressObject": {
+          "id": "1759156742392",
+          "name": "dfdfd",
+          "phone": "dfdf",
+          "street": "dfdf",
+          "ward": "dfdf",
+          "district": "dfdf",
+          "city": "dfdf"
+        },
+        "address": "dfdfd - dfdf - dfdf, dfdf, dfdf, dfdf",
+        "addresses": [
+          {
+            "id": "1759152929181",
+            "name": "Hưng",
+            "phone": "09222",
+            "street": "222",
+            "ward": "222",
+            "district": "222",
+            "city": "222"
+          },
+          {
+            "id": "1759156742392",
+            "name": "dfdfd",
+            "phone": "dfdf",
+            "street": "dfdf",
+            "ward": "dfdf",
+            "district": "dfdf",
+            "city": "dfdf"
+          }
+        ],
+        "defaultAddressId": "1759156742392",
+        "usedVouchers": [
+          "V001",
+          "V003"
+        ],
+        "dailySpins": 5,
+        "remainingSpins": 4,
+        "lastSpinDate": "2025-10-03",
+        "lastSpinAt": "2025-10-03T09:29:00.001Z",
+        "success": true,
+        "data": {
+          "id": "user-001",
+          "name": "Nguyễn Văn A",
+          "phone": "0123456789",
+          "points": 5,
+          "level": "Bạc",
+          "vouchers": [
+            "V002",
+            "V004",
+            "wheel-voucher-vip",
+            "wheel-voucher-100k",
+            "test-voucher-1759481798344"
+          ],
+          "addressObject": {
+            "id": "1759156742392",
+            "name": "dfdfd",
+            "phone": "dfdf",
+            "street": "dfdf",
+            "ward": "dfdf",
+            "district": "dfdf",
+            "city": "dfdf"
+          },
+          "address": "dfdfd - dfdf - dfdf, dfdf, dfdf, dfdf",
+          "addresses": [
+            {
+              "id": "1759152929181",
+              "name": "Hưng",
+              "phone": "09222",
+              "street": "222",
+              "ward": "222",
+              "district": "222",
+              "city": "222"
+            },
+            {
+              "id": "1759156742392",
+              "name": "dfdfd",
+              "phone": "dfdf",
+              "street": "dfdf",
+              "ward": "dfdf",
+              "district": "dfdf",
+              "city": "dfdf"
+            }
+          ],
+          "defaultAddressId": "1759156742392",
+          "usedVouchers": [
+            "V001",
+            "V003"
+          ],
+          "dailySpins": 5,
+          "remainingSpins": 4,
+          "lastSpinDate": "2025-10-03",
+          "lastSpinAt": "2025-10-03T09:29:00.001Z",
+          "success": true,
+          "data": {
+            "id": "user-001",
+            "name": "Nguyễn Văn A",
+            "phone": "0123456789",
+            "points": 5,
+            "level": "Bạc",
+            "vouchers": [
+              "V002",
+              "V004",
+              "wheel-voucher-vip",
+              "wheel-voucher-100k",
+              "test-voucher-1759481798344"
+            ],
+            "addressObject": {
+              "id": "1759156742392",
+              "name": "dfdfd",
+              "phone": "dfdf",
+              "street": "dfdf",
+              "ward": "dfdf",
+              "district": "dfdf",
+              "city": "dfdf"
+            },
+            "address": "dfdfd - dfdf - dfdf, dfdf, dfdf, dfdf",
+            "addresses": [
+              {
+                "id": "1759152929181",
+                "name": "Hưng",
+                "phone": "09222",
+                "street": "222",
+                "ward": "222",
+                "district": "222",
+                "city": "222"
+              },
+              {
+                "id": "1759156742392",
+                "name": "dfdfd",
+                "phone": "dfdf",
+                "street": "dfdf",
+                "ward": "dfdf",
+                "district": "dfdf",
+                "city": "dfdf"
+              }
+            ],
+            "defaultAddressId": "1759156742392",
+            "usedVouchers": [
+              "V001",
+              "V003"
+            ],
+            "dailySpins": 5,
+            "remainingSpins": 5,
+            "lastSpinDate": "2025-10-03",
+            "lastSpinAt": "2025-10-03T09:14:21.390Z",
+            "success": true,
+            "data": {
+              "id": "user-001",
+              "name": "Nguyễn Văn A",
+              "phone": "0123456789",
+              "points": 5,
+              "level": "Bạc",
+              "vouchers": [
+                "V002",
+                "V004",
+                "wheel-voucher-vip",
+                "wheel-voucher-100k",
+                "test-voucher-1759481798344"
+              ],
+              "addressObject": {
+                "id": "1759156742392",
+                "name": "dfdfd",
+                "phone": "dfdf",
+                "street": "dfdf",
+                "ward": "dfdf",
+                "district": "dfdf",
+                "city": "dfdf"
+              },
+              "address": "dfdfd - dfdf - dfdf, dfdf, dfdf, dfdf",
+              "addresses": [
+                {
+                  "id": "1759152929181",
+                  "name": "Hưng",
+                  "phone": "09222",
+                  "street": "222",
+                  "ward": "222",
+                  "district": "222",
+                  "city": "222"
+                },
+                {
+                  "id": "1759156742392",
+                  "name": "dfdfd",
+                  "phone": "dfdf",
+                  "street": "dfdf",
+                  "ward": "dfdf",
+                  "district": "dfdf",
+                  "city": "dfdf"
+                }
+              ],
+              "defaultAddressId": "1759156742392",
+              "usedVouchers": [
+                "V001",
+                "V003"
+              ],
+              "dailySpins": 5,
+              "remainingSpins": 5,
+              "lastSpinDate": "2025-10-03",
+              "lastSpinAt": "2025-10-03T09:14:21.390Z",
+              "success": true,
+              "data": {
+                "id": "user-001",
+                "name": "Nguyễn Văn A",
+                "phone": "0123456789",
+                "points": 5,
+                "level": "Bạc",
+                "vouchers": [
+                  "V002",
+                  "V004",
+                  "wheel-voucher-vip",
+                  "wheel-voucher-100k",
+                  "test-voucher-1759481798344"
+                ],
+                "addressObject": {
+                  "id": "1759156742392",
+                  "name": "dfdfd",
+                  "phone": "dfdf",
+                  "street": "dfdf",
+                  "ward": "dfdf",
+                  "district": "dfdf",
+                  "city": "dfdf"
+                },
+                "address": "dfdfd - dfdf - dfdf, dfdf, dfdf, dfdf",
+                "addresses": [
+                  {
+                    "id": "1759152929181",
+                    "name": "Hưng",
+                    "phone": "09222",
+                    "street": "222",
+                    "ward": "222",
+                    "district": "222",
+                    "city": "222"
+                  },
+                  {
+                    "id": "1759156742392",
+                    "name": "dfdfd",
+                    "phone": "dfdf",
+                    "street": "dfdf",
+                    "ward": "dfdf",
+                    "district": "dfdf",
+                    "city": "dfdf"
+                  }
+                ],
+                "defaultAddressId": "1759156742392",
+                "usedVouchers": [
+                  "V001",
+                  "V003"
+                ],
+                "dailySpins": 5,
+                "remainingSpins": 5,
+                "lastSpinDate": "2025-10-03",
+                "lastSpinAt": "2025-10-03T09:14:16.326Z",
+                "success": true,
+                "data": {
+                  "id": "user-001",
+                  "name": "Nguyễn Văn A",
+                  "phone": "0123456789",
+                  "points": 1385,
+                  "level": "Bạc",
+                  "vouchers": [
+                    "V002",
+                    "V004",
+                    "wheel-voucher-vip",
+                    "wheel-voucher-100k",
+                    "test-voucher-1759481798344"
+                  ],
+                  "addressObject": {
+                    "id": "1759156742392",
+                    "name": "dfdfd",
+                    "phone": "dfdf",
+                    "street": "dfdf",
+                    "ward": "dfdf",
+                    "district": "dfdf",
+                    "city": "dfdf"
+                  },
+                  "address": "dfdfd - dfdf - dfdf, dfdf, dfdf, dfdf",
+                  "addresses": [
+                    {
+                      "id": "1759152929181",
+                      "name": "Hưng",
+                      "phone": "09222",
+                      "street": "222",
+                      "ward": "222",
+                      "district": "222",
+                      "city": "222"
+                    },
+                    {
+                      "id": "1759156742392",
+                      "name": "dfdfd",
+                      "phone": "dfdf",
+                      "street": "dfdf",
+                      "ward": "dfdf",
+                      "district": "dfdf",
+                      "city": "dfdf"
+                    }
+                  ],
+                  "defaultAddressId": "1759156742392",
+                  "usedVouchers": [
+                    "V001",
+                    "V003"
+                  ],
+                  "dailySpins": 5,
+                  "remainingSpins": 5,
+                  "lastSpinDate": "2025-10-03",
+                  "lastSpinAt": "2025-10-03T09:14:16.326Z",
+                  "success": true,
+                  "data": {
+                    "id": "user-001",
+                    "name": "Nguyễn Văn A",
+                    "phone": "0123456789",
+                    "points": 1385,
+                    "level": "Bạc",
+                    "vouchers": [
+                      "V002",
+                      "V004",
+                      "wheel-voucher-vip",
+                      "wheel-voucher-100k",
+                      "test-voucher-1759481798344"
+                    ],
+                    "addressObject": {
+                      "id": "1759156742392",
+                      "name": "dfdfd",
+                      "phone": "dfdf",
+                      "street": "dfdf",
+                      "ward": "dfdf",
+                      "district": "dfdf",
+                      "city": "dfdf"
+                    },
+                    "address": "dfdfd - dfdf - dfdf, dfdf, dfdf, dfdf",
+                    "addresses": [
+                      {
+                        "id": "1759152929181",
+                        "name": "Hưng",
+                        "phone": "09222",
+                        "street": "222",
+                        "ward": "222",
+                        "district": "222",
+                        "city": "222"
+                      },
+                      {
+                        "id": "1759156742392",
+                        "name": "dfdfd",
+                        "phone": "dfdf",
+                        "street": "dfdf",
+                        "ward": "dfdf",
+                        "district": "dfdf",
+                        "city": "dfdf"
+                      }
+                    ],
+                    "defaultAddressId": "1759156742392",
+                    "usedVouchers": [
+                      "V001",
+                      "V003"
+                    ],
+                    "dailySpins": 5,
+                    "remainingSpins": 5,
+                    "lastSpinDate": null,
+                    "lastSpinAt": null,
+                    "success": true,
+                    "data": {
+                      "id": "user-001",
+                      "name": "Nguyễn Văn A",
+                      "phone": "0123456789",
+                      "points": 1385,
+                      "level": "Bạc",
+                      "vouchers": [
+                        "V002",
+                        "V004",
+                        "wheel-voucher-vip",
+                        "wheel-voucher-100k",
+                        "test-voucher-1759481798344"
+                      ],
+                      "addressObject": {
+                        "id": "1759156742392",
+                        "name": "dfdfd",
+                        "phone": "dfdf",
+                        "street": "dfdf",
+                        "ward": "dfdf",
+                        "district": "dfdf",
+                        "city": "dfdf"
+                      },
+                      "address": "dfdfd - dfdf - dfdf, dfdf, dfdf, dfdf",
+                      "addresses": [
+                        {
+                          "id": "1759152929181",
+                          "name": "Hưng",
+                          "phone": "09222",
+                          "street": "222",
+                          "ward": "222",
+                          "district": "222",
+                          "city": "222"
+                        },
+                        {
+                          "id": "1759156742392",
+                          "name": "dfdfd",
+                          "phone": "dfdf",
+                          "street": "dfdf",
+                          "ward": "dfdf",
+                          "district": "dfdf",
+                          "city": "dfdf"
+                        }
+                      ],
+                      "defaultAddressId": "1759156742392",
+                      "usedVouchers": [
+                        "V001",
+                        "V003"
+                      ],
+                      "dailySpins": 5,
+                      "remainingSpins": 5,
+                      "lastSpinDate": null,
+                      "lastSpinAt": null,
+                      "success": true,
+                      "data": {
+                        "id": "user-001",
+                        "name": "Nguyễn Văn A",
+                        "phone": "0123456789",
+                        "points": 1385,
+                        "level": "Bạc",
+                        "vouchers": [
+                          "V002",
+                          "V004",
+                          "wheel-voucher-vip",
+                          "wheel-voucher-100k",
+                          "test-voucher-1759481798344"
+                        ],
+                        "addressObject": {
+                          "id": "1759156742392",
+                          "name": "dfdfd",
+                          "phone": "dfdf",
+                          "street": "dfdf",
+                          "ward": "dfdf",
+                          "district": "dfdf",
+                          "city": "dfdf"
+                        },
+                        "address": "dfdfd - dfdf - dfdf, dfdf, dfdf, dfdf",
+                        "addresses": [
+                          {
+                            "id": "1759152929181",
+                            "name": "Hưng",
+                            "phone": "09222",
+                            "street": "222",
+                            "ward": "222",
+                            "district": "222",
+                            "city": "222"
+                          },
+                          {
+                            "id": "1759156742392",
+                            "name": "dfdfd",
+                            "phone": "dfdf",
+                            "street": "dfdf",
+                            "ward": "dfdf",
+                            "district": "dfdf",
+                            "city": "dfdf"
+                          }
+                        ],
+                        "defaultAddressId": "1759156742392",
+                        "usedVouchers": [
+                          "V001",
+                          "V003"
+                        ],
+                        "dailySpins": 5,
+                        "remainingSpins": 5,
+                        "lastSpinDate": null,
+                        "lastSpinAt": null,
+                        "success": true,
+                        "data": {
+                          "id": "user-001",
+                          "name": "Nguyễn Văn A",
+                          "phone": "0123456789",
+                          "points": 1385,
+                          "level": "Bạc",
+                          "vouchers": [
+                            "V002",
+                            "V004",
+                            "wheel-voucher-vip",
+                            "wheel-voucher-100k",
+                            "test-voucher-1759481798344"
+                          ],
+                          "addressObject": {
+                            "id": "1759156742392",
+                            "name": "dfdfd",
+                            "phone": "dfdf",
+                            "street": "dfdf",
+                            "ward": "dfdf",
+                            "district": "dfdf",
+                            "city": "dfdf"
+                          },
+                          "address": "dfdfd - dfdf - dfdf, dfdf, dfdf, dfdf",
+                          "addresses": [
+                            {
+                              "id": "1759152929181",
+                              "name": "Hưng",
+                              "phone": "09222",
+                              "street": "222",
+                              "ward": "222",
+                              "district": "222",
+                              "city": "222"
+                            },
+                            {
+                              "id": "1759156742392",
+                              "name": "dfdfd",
+                              "phone": "dfdf",
+                              "street": "dfdf",
+                              "ward": "dfdf",
+                              "district": "dfdf",
+                              "city": "dfdf"
+                            }
+                          ],
+                          "defaultAddressId": "1759156742392",
+                          "usedVouchers": [
+                            "V001",
+                            "V003"
+                          ],
+                          "dailySpins": 5,
+                          "remainingSpins": 5,
+                          "lastSpinDate": null,
+                          "lastSpinAt": null,
+                          "success": true,
+                          "data": {
+                            "id": "user-001",
+                            "name": "Nguyễn Văn A",
+                            "phone": "0123456789",
+                            "points": 1385,
+                            "level": "Bạc",
+                            "vouchers": [
+                              "V002",
+                              "V004",
+                              "wheel-voucher-vip",
+                              "wheel-voucher-100k",
+                              "test-voucher-1759481798344"
+                            ],
+                            "addressObject": {
+                              "id": "1759156742392",
+                              "name": "dfdfd",
+                              "phone": "dfdf",
+                              "street": "dfdf",
+                              "ward": "dfdf",
+                              "district": "dfdf",
+                              "city": "dfdf"
+                            },
+                            "address": "dfdfd - dfdf - dfdf, dfdf, dfdf, dfdf",
+                            "addresses": [
+                              {
+                                "id": "1759152929181",
+                                "name": "Hưng",
+                                "phone": "09222",
+                                "street": "222",
+                                "ward": "222",
+                                "district": "222",
+                                "city": "222"
+                              },
+                              {
+                                "id": "1759156742392",
+                                "name": "dfdfd",
+                                "phone": "dfdf",
+                                "street": "dfdf",
+                                "ward": "dfdf",
+                                "district": "dfdf",
+                                "city": "dfdf"
+                              }
+                            ],
+                            "defaultAddressId": "1759156742392",
+                            "usedVouchers": [
+                              "V001",
+                              "V003"
+                            ],
+                            "dailySpins": 5,
+                            "remainingSpins": 5,
+                            "lastSpinDate": null,
+                            "lastSpinAt": null
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "lucky-wheel": {
+    "config": {
+      "enabled": true,
+      "dailySpins": 5,
+      "resetTime": "00:00",
+      "spinCooldown": 5
+    },
+    "prizes": [
+      {
+        "id": 1,
+        "name": "Giảm 10%",
+        "value": "10%",
+        "color": "#ff6b6b",
+        "icon": "🎁",
+        "type": "discount",
+        "probability": 0.125
+      },
+      {
+        "id": 2,
+        "name": "Giảm 20%",
+        "value": "20%",
+        "color": "#4ecdc4",
+        "icon": "🎉",
+        "type": "discount",
+        "probability": 0.125
+      },
+      {
+        "id": 3,
+        "name": "Miễn phí ship",
+        "value": "Free Ship",
+        "color": "#45b7d1",
+        "icon": "🚚",
+        "type": "free_ship",
+        "probability": 0.125
+      },
+      {
+        "id": 4,
+        "name": "Voucher 50k",
+        "value": "50k",
+        "color": "#f9ca24",
+        "icon": "💰",
+        "type": "voucher",
+        "voucherId": "wheel-voucher-50k",
+        "probability": 0.125
+      },
+      {
+        "id": 5,
+        "name": "Voucher 100k",
+        "value": "100k",
+        "color": "#6c5ce7",
+        "icon": "💎",
+        "type": "voucher",
+        "voucherId": "wheel-voucher-100k",
+        "probability": 0.125
+      },
+      {
+        "id": 6,
+        "name": "Giảm 30%",
+        "value": "30%",
+        "color": "#a29bfe",
+        "icon": "🎊",
+        "type": "discount",
+        "probability": 0.125
+      },
+      {
+        "id": 7,
+        "name": "Voucher VIP",
+        "value": "VIP",
+        "color": "#fd79a8",
+        "icon": "👑",
+        "type": "voucher",
+        "voucherId": "wheel-voucher-vip",
+        "probability": 0.125
+      },
+      {
+        "id": 8,
+        "name": "Chúc may mắn",
+        "value": "Lần sau",
+        "color": "#636e72",
+        "icon": "🍀",
+        "type": "none",
+        "probability": 0.125
+      }
+    ],
+    "voucherTemplates": {
+      "wheel-voucher-50k": {
+        "discount": 50000,
+        "discountType": "amount",
+        "minOrderAmount": 200000,
+        "expiresInDays": 30,
+        "description": "Voucher đặc biệt chỉ có thể nhận được từ vòng quay may mắn",
+        "isExclusive": true
+      },
+      "wheel-voucher-100k": {
+        "discount": 100000,
+        "discountType": "amount",
+        "minOrderAmount": 300000,
+        "expiresInDays": 30,
+        "description": "Voucher đặc biệt chỉ có thể nhận được từ vòng quay may mắn",
+        "isExclusive": true
+      },
+      "wheel-voucher-vip": {
+        "discount": 25,
+        "discountType": "percentage",
+        "minOrderAmount": 500000,
+        "expiresInDays": 30,
+        "description": "Voucher VIP đặc biệt chỉ có thể nhận được từ vòng quay may mắn",
+        "isExclusive": true
+      }
+    },
+    "spinLogs": [
+      {
+        "prizeId": 6,
+        "prizeType": "discount",
+        "voucherId": null,
+        "pointsEarned": 5,
+        "timestamp": "2025-10-03T03:41:30.363Z"
+      },
+      {
+        "prizeId": 6,
+        "prizeType": "discount",
+        "voucherId": null,
+        "pointsEarned": 5,
+        "timestamp": "2025-10-03T03:56:37.008Z"
+      },
+      {
+        "userId": "user-001",
+        "prizeId": 1,
+        "prizeType": "discount",
+        "voucherId": null,
+        "pointsEarned": 5,
+        "timestamp": "2025-10-03T04:01:43.435Z"
+      },
+      {
+        "userId": "user-001",
+        "prizeId": 3,
+        "prizeType": "free_ship",
+        "voucherId": null,
+        "pointsEarned": 0,
+        "timestamp": "2025-10-03T04:21:18.781Z"
+      },
+      {
+        "userId": "user-001",
+        "prizeId": 3,
+        "prizeType": "free_ship",
+        "voucherId": null,
+        "pointsEarned": 0,
+        "timestamp": "2025-10-03T05:39:00.877Z"
+      },
+      {
+        "userId": "user-001",
+        "prizeId": 8,
+        "prizeType": "none",
+        "voucherId": null,
+        "pointsEarned": 0,
+        "timestamp": "2025-10-03T06:11:26.538Z"
+      },
+      {
+        "userId": "user-001",
+        "prizeId": 3,
+        "prizeType": "free_ship",
+        "voucherId": null,
+        "pointsEarned": 0,
+        "timestamp": "2025-10-03T08:05:23.323Z"
+      },
+      {
+        "userId": "user-001",
+        "prizeId": 7,
+        "prizeType": "voucher",
+        "voucherId": "wheel-voucher-vip",
+        "pointsEarned": 50,
+        "timestamp": "2025-10-03T08:05:35.298Z"
+      },
+      {
+        "userId": "user-001",
+        "prizeId": 7,
+        "prizeType": "voucher",
+        "voucherId": "wheel-voucher-vip",
+        "pointsEarned": 50,
+        "timestamp": "2025-10-03T08:08:15.024Z"
+      },
+      {
+        "userId": "user-001",
+        "prizeId": 5,
+        "prizeType": "voucher",
+        "voucherId": "wheel-voucher-100k",
+        "pointsEarned": 20,
+        "timestamp": "2025-10-03T08:08:43.802Z"
+      },
+      {
+        "userId": "user-001",
+        "prizeId": 7,
+        "prizeType": "voucher",
+        "voucherId": "wheel-voucher-vip",
+        "pointsEarned": 50,
+        "timestamp": "2025-10-03T08:13:15.283Z"
+      },
+      {
+        "userId": "user-001",
+        "prizeId": null,
+        "prizeType": null,
+        "voucherId": null,
+        "pointsEarned": 0,
+        "timestamp": "2025-10-03T08:47:29.639Z"
+      },
+      {
+        "prizeId": 6,
+        "prizeType": "discount",
+        "voucherId": null,
+        "pointsEarned": 5,
+        "timestamp": "2025-10-03T08:47:34.182Z"
+      },
+      {
+        "userId": "user-001",
+        "prizeId": null,
+        "prizeType": null,
+        "voucherId": null,
+        "pointsEarned": 0,
+        "timestamp": "2025-10-03T09:14:16.326Z"
+      },
+      {
+        "prizeId": 2,
+        "prizeType": "discount",
+        "voucherId": null,
+        "pointsEarned": 5,
+        "timestamp": "2025-10-03T09:14:20.872Z"
+      },
+      {
+        "userId": "user-001",
+        "prizeId": null,
+        "prizeType": null,
+        "voucherId": null,
+        "pointsEarned": 0,
+        "timestamp": "2025-10-03T09:29:00.001Z"
+      },
+      {
+        "prizeId": 7,
+        "prizeType": "voucher",
+        "voucherId": "wheel-voucher-vip",
+        "pointsEarned": 50,
+        "timestamp": "2025-10-03T09:29:05.611Z"
+      },
+      {
+        "userId": "user-001",
+        "prizeId": null,
+        "prizeType": null,
+        "voucherId": null,
+        "pointsEarned": 0,
+        "timestamp": "2025-10-03T09:34:26.508Z"
+      },
+      {
+        "userId": "user-001",
+        "prizeId": 5,
+        "prizeType": "voucher",
+        "voucherId": "wheel-voucher-100k",
+        "pointsEarned": 20,
+        "timestamp": "2025-10-03T09:34:32.111Z"
+      }
     ]
   },
   "cart": {

@@ -646,7 +646,7 @@
 }
 
 .add-to-cart-btn {
-  background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important; /* giữ màu xanh hiện tại */
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important; /* màu xanh */
   color: white !important;
   border: none !important;
   border-radius: 12px !important;
@@ -696,14 +696,25 @@
   }
 }
 
-.buy-now-btn {
-  background: #3b82f6 !important;
+.detail-buy-now-btn {
+  background: #ef4444 !important;
   color: #fff !important;
   border: none !important;
-  border-radius: 6px !important;
-  padding: 4px 12px !important;
-  font-size: 11px !important;
+  border-radius: 12px !important;
+  padding: 14px 18px !important;
+  font-size: 16px !important;
   font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+
+  &:hover {
+    background: #dc2626 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4) !important;
+  }
+
+  &:active {
+    transform: translateY(0) !important;
+  }
 }
 
 /* Inline quantity under the button */

@@ -2,6 +2,7 @@ import { Search } from 'lucide-react';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/header.scss';
+import logo from '../static/logo.png';
 
 const Header = () => {
   const [searchFocused, setSearchFocused] = useState(false);
@@ -20,11 +21,11 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-2 pt-5">
-            <div className="bg-white text-blue-600 px-2 py-1 rounded font-bold text-sm flex items-center">
-              <span className="text-blue-600 font-bold">U</span>
+            <div className="logo-container">
+              <img src={logo} alt="UnionMart" />
             </div>
             <div className="text-white pt-2">
-              <div className="font-bold text-xs">UNIONMART</div>
+              <div className="font-bold text-xs">Union Mall</div>
               <div className="text-xs text-blue-200">Siêu thị trực tuyến</div>
             </div>
           </div>

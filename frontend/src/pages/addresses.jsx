@@ -13,6 +13,7 @@ const AddressesPage = () => {
   const user = state.user || {};
   const addresses = Array.isArray(user.addresses) ? user.addresses : [];
   const [showForm, setShowForm] = useState(false);
+  const [editingAddress, setEditingAddress] = useState(null);
   const [form, setForm] = useState(emptyAddr);
   const [setAsDefault, setSetAsDefault] = useState(false);
 
@@ -25,17 +26,43 @@ const AddressesPage = () => {
 
   const saveNew = async () => {
     if (!isValid) return;
-    const newId = Date.now().toString();
-    const newAddr = { id: newId, ...form };
-    const next = [...addresses, newAddr];
-    const flat = `${newAddr.name || ''}${newAddr.phone ? ' - ' + newAddr.phone : ''}${newAddr.street ? ' - ' + newAddr.street : ''}${newAddr.ward ? ', ' + newAddr.ward : ''}${newAddr.district ? ', ' + newAddr.district : ''}${newAddr.city ? ', ' + newAddr.city : ''}`.trim();
-    await actions.updateUser({
-      addresses: next,
-      ...(setAsDefault ? { defaultAddressId: newId, addressObject: newAddr, address: flat } : {})
-    });
+    
+    if (editingAddress) {
+      // Cập nhật địa chỉ hiện có
+      const updatedAddresses = addresses.map(addr => 
+        addr.id === editingAddress.id ? { ...form, id: editingAddress.id } : addr
+      );
+      const updatedAddr = { ...form, id: editingAddress.id };
+      const flat = `${updatedAddr.name || ''}${updatedAddr.phone ? ' - ' + updatedAddr.phone : ''}${updatedAddr.street ? ' - ' + updatedAddr.street : ''}${updatedAddr.ward ? ', ' + updatedAddr.ward : ''}${updatedAddr.district ? ', ' + updatedAddr.district : ''}${updatedAddr.city ? ', ' + updatedAddr.city : ''}`.trim();
+      
+      await actions.updateUser({
+        addresses: updatedAddresses,
+        ...(setAsDefault ? { defaultAddressId: updatedAddr.id, addressObject: updatedAddr, address: flat } : {})
+      });
+    } else {
+      // Thêm địa chỉ mới
+      const newId = Date.now().toString();
+      const newAddr = { id: newId, ...form };
+      const next = [...addresses, newAddr];
+      const flat = `${newAddr.name || ''}${newAddr.phone ? ' - ' + newAddr.phone : ''}${newAddr.street ? ' - ' + newAddr.street : ''}${newAddr.ward ? ', ' + newAddr.ward : ''}${newAddr.district ? ', ' + newAddr.district : ''}${newAddr.city ? ', ' + newAddr.city : ''}`.trim();
+      
+      await actions.updateUser({
+        addresses: next,
+        ...(setAsDefault ? { defaultAddressId: newId, addressObject: newAddr, address: flat } : {})
+      });
+    }
+    
     setShowForm(false);
+    setEditingAddress(null);
     setForm(emptyAddr);
     setSetAsDefault(false);
+  };
+
+  const editAddress = (address) => {
+    setForm(address);
+    setEditingAddress(address);
+    setSetAsDefault(user.defaultAddressId === address.id);
+    setShowForm(true);
   };
 
   const setDefault = async (addr) => {
@@ -81,20 +108,21 @@ const AddressesPage = () => {
             )}
             <div className="product-list">
               {addresses.map((a) => (
-                <div key={a.id} className="product-row" style={{ gridTemplateColumns: '1fr auto auto', gap: '8px' }}>
+                <div key={a.id} className="product-row" style={{ gridTemplateColumns: '1fr auto auto auto', gap: '8px' }}>
                   <div>
                     <div className="name">{a.name} {a.phone ? `- ${a.phone}` : ''}</div>
                     <div className="meta">{a.street}{a.ward ? `, ${a.ward}` : ''}{a.district ? `, ${a.district}` : ''}{a.city ? `, ${a.city}` : ''}</div>
                   </div>
                   <button className="btn-default" onClick={() => setDefault(a)}>{user.defaultAddressId === a.id ? 'Mặc định' : 'Chọn mặc định'}</button>
-                  <button className="btn-default" onClick={() => removeAddress(a.id)}>Xóa</button>
+                  <button className="btn-edit" onClick={() => editAddress(a)}>Sửa</button>
+                  <button className="btn-delete" onClick={() => removeAddress(a.id)}>Xóa</button>
                 </div>
               ))}
             </div>
           </div>
 
           <div className="section">
-            <div className="section-title">Thêm địa chỉ</div>
+            <div className="section-title">{editingAddress ? 'Sửa địa chỉ' : 'Thêm địa chỉ'}</div>
             {!showForm ? (
               <button className="btn-default" onClick={() => setShowForm(true)}>+ Thêm địa chỉ</button>
             ) : (

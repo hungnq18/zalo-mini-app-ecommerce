@@ -114,7 +114,7 @@ const HomePage = memo(() => {
           </div>
 
           {/* Suggested Utilities Section */}
-          <SuggestedUtilities />
+          <SuggestedUtilities shouldLoad={true} />
         </div>
         
         {/* Bottom Navigation */}

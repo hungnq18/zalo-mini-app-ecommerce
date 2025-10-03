@@ -3,11 +3,13 @@ import { API_CONFIG } from '../config/api';
 
 // Helper function to make API calls
 const apiCall = async (endpoint, options = {}) => {
-  const url = `${API_CONFIG.BASE_URL}${endpoint}`;
+  const url = `${API_CONFIG.BASE_URL}${endpoint}${endpoint.includes('?') ? '&' : '?'}t=${Date.now()}`;
   
   const defaultOptions = {
     headers: {
       'Content-Type': 'application/json',
+      'Cache-Control': 'no-cache',
+      'Pragma': 'no-cache'
     },
   };
   
@@ -27,6 +29,11 @@ const apiCall = async (endpoint, options = {}) => {
     }
     
     const data = JSON.parse(text);
+    console.log('API Response parsed:', data);
+    // If server already wraps responses in { success: true, data: ... }, unwrap once
+    if (data && typeof data === 'object' && data.success && data.data !== undefined) {
+      return { success: true, data: data.data };
+    }
     return {
       success: true,
       data: data
@@ -47,6 +54,12 @@ class ApiService {
     
     // Build optimized query string for filters
     const queryParams = new URLSearchParams();
+    
+    // Direct ID filtering - highest priority
+    if (filters.id) {
+      queryParams.append('id', filters.id);
+      return await apiCall(`${endpoint}?${queryParams.toString()}`);
+    }
     
     // Category filtering - optimized for performance
     if (filters.category) {
@@ -269,6 +282,13 @@ class ApiService {
     });
   }
   
+  static async saveVoucher(voucherData) {
+    return await apiCall('/api/vouchers', {
+      method: 'POST',
+      body: JSON.stringify(voucherData)
+    });
+  }
+  
   // Cart API
   static async getCart() {
     return await apiCall(API_CONFIG.ENDPOINTS.CART);
@@ -414,8 +434,49 @@ class ApiService {
   
   // Utilities API
   static async getUtilities() {
-    const response = await apiCall(API_CONFIG.ENDPOINTS.UTILITIES);
-    return response;
+    return await apiCall(API_CONFIG.ENDPOINTS.UTILITIES);
+  }
+  
+  // Lucky Wheel API
+  static async getWheelData() {
+    return await apiCall('/lucky-wheel');
+  }
+
+  static async updateWheelConfig(config) {
+    return await apiCall('/lucky-wheel/config', {
+      method: 'PUT',
+      body: JSON.stringify(config)
+    });
+  }
+
+  static async getWheelPrizes() {
+    return await apiCall('/lucky-wheel/prizes');
+  }
+
+  static async updateWheelPrize(prizeId, prizeData) {
+    return await apiCall(`/lucky-wheel/prizes/${prizeId}`, {
+      method: 'PUT',
+      body: JSON.stringify(prizeData)
+    });
+  }
+
+  static async getVoucherTemplate(voucherId) {
+    return await apiCall(`/lucky-wheel/voucher-templates/${voucherId}`);
+  }
+
+  static async logSpinResult(spinData) {
+    return await apiCall('/lucky-wheel/spin-log', {
+      method: 'POST',
+      body: JSON.stringify(spinData)
+    });
+  }
+
+  // Server-side spin: consume a spin, enforce cooldown/reset, update user and logs
+  static async spinWheel(spinRequest) {
+    return await apiCall('/lucky-wheel/spin', {
+      method: 'POST',
+      body: JSON.stringify(spinRequest)
+    });
   }
   
   // Search API

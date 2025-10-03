@@ -1,4 +1,6 @@
 // Main App Styles - Import all component styles
+@import './common.scss';
+@import './tailwind.scss';
 @import './header.scss';
 @import './carousel.scss';
 @import './userInfoCard.scss';

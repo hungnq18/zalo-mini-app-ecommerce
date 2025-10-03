@@ -15,15 +15,39 @@ const MyVouchersPage = () => {
 
   useEffect(() => {
     (async () => {
-      const res = await ApiService.getVouchers();
-      const all = res.success ? (res.data || []) : [];
-      const claimedIds = Array.isArray(state.user?.vouchers) ? state.user.vouchers : [];
-      const usedIds = Array.isArray(state.user?.usedVouchers) ? state.user.usedVouchers : [];
-      setUsable(all.filter(v => claimedIds.includes(v.id)));
-      setUsed(all.filter(v => usedIds.includes(v.id)));
-      setLoading(false);
+      try {
+        // Lấy voucher IDs từ user object
+        const currentUser = state.user || {};
+        const userVoucherIds = Array.isArray(currentUser.vouchers) ? currentUser.vouchers : [];
+        const usedVoucherIds = Array.isArray(currentUser.usedVouchers) ? currentUser.usedVouchers : [];
+        
+        // Lấy chi tiết voucher từ API
+        const res = await ApiService.getVouchers();
+        const allVouchers = res.success ? (res.data || []) : [];
+        
+        // Lọc voucher của user
+        const userVouchers = allVouchers.filter(v => userVoucherIds.includes(v.id));
+        
+        // Filter usable vouchers (not expired and not used)
+        const now = new Date();
+        const usableVouchers = userVouchers.filter(v => {
+          const isExpired = v.expiresAt && new Date(v.expiresAt) < now;
+          const isUsed = usedVoucherIds.includes(v.id);
+          return !isExpired && !isUsed;
+        });
+        
+        // Filter used vouchers
+        const usedVouchers = userVouchers.filter(v => usedVoucherIds.includes(v.id));
+        
+        setUsable(usableVouchers);
+        setUsed(usedVouchers);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error loading vouchers:', error);
+        setLoading(false);
+      }
     })();
-  }, [state.user]);
+  }, [state.user, state.user?.vouchers, state.user?.usedVouchers]);
 
   return (
     <Page className="checkout-page">
@@ -52,8 +76,12 @@ const MyVouchersPage = () => {
                           <TicketPercent size={18} color="#059669" />
                         </div>
                         <div>
-                          <div className="name">{v.code || v.title}</div>
-                          <div className="meta">{v.percent ? `Giảm ${v.percent}%` : v.amount ? `Giảm ${Number(v.amount).toLocaleString('vi-VN')}₫` : ''} • Còn {Number(v.quantity || 0)} lượt</div>
+                          <div className="name">{v.title || v.code}</div>
+                          <div className="meta">
+                            {v.percent ? `Giảm ${v.percent}%` : v.amount ? `Giảm ${Number(v.amount).toLocaleString('vi-VN')}₫` : ''}
+                            {v.minOrderAmount && ` • Đơn tối thiểu ${Number(v.minOrderAmount).toLocaleString('vi-VN')}₫`}
+                            {v.expiresInDays && ` • HSD ${v.expiresInDays} ngày`}
+                          </div>
                         </div>
                         <button className="btn-primary" onClick={() => navigate('/checkout', { state: { voucherId: v.id } })}>Dùng ngay</button>
                       </div>
@@ -74,8 +102,11 @@ const MyVouchersPage = () => {
                           <TicketPercent size={18} color="#6b7280" />
                         </div>
                         <div>
-                          <div className="name">{v.code || v.title}</div>
-                          <div className="meta">{v.percent ? `Giảm ${v.percent}%` : v.amount ? `Giảm ${Number(v.amount).toLocaleString('vi-VN')}₫` : ''}</div>
+                          <div className="name">{v.title || v.code}</div>
+                          <div className="meta">
+                            {v.percent ? `Giảm ${v.percent}%` : v.amount ? `Giảm ${Number(v.amount).toLocaleString('vi-VN')}₫` : ''}
+                            {v.minOrderAmount && ` • Đơn tối thiểu ${Number(v.minOrderAmount).toLocaleString('vi-VN')}₫`}
+                          </div>
                         </div>
                         <button className="btn-primary" disabled>Đã dùng</button>
                       </div>

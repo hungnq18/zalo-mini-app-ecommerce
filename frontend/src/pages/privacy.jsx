@@ -1,4 +1,4 @@
-import { ChevronLeft, Shield } from 'lucide-react';
+import { ArrowLeft, Shield } from 'lucide-react';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Page } from 'zmp-ui';
@@ -14,7 +14,7 @@ const PrivacyPage = () => {
       <div className="profile-container">
         <div className="profile-header" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <button className="back-button" onClick={() => navigate(-1)} aria-label="Quay lại">
-            <ChevronLeft size={20} color="#111827" />
+            <ArrowLeft size={18} />
           </button>
           <h1 style={{ margin: 0, display: 'flex', alignItems: 'center', gap: 8 }}>
             <Shield size={20} /> Quyền riêng tư

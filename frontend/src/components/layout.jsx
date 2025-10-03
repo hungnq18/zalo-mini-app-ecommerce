@@ -14,6 +14,7 @@ import AddressesPage from "../pages/addresses";
 import CartPage from "../pages/cart";
 import CheckoutPage from "../pages/checkout";
 import HomePage from "../pages/index";
+import LuckyWheelPage from "../pages/luckyWheel";
 import MyVouchersPage from "../pages/myVouchers";
 import NotificationsPage from "../pages/notifications";
 import OrderDetailPage from "../pages/orderDetail";
@@ -23,6 +24,7 @@ import ProductDetail from "../pages/productDetail";
 import ProductListPage from "../pages/productList";
 import ProfilePage from "../pages/profile";
 import SearchPage from "../pages/search";
+import VipMemberPage from "../pages/vipMember";
 import VouchersPage from "../pages/vouchers";
 
 const Layout = () => {
@@ -68,6 +70,8 @@ const Layout = () => {
                 <Route path="/addresses" element={<AddressesPage />}></Route>
                 <Route path="/vouchers" element={<VouchersPage />}></Route>
                 <Route path="/my-vouchers" element={<MyVouchersPage />}></Route>
+                <Route path="/lucky-wheel" element={<LuckyWheelPage shouldLoad={true} />}></Route>
+                <Route path="/vip-member" element={<VipMemberPage />}></Route>
                 <Route path="/profile" element={<ProfilePage />}></Route>
               </AnimationRoutes>
             </ZMPRouter>
@@ -104,6 +108,8 @@ const Layout = () => {
           <ReactRoute path="/addresses" element={<AddressesPage />} />
           <ReactRoute path="/vouchers" element={<VouchersPage />} />
           <ReactRoute path="/my-vouchers" element={<MyVouchersPage />} />
+          <ReactRoute path="/lucky-wheel" element={<LuckyWheelPage shouldLoad={true} />} />
+          <ReactRoute path="/vip-member" element={<VipMemberPage />} />
           <ReactRoute path="/profile" element={<ProfilePage />} />
         </Routes>
       </div>

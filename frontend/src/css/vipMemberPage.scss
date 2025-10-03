@@ -1,0 +1,302 @@
+// VIP Member Page Styles
+.vip-member-page {
+  padding-top: 0;
+  padding-bottom: 150px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.vip-member-container {
+  padding: 0 0 16px 0;
+}
+
+.vip-member-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 0;
+  padding: 20px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+  h1 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+  }
+}
+
+.back-button {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+}
+
+// Hero Section
+.vip-hero {
+  background: white;
+  border-radius: 16px;
+  padding: 32px 20px;
+  margin: 0 16px 24px 16px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.vip-badge {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px auto;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.vip-hero h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 8px 0;
+}
+
+.vip-hero p {
+  font-size: 16px;
+  color: #6b7280;
+  margin: 0;
+}
+
+// Benefits Section
+.benefits-section {
+  background: white;
+  border-radius: 16px;
+  padding: 24px 20px;
+  margin: 0 16px 24px 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+
+  h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 20px 0;
+    text-align: center;
+  }
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.benefit-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px 16px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+}
+
+.benefit-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-bottom: 12px;
+}
+
+.benefit-content h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 4px 0;
+}
+
+.benefit-content p {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.4;
+}
+
+// Membership Levels
+.membership-levels {
+  background: white;
+  border-radius: 16px;
+  padding: 24px 20px;
+  margin: 0 16px 24px 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+
+  h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 20px 0;
+    text-align: center;
+  }
+}
+
+.levels-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.level-card {
+  padding: 20px 16px;
+  border-radius: 12px;
+  text-align: center;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+
+  &.bronze {
+    background: linear-gradient(135deg, #cd7f32, #b8860b);
+    color: white;
+  }
+
+  &.silver {
+    background: linear-gradient(135deg, #c0c0c0, #a8a8a8);
+    color: white;
+  }
+
+  &.gold {
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    color: #111827;
+  }
+
+  &.diamond {
+    background: linear-gradient(135deg, #b9f2ff, #87ceeb);
+    color: #111827;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  }
+}
+
+.level-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.level-card h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+}
+
+.level-card p {
+  font-size: 12px;
+  margin: 0 0 12px 0;
+  opacity: 0.8;
+}
+
+.level-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.level-card li {
+  font-size: 11px;
+  margin-bottom: 4px;
+  padding-left: 12px;
+  position: relative;
+
+  &:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+  }
+}
+
+// CTA Section
+.cta-section {
+  background: white;
+  border-radius: 16px;
+  padding: 32px 20px;
+  margin: 0 16px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+
+  h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 8px 0;
+  }
+
+  p {
+    font-size: 14px;
+    color: #6b7280;
+    margin: 0 0 24px 0;
+  }
+}
+
+.cta-button {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .levels-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .vip-hero h2 {
+    font-size: 20px;
+  }
+  
+  .vip-hero p {
+    font-size: 14px;
+  }
+}

@@ -1,46 +1,23 @@
-import React, { useContext, useEffect } from 'react';
-import AppContext from '../context/AppContext';
+import React, { memo, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useApp } from '../context/AppContext';
 import '../css/suggestedUtilities.scss';
 
-const SuggestedUtilities = () => {
-  const appContext = useContext(AppContext);
-  
-  // Check if context is available
-  if (!appContext) {
-    return (
-      <div className="suggested-utilities-section">
-        <div className="suggested-utilities-header">
-          <h2 className="suggested-utilities-title">Tiện ích đề xuất</h2>
-        </div>
-        
-        <div className="suggested-utilities-loading">
-          <div className="suggested-utilities-grid">
-            {[1, 2, 3, 4].map((index) => (
-              <div key={index} className="suggested-utilities-card">
-                <div className="suggested-utilities-icon skeleton"></div>
-                <div className="suggested-utilities-content">
-                  <div className="suggested-utilities-item-title skeleton"></div>
-                  <div className="suggested-utilities-item-subtitle skeleton"></div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    );
-  }
+const SuggestedUtilities = memo(({ shouldLoad = true }) => {
+  const { state, actions } = useApp();
+  const navigate = useNavigate();
 
-  const { state, actions } = appContext;
-
-  // Load utilities if not available
+  // Load utilities if not available and shouldLoad is true
   useEffect(() => {
-    if (state.utilities.length === 0) {
+    console.log('SuggestedUtilities useEffect - state.utilities:', state.utilities, 'shouldLoad:', shouldLoad);
+    if (shouldLoad && (!state.utilities || state.utilities.length === 0)) {
+      console.log('Loading utilities...');
       actions.loadUtilities();
     }
-  }, [actions, state.utilities.length]);
+  }, [actions, state.utilities, shouldLoad]);
 
   // Show loading state if utilities are loading
-  if (state.loading.utilities || state.utilities.length === 0) {
+  if (state.loading.utilities) {
     return (
       <div className="suggested-utilities-section">
         <div className="suggested-utilities-header">
@@ -63,6 +40,14 @@ const SuggestedUtilities = () => {
       </div>
     );
   }
+
+  // Don't show section if no utilities
+  if (!state.utilities || state.utilities.length === 0) {
+    console.log('No utilities to display');
+    return null;
+  }
+
+  console.log('Rendering utilities:', state.utilities);
 
   return (
     <div className="suggested-utilities-section">
@@ -72,7 +57,15 @@ const SuggestedUtilities = () => {
       
       <div className="suggested-utilities-grid">
         {state.utilities.slice(0, 4).map((utility) => (
-          <div key={utility.id} className="suggested-utilities-card">
+          <div 
+            key={utility.id} 
+            className="suggested-utilities-card" 
+            onClick={() => {
+              if (utility.path) {
+                navigate(utility.path);
+              }
+            }}
+          >
             <div className={`suggested-utilities-icon ${utility.color}`}>
               <span className={`suggested-utilities-icon-text ${utility.iconColor}`}>
                 {utility.icon}
@@ -91,6 +84,8 @@ const SuggestedUtilities = () => {
       </div>
     </div>
   );
-};
+});
+
+SuggestedUtilities.displayName = 'SuggestedUtilities';
 
 export default SuggestedUtilities;

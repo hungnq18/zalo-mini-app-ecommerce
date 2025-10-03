@@ -159,15 +159,17 @@
   font-size: 10px;
   color: #6b7280;
   margin: 0 0 10px 0;
-  line-height: 1.4;
+  line-height: 1.6; /* Tăng thêm line-height để đảm bảo không cắt chữ */
   display: -webkit-box;
   -webkit-line-clamp: 2;
   line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  min-height: 32px; /* Chỉ sử dụng min-height để đảm bảo không cắt chữ */
 
   @media (max-width: 640px) {
     font-size: 10px;
+    min-height: 28px;
   }
 }
 
@@ -222,8 +224,8 @@
     }
 
     .post-description {
-      width: 60%;
-      height: 14px;
+      width: 100%;
+      height: 32px;
     }
 
     .post-button {

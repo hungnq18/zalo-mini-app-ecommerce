@@ -67,6 +67,17 @@
   justify-content: center;
   margin: 0 auto 12px auto;
   flex-shrink: 0;
+  
+  // Gradient backgrounds for new utilities
+  &.bg-gradient-to-r {
+    &.from-pink-500.to-red-500 {
+      background: linear-gradient(135deg, #ec4899, #ef4444);
+    }
+    
+    &.from-yellow-400.to-orange-500 {
+      background: linear-gradient(135deg, #facc15, #f97316);
+    }
+  }
 }
 
 .suggested-utilities-icon-text {

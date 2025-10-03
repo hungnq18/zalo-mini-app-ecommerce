@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useContext, useEffect, useReducer } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useReducer } from 'react';
 import ApiService from '../services/apiService';
 
 // Force rebuild - useCallback fix v1.0.2
@@ -204,7 +204,7 @@ export const AppProvider = ({ children }) => {
     }
   }, [state.products]);
 
-  const actions = {
+  const actions = useMemo(() => ({
     // Products
     loadProducts,
     
@@ -254,14 +254,30 @@ export const AppProvider = ({ children }) => {
     },
     
     loadUtilities: async () => {
+      // Check if utilities are already loaded or currently loading
+      if ((state.utilities && state.utilities.length > 0) || state.loading.utilities) {
+        console.log('Utilities already loaded or loading, skipping...');
+        return;
+      }
+      
       dispatch({ type: ActionTypes.SET_LOADING, payload: { utilities: true } });
       try {
+        console.log('Loading utilities from API...');
         const response = await ApiService.getUtilities();
-        if (response.success) {
+        console.log('Utilities API response:', response);
+        if (response.success && response.data) {
+          // Use only API data, no hardcoded fallback
+          console.log('Setting utilities from API:', response.data);
           dispatch({ type: ActionTypes.SET_UTILITIES, payload: response.data });
+        } else {
+          // Show error if API fails
+          console.error('Failed to load utilities from API');
+          dispatch({ type: ActionTypes.SET_UTILITIES, payload: [] });
         }
       } catch (error) {
         console.error('Error loading utilities:', error);
+        // Show empty state on error
+        dispatch({ type: ActionTypes.SET_UTILITIES, payload: [] });
       } finally {
         dispatch({ type: ActionTypes.SET_LOADING, payload: { utilities: false } });
       }
@@ -430,7 +446,7 @@ export const AppProvider = ({ children }) => {
     clearFilters: () => {
       dispatch({ type: ActionTypes.CLEAR_FILTERS });
     }
-  };
+  }), [state.utilities, state.loading.utilities, state.categories, loadProducts]);
   
   // Load initial data
   useEffect(() => {
@@ -443,7 +459,7 @@ export const AppProvider = ({ children }) => {
     actions.loadUser();
     actions.loadCart();
     actions.loadOrders();
-  }, []); // Remove loadProducts dependency to prevent infinite loop
+  }, [actions, loadProducts]); // Add dependencies
   
   return (
     <AppContext.Provider value={{ state, actions }}>

@@ -232,29 +232,43 @@ const ProductListPage = () => {
         <div className="product-list-content">
           {/* Tabs for categories */}
           <div className="category-tabs">
-          <button
-            key="all"
-            className={`tab-btn ${String(activeCategoryId) === 'all' ? 'active' : ''}`}
-            onClick={() => setActiveCategoryId('all')}
-          >
-            Tất cả
-          </button>
-          {siblingCategories.map((c) => (
             <button
-              key={c.id}
-              className={`tab-btn ${String(c.id) === String(activeCategoryId) ? 'active' : ''}`}
-              onClick={() => setActiveCategoryId(c.id)}
+              key="all"
+              className={`tab-btn ${String(activeCategoryId) === 'all' ? 'active' : ''}`}
+              onClick={() => setActiveCategoryId('all')}
             >
-              {c.name}
+              Tất cả
             </button>
-          ))}
-        </div>
+            {siblingCategories.map((c) => (
+              <button
+                key={c.id}
+                className={`tab-btn ${String(c.id) === String(activeCategoryId) ? 'active' : ''}`}
+                onClick={() => setActiveCategoryId(c.id)}
+              >
+                {c.name}
+              </button>
+            ))}
+          </div>
 
-        {/* View Controls */}
+        {/* View Controls with Search and Sort */}
         <div className="view-controls-section">
-          <div className="left-spacer"></div>
-          <div className="category-name">
-            <h2>{category.name}</h2>
+          <div className="search-bar">
+            <input
+              type="text"
+              placeholder="Tìm kiếm sản phẩm..."
+              value={filters.search}
+              onChange={(e) => handleFilterChange('search', e.target.value)}
+              className="search-input"
+            />
+          </div>
+          <div className="sort-button-container">
+            <button
+              className="sort-button"
+              onClick={() => setShowSortDropdown(!showSortDropdown)}
+            >
+              <span className="sort-icon">⇅</span>
+              <span className="sort-text">Sắp xếp</span>
+            </button>
           </div>
           <div className="view-controls">
             <button 
@@ -274,88 +288,66 @@ const ProductListPage = () => {
           </div>
         </div>
 
-        {/* Search and Sort Controls */}
+        {/* Sort Dropdown */}
         <div className="search-sort-wrapper" ref={sortDropdownRef}>
-          <div className="search-filter-controls">
-              <div className="search-bar">
-                <input
-                  type="text"
-                  placeholder="Tìm kiếm sản phẩm..."
-                  value={filters.search}
-                  onChange={(e) => handleFilterChange('search', e.target.value)}
-                  className="search-input"
-                />
+          {showSortDropdown && (
+            <div className="sort-dropdown-menu">
+              <div 
+                className={`sort-option ${filters.sortBy === 'newest' ? 'active' : ''}`}
+                onClick={() => {
+                  handleFilterChange('sortBy', 'newest');
+                  setShowSortDropdown(false);
+                }}
+              >
+                Mới nhất
               </div>
-              <div className="sort-button-container">
-                <button
-                  className="sort-button"
-                  onClick={() => setShowSortDropdown(!showSortDropdown)}
-                >
-                  <span className="sort-icon">⇅</span>
-                  <span className="sort-text">Sắp xếp</span>
-                </button>
+              <div 
+                className={`sort-option ${filters.sortBy === 'popular' ? 'active' : ''}`}
+                onClick={() => {
+                  handleFilterChange('sortBy', 'popular');
+                  setShowSortDropdown(false);
+                }}
+              >
+                Phổ biến
+              </div>
+              <div 
+                className={`sort-option ${filters.sortBy === 'price_asc' ? 'active' : ''}`}
+                onClick={() => {
+                  handleFilterChange('sortBy', 'price_asc');
+                  setShowSortDropdown(false);
+                }}
+              >
+                Giá thấp → cao
+              </div>
+              <div
+                className={`sort-option ${filters.sortBy === 'price_desc' ? 'active' : ''}`}
+                onClick={() => {
+                  handleFilterChange('sortBy', 'price_desc');
+                  setShowSortDropdown(false);
+                }}
+              >
+                Giá cao → thấp
+              </div>
+              <div
+                className={`sort-option ${filters.sortBy === 'rating' ? 'active' : ''}`}
+                onClick={() => {
+                  handleFilterChange('sortBy', 'rating');
+                  setShowSortDropdown(false);
+                }}
+              >
+                Đánh giá cao
+              </div>
+              <div 
+                className={`sort-option ${filters.sortBy === 'name' ? 'active' : ''}`}
+                onClick={() => {
+                  handleFilterChange('sortBy', 'name');
+                  setShowSortDropdown(false);
+                }}
+              >
+                Tên A-Z
               </div>
             </div>
-            
-            {showSortDropdown && (
-              <div className="sort-dropdown-menu">
-                <div 
-                  className={`sort-option ${filters.sortBy === 'newest' ? 'active' : ''}`}
-                  onClick={() => {
-                    handleFilterChange('sortBy', 'newest');
-                    setShowSortDropdown(false);
-                  }}
-                >
-                  Mới nhất
-                </div>
-                <div 
-                  className={`sort-option ${filters.sortBy === 'popular' ? 'active' : ''}`}
-                  onClick={() => {
-                    handleFilterChange('sortBy', 'popular');
-                    setShowSortDropdown(false);
-                  }}
-                >
-                  Phổ biến
-                </div>
-                <div 
-                  className={`sort-option ${filters.sortBy === 'price_asc' ? 'active' : ''}`}
-                  onClick={() => {
-                    handleFilterChange('sortBy', 'price_asc');
-                    setShowSortDropdown(false);
-                  }}
-                >
-                  Giá thấp → cao
-                </div>
-                <div
-                  className={`sort-option ${filters.sortBy === 'price_desc' ? 'active' : ''}`}
-                  onClick={() => {
-                    handleFilterChange('sortBy', 'price_desc');
-                    setShowSortDropdown(false);
-                  }}
-                >
-                  Giá cao → thấp
-                </div>
-                <div
-                  className={`sort-option ${filters.sortBy === 'rating' ? 'active' : ''}`}
-                  onClick={() => {
-                    handleFilterChange('sortBy', 'rating');
-                    setShowSortDropdown(false);
-                  }}
-                >
-                  Đánh giá cao
-                </div>
-                <div 
-                  className={`sort-option ${filters.sortBy === 'name' ? 'active' : ''}`}
-                  onClick={() => {
-                    handleFilterChange('sortBy', 'name');
-                    setShowSortDropdown(false);
-                  }}
-                >
-                  Tên A-Z
-                </div>
-              </div>
-            )}
-          </div>
+          )}
         </div>
 
         {/* Product Count */}
@@ -382,6 +374,7 @@ const ProductListPage = () => {
               />
             ))
           )}
+        </div>
         </div>
       </div>
     </Page>

@@ -20,13 +20,50 @@ const ProductDetail = () => {
 
   useEffect(() => {
     const load = async () => {
+      console.log('ProductDetail: Loading product with ID:', id);
+      console.log('ProductDetail: Current state.products:', state.products);
+      
       if (!state.products || state.products.length === 0) {
+        console.log('ProductDetail: No products in state, loading...');
         await actions.loadProducts();
+        console.log('ProductDetail: Products loaded, new state.products:', state.products);
       }
-      const foundProduct = (state.products || []).find(p => String(p.id) === String(id));
+      
+      const foundProduct = (state.products || []).find(p => {
+        const productId = String(p.id);
+        const searchId = String(id);
+        console.log('ProductDetail: Comparing product ID:', productId, 'with search ID:', searchId);
+        return productId === searchId;
+      });
+      
+      console.log('ProductDetail: Found product:', foundProduct);
       setProduct(foundProduct || null);
+      
       if (foundProduct) {
         setSelectedImage(0);
+      } else {
+        console.log('ProductDetail: Product not found! Available product IDs:', (state.products || []).map(p => p.id));
+        
+        // Fallback: Try to fetch product directly from API
+        try {
+          console.log('ProductDetail: Trying to fetch product directly from API...');
+          const { default: ApiService } = await import('../services/apiService');
+          const response = await ApiService.getProducts({ id: id });
+          console.log('ProductDetail: Direct API response:', response);
+          
+          if (response.success && response.data && response.data.length > 0) {
+            const directProduct = response.data[0];
+            console.log('ProductDetail: Found product via direct API:', directProduct);
+            setProduct(directProduct);
+            setSelectedImage(0);
+          } else {
+            console.log('ProductDetail: Product not found via direct API either');
+            setProduct(null);
+          }
+        } catch (error) {
+          console.error('ProductDetail: Error fetching product directly:', error);
+          setProduct(null);
+        }
       }
     };
     load();
@@ -416,7 +453,7 @@ const ProductDetail = () => {
             <Button className="add-to-cart-btn" onClick={handleAddToCart}>
               Thêm vào giỏ
             </Button>
-            <Button className="buy-now-btn" onClick={handleBuyNow}>
+            <Button className="detail-buy-now-btn" onClick={handleBuyNow}>
               Mua ngay
             </Button>
           </div>

@@ -11,26 +11,61 @@ const ProfilePage = () => {
   const { state, actions } = useApp();
   const [claimedVouchers, setClaimedVouchers] = useState([]);
 
+  // Calculate member level based on points
+  const calculateMemberLevel = (points) => {
+    if (points >= 5000) return { level: 'Kim Cương', color: '#b9f2ff', icon: '💎', nextLevel: null, progress: 100 };
+    if (points >= 3000) return { level: 'Vàng', color: '#ffd700', icon: '🥇', nextLevel: 'Kim Cương', progress: ((points - 3000) / 2000) * 100 };
+    if (points >= 1000) return { level: 'Bạc', color: '#c0c0c0', icon: '🥈', nextLevel: 'Vàng', progress: ((points - 1000) / 2000) * 100 };
+    if (points >= 0) return { level: 'Đồng', color: '#cd7f32', icon: '🥉', nextLevel: 'Bạc', progress: (points / 1000) * 100 };
+    return { level: 'Thành viên', color: '#6b7280', icon: '👤', nextLevel: 'Đồng', progress: 0 };
+  };
+
+  // Calculate points needed for next level
+  const getNextLevelPoints = (currentPoints) => {
+    if (currentPoints >= 5000) return null; // Max level
+    if (currentPoints >= 3000) return 5000 - currentPoints; // Diamond
+    if (currentPoints >= 1000) return 3000 - currentPoints; // Gold
+    if (currentPoints >= 0) return 1000 - currentPoints; // Silver
+    return 0; // Bronze
+  };
+
   useEffect(() => {
     actions.loadUserInfo?.();
-    actions.loadUtilities?.();
+    // Only load utilities if not already loaded
+    if (!state.utilities || state.utilities.length === 0) {
+      actions.loadUtilities?.();
+    }
     actions.loadPromotions?.();
     // run once on mount to avoid update depth loops
     (async () => {
-      // Build list of user's claimed vouchers with details
       try {
+        // Lấy voucher IDs từ user object
+        const currentUser = state.user || {};
+        const userVoucherIds = Array.isArray(currentUser.vouchers) ? currentUser.vouchers : [];
+        
+        // Lấy chi tiết voucher từ API
         const res = await ApiService.getVouchers();
-        const all = res.success ? (res.data || []) : [];
-        const ids = Array.isArray(state.user?.vouchers) ? state.user.vouchers : [];
-        const list = all.filter(v => ids.includes(v.id));
-        setClaimedVouchers(list);
-      } catch (e) {}
+        const allVouchers = res.success ? (res.data || []) : [];
+        
+        // Lọc voucher của user
+        const userVouchers = allVouchers.filter(v => userVoucherIds.includes(v.id));
+        
+        setClaimedVouchers(userVouchers);
+      } catch (error) {
+        console.error('Error loading vouchers:', error);
+        setClaimedVouchers([]);
+      }
     })();
-  }, [state.user]);
+  }, [state.user, state.user?.vouchers, state.utilities]);
 
   const user = state.user || { name: 'Người dùng', level: 'Member', points: 0 };
   const utilities = state.utilities || [];
   const vouchers = (state.promotions || []).slice(0, 4);
+  
+  // Calculate member info
+  const userPoints = Number(user.points || 0);
+  const memberInfo = calculateMemberLevel(userPoints);
+  const nextLevelPoints = getNextLevelPoints(userPoints);
   return (
     <Page className="profile-page">
       <div className="profile-header">
@@ -41,19 +76,49 @@ const ProfilePage = () => {
         <div className="profile-content">
           <div className="membership-banner">
             <div className="banner-left">
-              <div className="avatar-circle">{user.name?.[0] || 'U'}</div>
+              <div className="avatar-circle" style={{ backgroundColor: memberInfo.color }}>
+                {memberInfo.icon}
+              </div>
               <div className="member-info">
                 <div className="member-name">{user.name || 'Người dùng'}</div>
-                <div className="member-rank">Hạng: {user.level || 'Member'}</div>
+                <div className="member-rank" style={{ color: memberInfo.color }}>
+                  Hạng: {memberInfo.level}
+                </div>
               </div>
             </div>
             <div className="banner-right">
               <div className="points">
                 <div className="points-label">Điểm</div>
-                <div className="points-value">{Number(user.points || 0).toLocaleString('vi-VN')}</div>
+                <div className="points-value">{userPoints.toLocaleString('vi-VN')}</div>
               </div>
             </div>
           </div>
+
+          {/* Member Progress */}
+          {nextLevelPoints !== null && (
+            <div className="member-progress-section">
+              <div className="progress-header">
+                <h3>Tiến độ thành viên</h3>
+                <span className="next-level-info">
+                  Còn {nextLevelPoints.toLocaleString('vi-VN')} điểm để lên hạng {memberInfo.nextLevel}
+                </span>
+              </div>
+              <div className="progress-bar-container">
+                <div className="progress-bar">
+                  <div 
+                    className="progress-fill" 
+                    style={{ 
+                      width: `${Math.min(memberInfo.progress, 100)}%`,
+                      backgroundColor: memberInfo.color 
+                    }}
+                  ></div>
+                </div>
+                <div className="progress-text">
+                  {Math.round(memberInfo.progress)}% hoàn thành
+                </div>
+              </div>
+            </div>
+          )}
           
           <div className="quick-row">
             <button className="quick-card" onClick={() => navigate('/orders')}>
@@ -66,20 +131,109 @@ const ProfilePage = () => {
             </button>
           </div>
 
+          {/* Points System Info */}
           <div className="section">
-            <div className="section-title">Tiện ích</div>
-            <div className="utilities-grid">
-              {utilities.map((u) => (
-                <div key={u.id} className="utility-card">
-                  <div className={`utility-icon ${u.iconColor || ''}`}>{u.icon}</div>
-                  <div className="utility-texts">
-                    <div className="utility-title">{u.title}</div>
-                    <div className="utility-sub">{u.subtitle}</div>
-                  </div>
+            <div className="section-title">Quy chế tích điểm</div>
+            <div className="points-system-info">
+              <div className="points-rule">
+                <div className="rule-icon">🛒</div>
+                <div className="rule-content">
+                  <div className="rule-title">Mua hàng</div>
+                  <div className="rule-desc">1 điểm / 1.000đ</div>
                 </div>
-              ))}
+              </div>
+              <div className="points-rule">
+                <div className="rule-icon">🎁</div>
+                <div className="rule-content">
+                  <div className="rule-title">Vòng quay may mắn</div>
+                  <div className="rule-desc">10-50 điểm / lần quay</div>
+                </div>
+              </div>
+              <div className="points-rule">
+                <div className="rule-icon">⭐</div>
+                <div className="rule-content">
+                  <div className="rule-title">Đánh giá sản phẩm</div>
+                  <div className="rule-desc">5 điểm / đánh giá</div>
+                </div>
+              </div>
+              <div className="points-rule">
+                <div className="rule-icon">👥</div>
+                <div className="rule-content">
+                  <div className="rule-title">Giới thiệu bạn bè</div>
+                  <div className="rule-desc">100 điểm / người</div>
+                </div>
+              </div>
             </div>
           </div>
+
+          {/* Member Benefits */}
+          <div className="section">
+            <div className="section-title">Quyền lợi hạng {memberInfo.level}</div>
+            <div className="member-benefits">
+              {memberInfo.level === 'Kim Cương' && (
+                <>
+                  <div className="benefit-item">✓ Giảm giá 20%</div>
+                  <div className="benefit-item">✓ Miễn phí ship không giới hạn</div>
+                  <div className="benefit-item">✓ Voucher độc quyền</div>
+                  <div className="benefit-item">✓ Hỗ trợ 24/7</div>
+                  <div className="benefit-item">✓ Quà tặng đặc biệt</div>
+                </>
+              )}
+              {memberInfo.level === 'Vàng' && (
+                <>
+                  <div className="benefit-item">✓ Giảm giá 15%</div>
+                  <div className="benefit-item">✓ Miễn phí ship từ 200k</div>
+                  <div className="benefit-item">✓ Ưu tiên mua hàng</div>
+                  <div className="benefit-item">✓ Hỗ trợ VIP</div>
+                </>
+              )}
+              {memberInfo.level === 'Bạc' && (
+                <>
+                  <div className="benefit-item">✓ Giảm giá 10%</div>
+                  <div className="benefit-item">✓ Miễn phí ship từ 300k</div>
+                  <div className="benefit-item">✓ Voucher sinh nhật</div>
+                </>
+              )}
+              {memberInfo.level === 'Đồng' && (
+                <>
+                  <div className="benefit-item">✓ Giảm giá 5%</div>
+                  <div className="benefit-item">✓ Miễn phí ship từ 500k</div>
+                </>
+              )}
+              {memberInfo.level === 'Thành viên' && (
+                <>
+                  <div className="benefit-item">✓ Tích điểm khi mua hàng</div>
+                  <div className="benefit-item">✓ Tham gia các chương trình khuyến mãi</div>
+                </>
+              )}
+            </div>
+          </div>
+
+          {/* Utilities */}
+          {utilities.length > 0 && (
+            <div className="section">
+              <div className="section-title">Tiện ích</div>
+              <div className="utilities-grid">
+                {utilities.map((u) => (
+                  <div 
+                    key={u.id} 
+                    className="utility-card" 
+                    onClick={() => {
+                      if (u.path) {
+                        navigate(u.path);
+                      }
+                    }}
+                  >
+                    <div className={`utility-icon ${u.color || ''} ${u.iconColor || ''}`}>{u.icon}</div>
+                    <div className="utility-texts">
+                      <div className="utility-title">{u.title}</div>
+                      <div className="utility-sub">{u.subtitle}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
           <div className="section">
             <div className="section-title">Kho voucher</div>

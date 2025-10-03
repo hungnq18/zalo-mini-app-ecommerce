@@ -32,10 +32,41 @@
   border-radius: 6px;
 }
 
-.header-logo {
+// Logo Styles
+.logo-container {
+  background: white;
+  padding: 6px;
+  border-radius: 50%; /* Hình tròn hoàn toàn */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
   height: 32px;
-  padding-top: 10px;
-  width: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain; /* Đảm bảo logo không bị méo */
+    object-position: center;
+  }
+
+  @media (max-width: 640px) {
+    width: 28px;
+    height: 28px;
+    padding: 5px;
+
+    img {
+      width: 18px;
+      height: 18px;
+    }
+  }
 }
 
 .header-right {
