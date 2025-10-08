@@ -22,6 +22,24 @@ const STATUS_COLOR = {
   cancelled: '#ef4444',
 };
 
+// Format date to dd/mm/yy
+const formatDate = (dateStr) => {
+  if (!dateStr) return '';
+  
+  try {
+    const date = new Date(dateStr);
+    if (isNaN(date.getTime())) return dateStr;
+    
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = String(date.getFullYear()).slice(-2);
+    
+    return `${day}/${month}/${year}`;
+  } catch (error) {
+    return dateStr;
+  }
+};
+
 function OrdersPage() {
   const navigate = useNavigate();
   const { state, actions } = useApp();
@@ -126,7 +144,7 @@ function OrdersPage() {
                 <div className="order-info">
                   <div className="order-date">
                     <span className="label">Ngày đặt:</span>
-                    <span className="value">{order.date}</span>
+                    <span className="value">{formatDate(order.date)}</span>
                   </div>
                   <div className="order-items">
                     <span className="label">Sản phẩm:</span>

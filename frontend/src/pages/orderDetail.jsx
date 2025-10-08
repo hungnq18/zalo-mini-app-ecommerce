@@ -13,6 +13,44 @@ const STATUS_LABEL = {
   cancelled: 'Đã hủy',
 };
 
+// Format date to dd/mm/yy
+const formatDate = (dateStr) => {
+  if (!dateStr) return '';
+  
+  try {
+    const date = new Date(dateStr);
+    if (isNaN(date.getTime())) return dateStr;
+    
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = String(date.getFullYear()).slice(-2);
+    
+    return `${day}/${month}/${year}`;
+  } catch (error) {
+    return dateStr;
+  }
+};
+
+// Format date for timeline (dd/mm/yy hh:mm)
+const formatTimelineDate = (dateStr) => {
+  if (!dateStr) return 'Chưa có thời gian';
+  
+  try {
+    const date = new Date(dateStr);
+    if (isNaN(date.getTime())) return 'Chưa có thời gian';
+    
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = String(date.getFullYear()).slice(-2);
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    
+    return `${day}/${month}/${year} ${hours}:${minutes}`;
+  } catch (error) {
+    return 'Chưa có thời gian';
+  }
+};
+
 function OrderDetailPage() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -90,7 +128,7 @@ function OrderDetailPage() {
           <div className="order-number">Đơn hàng #{order.orderNumber || order.id}</div>
           <div className="order-status">{STATUS_LABEL[order.status] || order.status}</div>
           <div className="order-meta">
-            <span>Ngày đặt: {order.date}</span>
+            <span>Ngày đặt: {formatDate(order.date)}</span>
             <span>Tổng tiền: {Number(order.total || 0).toLocaleString('vi-VN')}₫</span>
           </div>
         </div>
@@ -110,7 +148,7 @@ function OrderDetailPage() {
               (key === 'delivered' && order.status === 'delivered');
 
             const time = order.statusHistory?.[key] || order.timestamps?.[key] || null;
-            const timeLabel = time ? new Date(time).toLocaleString('vi-VN') : 'Chưa có thời gian';
+            const timeLabel = formatTimelineDate(time);
             return (
               <div
                 key={key}

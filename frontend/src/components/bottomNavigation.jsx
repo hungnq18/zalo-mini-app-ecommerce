@@ -22,18 +22,25 @@ const BottomNavigation = () => {
   };
 
   const getActiveTab = () => {
-    switch (location.pathname) {
-      case '/':
-        return 0;
-      case '/search':
-        return 1;
-      case '/cart':
-        return 2;
-      case '/profile':
-        return 3;
-      default:
-        return 0;
-    }
+    const path = location.pathname;
+    
+    // Check for exact matches first
+    if (path === '/') return 0;
+    if (path === '/search') return 1;
+    if (path === '/cart') return 2;
+    if (path === '/profile') return 3;
+    
+    // Check for sub-paths
+    if (path.startsWith('/orders')) return 3; // Orders belongs to profile section
+    if (path.startsWith('/addresses')) return 3; // Addresses belongs to profile section
+    if (path.startsWith('/vouchers')) return 3; // Vouchers belongs to profile section
+    if (path.startsWith('/notifications')) return 3; // Notifications belongs to profile section
+    if (path.startsWith('/vip-member')) return 3; // VIP member belongs to profile section
+    if (path.startsWith('/privacy')) return 3; // Privacy belongs to profile section
+    if (path.startsWith('/lucky-wheel')) return 3; // Lucky wheel belongs to profile section
+    
+    // Default fallback
+    return 0;
   };
 
   return (

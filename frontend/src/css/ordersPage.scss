@@ -164,7 +164,7 @@
     display: flex;
     flex-direction: column;
     gap: 1px;
-    margin-left: -3px; // Lệch trái hơn
+    margin-left: 0;
     
     .total-label {
       font-size: 10px;
@@ -230,7 +230,9 @@
       text-align: left !important;
       flex-shrink: 0;
       flex-grow: 0;
-      margin-left: -3px !important; // Tất cả lệch trái hơn
+      width: 80px !important; // Cố định width để thẳng hàng
+      margin: 0 !important; // Reset margin
+      padding: 0 !important; // Reset padding
     }
     
     .value {
@@ -244,23 +246,8 @@
     }
   }
   
-  .order-items {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    
-    .label {
-      text-align: left !important;
-      order: 1;
-      margin-left: -3px !important; // Lệch trái hơn
-    }
-    
-    .value {
-      color: #3b82f6 !important;
-      text-align: right !important;
-      order: 2;
-      margin-left: auto !important;
-    }
+  .order-items .value {
+    color: #3b82f6 !important;
   }
 }
 
@@ -301,8 +288,9 @@
   transform: translateX(2px);
 }
 
-// Override mạnh cho order items alignment - tất cả lệch trái hơn
-.orders-page .order-card .order-info .order-items {
+// Override mạnh cho order items alignment - thẳng hàng
+.orders-page .order-card .order-info .order-items,
+.orders-page .order-card .order-info .order-date {
   display: flex !important;
   flex-direction: row !important;
   justify-content: space-between !important;
@@ -311,17 +299,38 @@
   .label {
     text-align: left !important;
     flex: none !important;
-    margin-left: -3px !important; // Lệch trái hơn
-    font-size: 13px !important; // To hơn
+    width: 80px !important; // Cố định width để thẳng hàng
+    font-size: 12px !important;
+    margin: 0 !important; // Reset margin
+    padding: 0 !important; // Reset padding
+    color: #6b7280 !important;
+    font-weight: 500 !important;
   }
   
   .value {
     text-align: right !important;
     flex: none !important;
     margin-left: auto !important;
-    color: #3b82f6 !important;
-    font-size: 13px !important; // To hơn
+    color: #1f2937 !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
   }
+}
+
+.orders-page .order-card .order-info .order-items .value {
+  color: #3b82f6 !important;
+}
+
+/* Force alignment for both labels - override everything */
+.orders-page .order-card .order-info .order-date .label,
+.orders-page .order-card .order-info .order-items .label {
+  width: 80px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: left !important;
+  position: relative !important;
+  left: 0 !important;
+  transform: none !important;
 }
 
 .order-detail-page .order-detail-container {
@@ -334,7 +343,6 @@
   padding: 16px;
   margin-bottom: 12px;
 }
-
 .order-timeline {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -429,13 +437,12 @@
   margin-bottom: 6px;
 }
 
-.order-items {
+.order-detail-page .order-items {
   background: white;
   border-radius: 12px;
   padding: 8px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
 }
 
 .order-item {
@@ -445,6 +452,7 @@
   padding: 10px 8px;
   border-radius: 10px;
   background: #f9fafb;
+  gap: 20px;
 }
 
 .order-item .item-name {
