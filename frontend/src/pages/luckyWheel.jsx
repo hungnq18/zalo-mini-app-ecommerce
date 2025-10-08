@@ -1,7 +1,8 @@
-import { ArrowLeft, Star, Trophy } from 'lucide-react';
+import { Star, Trophy } from 'lucide-react';
 import { memo, useCallback, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Page, useSnackbar } from 'zmp-ui';
+import BackButton from '../components/BackButton';
 import { useApp } from '../context/AppContext';
 import '../css/luckyWheelPage.scss';
 import ApiService from '../services/apiService';
@@ -376,9 +377,12 @@ const LuckyWheelPage = ({ shouldLoad = true }) => {
       <Page className="lucky-wheel-page">
         <div className="lucky-wheel-container">
           <div className="lucky-wheel-header">
-            <button className="back-button" onClick={() => navigate(-1)} aria-label="Quay lại">
-              <ArrowLeft size={18} />
-            </button>
+            <BackButton 
+              text=""
+              variant="ghost"
+              size="small"
+              className="back-button"
+            />
             <h1>Vòng quay may mắn</h1>
           </div>
           <div className="loading-container">
@@ -396,9 +400,12 @@ const LuckyWheelPage = ({ shouldLoad = true }) => {
       <Page className="lucky-wheel-page">
         <div className="lucky-wheel-container">
           <div className="lucky-wheel-header">
-            <button className="back-button" onClick={() => navigate(-1)} aria-label="Quay lại">
-              <ArrowLeft size={18} />
-            </button>
+            <BackButton 
+              text=""
+              variant="ghost"
+              size="small"
+              className="back-button"
+            />
             <h1>Vòng quay may mắn</h1>
           </div>
           <div className="disabled-container">
@@ -415,9 +422,12 @@ const LuckyWheelPage = ({ shouldLoad = true }) => {
     <Page className="lucky-wheel-page">
       <div className="lucky-wheel-container">
         <div className="lucky-wheel-header">
-          <button className="back-button" onClick={() => navigate(-1)} aria-label="Quay lại">
-            <ArrowLeft size={18} />
-          </button>
+          <BackButton 
+            text=""
+            variant="ghost"
+            size="small"
+            className="back-button"
+          />
           <h1>Vòng quay may mắn</h1>
         </div>
 

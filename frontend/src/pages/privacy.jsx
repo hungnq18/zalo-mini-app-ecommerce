@@ -1,7 +1,8 @@
-import { ArrowLeft, Shield } from 'lucide-react';
+import { Shield } from 'lucide-react';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Page } from 'zmp-ui';
+import BackButton from '../components/BackButton';
 import '../css/profilePage.scss';
 
 const PrivacyPage = () => {
@@ -13,9 +14,12 @@ const PrivacyPage = () => {
     <Page className="profile-page">
       <div className="profile-container">
         <div className="profile-header" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <button className="back-button" onClick={() => navigate(-1)} aria-label="Quay lại">
-            <ArrowLeft size={18} />
-          </button>
+          <BackButton 
+            text=""
+            variant="ghost"
+            size="small"
+            className="back-button"
+          />
           <h1 style={{ margin: 0, display: 'flex', alignItems: 'center', gap: 8 }}>
             <Shield size={20} /> Quyền riêng tư
           </h1>

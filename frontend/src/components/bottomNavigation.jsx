@@ -74,10 +74,6 @@ const BottomNavigation = () => {
                 {item.label}
               </span>
               
-              {/* Active indicator */}
-              {isActive && (
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-blue-600 rounded-full"></div>
-              )}
             </button>
           );
         })}

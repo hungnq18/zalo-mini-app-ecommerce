@@ -257,6 +257,113 @@ server.put('/api/lucky-wheel/config', (req, res) => {
   }
 });
 
+// Custom search endpoint for products
+server.get('/api/products', (req, res) => {
+  const db = router.db;
+  let products = db.get('products').value() || [];
+  
+  // Handle search query
+  if (req.query.q || req.query.search) {
+    const searchTerm = (req.query.q || req.query.search).toLowerCase().trim();
+    
+    // Split search term into individual words for better matching
+    const searchWords = searchTerm.split(/\s+/).filter(word => word.length > 0);
+    
+    products = products.filter(product => {
+      // Helper function to check if text contains any of the search words
+      const containsSearchWords = (text) => {
+        if (!text) return false;
+        const lowerText = text.toLowerCase();
+        return searchWords.some(word => lowerText.includes(word));
+      };
+      
+      // Search in name - partial matching
+      if (product.name && containsSearchWords(product.name)) {
+        return true;
+      }
+      
+      // Search in description - partial matching
+      if (product.description && containsSearchWords(product.description)) {
+        return true;
+      }
+      
+      // Search in detailedDescription - partial matching
+      if (product.detailedDescription && containsSearchWords(product.detailedDescription)) {
+        return true;
+      }
+      
+      // Search in searchKeywords - partial matching
+      if (product.searchKeywords && Array.isArray(product.searchKeywords)) {
+        return product.searchKeywords.some(keyword => 
+          containsSearchWords(keyword)
+        );
+      }
+      
+      // Search in categories - partial matching
+      if (product.categories && Array.isArray(product.categories)) {
+        return product.categories.some(category => 
+          containsSearchWords(category)
+        );
+      }
+      
+      // Search in tags - partial matching
+      if (product.tags && Array.isArray(product.tags)) {
+        return product.tags.some(tag => 
+          containsSearchWords(tag)
+        );
+      }
+      
+      // Search in reviews comments - partial matching
+      if (product.reviewsList && Array.isArray(product.reviewsList)) {
+        return product.reviewsList.some(review => 
+          review.comment && containsSearchWords(review.comment)
+        );
+      }
+      
+      return false;
+    });
+  }
+  
+  // Handle category filter
+  if (req.query.categoryIds_like) {
+    const categoryId = req.query.categoryIds_like;
+    products = products.filter(product => 
+      product.categoryIds && product.categoryIds.includes(categoryId)
+    );
+  }
+  
+  // Handle price range
+  if (req.query.price_gte) {
+    const minPrice = parseFloat(req.query.price_gte);
+    products = products.filter(product => product.price >= minPrice);
+  }
+  
+  if (req.query.price_lte) {
+    const maxPrice = parseFloat(req.query.price_lte);
+    products = products.filter(product => product.price <= maxPrice);
+  }
+  
+  // Handle active products
+  if (req.query.isActive !== undefined) {
+    const isActive = req.query.isActive === 'true';
+    products = products.filter(product => product.isActive === isActive);
+  }
+  
+  // Handle featured products
+  if (req.query.isFeatured === 'true') {
+    products = products.filter(product => product.isFeatured === true);
+  }
+  
+  // Handle limit
+  const limit = parseInt(req.query._limit) || products.length;
+  products = products.slice(0, limit);
+  
+  res.json({
+    success: true,
+    data: products
+  });
+});
+
 // Use default router with /api prefix
 server.use('/api', router);
 

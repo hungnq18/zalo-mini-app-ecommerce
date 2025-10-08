@@ -23,44 +23,7 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.back-button {
-  background: #f3f4f6;
-  border: none;
-  border-radius: 12px;
-  padding: 12px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &:hover {
-    background: #e5e7eb;
-    transform: translateY(-1px);
-  }
-
-  &:active {
-    transform: translateY(0);
-  }
-}
-
-.back-button.floating {
-  position: fixed;
-  top: calc(12px + env(safe-area-inset-top));
-  left: 12px;
-  background: rgba(255, 255, 255, 0.98);
-  border: 2px solid rgba(0, 0, 0, 0.06);
-  backdrop-filter: blur(8px);
-  padding: 10px;
-  border-radius: 12px;
-  box-shadow: 0 8px 22px rgba(0,0,0,0.14);
-  z-index: 10050 !important; /* above image and overlays */
-  color: #111827;
-}
-
-.back-button.floating svg {
-  display: block;
-}
+/* Back button styles moved to BackButton component */
 
 .header-actions {
   display: flex;
@@ -213,12 +176,13 @@
 }
 
 .product-name {
-  font-size: 120px;
-  font-weight: 900;
+  font-size: 40px;
+  font-weight: 700;
   color: #111827;
   margin: 0 0 16px 0;
   line-height: 1.2;
   letter-spacing: -0.5px;
+  text-align: left;
 }
 
 .product-rating {
@@ -246,20 +210,23 @@
 
 .price-main {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
+  margin: 0;
+  padding: 0;
 }
 
-.current-price {
-  font-size: 120px;
-  font-weight: 900;
+.product-detail-page .current-price {
+  font-size: 48px !important;
+  font-weight: 700;
   background: linear-gradient(135deg, #ef4444, #b91c1c, #dc2626);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  transform: scale(1.2);
-  display: inline-block;
-  animation: pulse-price 2s ease-in-out infinite alternate;
+  display: block;
+  text-align: left;
+  margin: 0;
+  padding: 0;
 }
 
 @keyframes pulse-price {
@@ -272,10 +239,14 @@
 }
 
 .original-price {
-  font-size: 40px;
+  font-size: 24px;
   color: #9ca3af;
   text-decoration: line-through;
   font-weight: 700;
+  display: block;
+  text-align: left;
+  margin: 0;
+  padding: 0;
 }
 
 .discount-badge {
@@ -293,7 +264,7 @@
   margin-bottom: 20px;
 
   h3 {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
     color: #1f2937;
     margin: 0 0 12px 0;
@@ -305,7 +276,7 @@
 .product-categories,
 .product-reviews {
   p {
-    font-size: 16px;
+    font-size: 14px;
     color: #4b5563;
     line-height: 1.6;
     margin: 0;
@@ -320,9 +291,7 @@
 
 /* Reviews */
 .product-reviews {
-  background: white;
-  padding: 16px;
-  border-radius: 16px;
+  margin-bottom: 20px;
 }
 
 .reviews-summary {
@@ -339,8 +308,8 @@
 }
 
 .reviews-summary .score {
-  font-size: 22px;
-  font-weight: 800;
+  font-size: 20px;
+  font-weight: 700;
   color: #111827;
 }
 
@@ -396,7 +365,7 @@
 }
 
 .review-content {
-  font-size: 14px;
+  font-size: 13px;
   color: #374151;
 }
 
@@ -532,7 +501,7 @@
 }
 
 .quantity-value {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   color: #1f2937;
   min-width: 40px;
@@ -570,8 +539,8 @@
   }
   
   .total-value {
-    font-size: 20px;
-    font-weight: 800;
+    font-size: 18px;
+    font-weight: 700;
     color: #dc2626; /* Màu đỏ đậm hơn */
   }
   
@@ -655,7 +624,7 @@
   font-weight: 600 !important;
   display: flex !important;
   align-items: center !important;
-  justify-content: space-between !important;
+  justify-content: center !important;
   gap: 12px !important;
   transition: all 0.3s ease !important;
 
@@ -728,7 +697,7 @@
 }
 
 .quantity-row {
-  margin-top: 12px;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -736,7 +705,7 @@
 }
 
 .quantity-label {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   color: #111827;
   text-align: left;
@@ -848,23 +817,27 @@
   }
 
   .product-name {
-    font-size: 120px; /* TĂNG THÊM cho mobile */
-    font-weight: 900;
+    font-size: 32px; /* Mobile optimized */
+    font-weight: 700;
     line-height: 1.2;
     letter-spacing: -0.5px;
   }
 
-  .current-price {
-    font-size: 80px; /* CỰC KỲ TO cho mobile */
-    font-weight: 900;
+  .product-detail-page .current-price {
+    font-size: 20px !important; /* Mobile optimized */
+    font-weight: 700;
     background: linear-gradient(135deg, #ef4444, #b91c1c, #dc2626);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    transform: scale(1.15);
-    display: inline-block;
+    display: block;
+    text-align: left;
+    margin: 0;
+    padding: 0;
   }
-
+.product-detail-page .product-name {
+  font-size: 28px;
+}
   .quantity-selector,
   .add-to-cart-section {
     padding: 16px;

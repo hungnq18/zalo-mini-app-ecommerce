@@ -25,8 +25,8 @@ const Header = () => {
               <img src={logo} alt="UnionMart" />
             </div>
             <div className="text-white pt-2">
-              <div className="font-bold text-xs">Union Mall</div>
-              <div className="text-xs text-blue-200">Siêu thị trực tuyến</div>
+              <div className="font-bold text-sm">Union Mall</div>
+              <div className="text-sm text-blue-200">Siêu thị trực tuyến</div>
             </div>
           </div>
 

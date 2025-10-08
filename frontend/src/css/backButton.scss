@@ -1,0 +1,329 @@
+// BackButton Component Styles
+.back-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 8px;
+  border: 0.25px solid transparent; // Very thin border
+  border-radius: 8px;
+  min-width: 32px;
+  min-height: 32px;
+  width: 32px;
+  height: 32px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  &:active {
+    transform: translateY(-1px);
+    transition: all 0.1s ease;
+  }
+  
+  &__icon {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    min-width: 20px;
+    min-height: 20px;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    
+    // Perfect centering for all variants
+    svg {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 16px;
+      height: 16px;
+      margin: 0;
+      padding: 0;
+    }
+  }
+  
+  &__text {
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+  }
+  
+  // Default variant
+  &--default {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+    border: 0.25px solid rgba(255, 255, 255, 0.1);
+    
+    &:hover {
+      background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    &:active {
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+    }
+  }
+  
+  // Ghost variant - Enhanced for gradient backgrounds
+  &--ghost {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 0.25px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    }
+  }
+  
+  // Minimal variant
+  &--minimal {
+    background: transparent;
+    color: #6b7280;
+    padding: 8px 12px;
+    border: 0.25px solid transparent;
+    
+    &:hover {
+      background: rgba(0, 0, 0, 0.05);
+      color: #374151;
+      border-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+  
+  // Primary variant
+  &--primary {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+    border: 0.25px solid rgba(255, 255, 255, 0.1);
+    
+    &:hover {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+    }
+  }
+  
+  // Secondary variant
+  &--secondary {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    color: #374151;
+    border: 0.25px solid #e2e8f0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    
+    &:hover {
+      background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+      border-color: #cbd5e1;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+  }
+  
+  // Search variant - optimized for search page
+  &--search {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border: 0.25px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 6px;
+    font-size: 14px;
+    border-radius: 6px;
+    min-width: 36px;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.25);
+      border-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      transform: translateY(-1px);
+    }
+    
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .back-button__icon {
+      width: 18px;
+      height: 18px;
+      
+      svg {
+        width: 14px;
+        height: 14px;
+        margin: 0;
+        padding: 0;
+      }
+    }
+    
+    .back-button__text {
+      display: none; // Hide text for search variant
+    }
+  }
+  
+  // Small size
+  &--small {
+    padding: 6px;
+    font-size: 13px;
+    gap: 0;
+    min-width: 28px;
+    min-height: 28px;
+    width: 28px;
+    height: 28px;
+    
+    .back-button__icon {
+      width: 18px;
+      height: 18px;
+      
+      svg {
+        width: 14px;
+        height: 14px;
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+  
+  // Large size
+  &--large {
+    padding: 12px;
+    font-size: 17px;
+    gap: 0;
+    min-width: 40px;
+    min-height: 40px;
+    width: 40px;
+    height: 40px;
+    
+    .back-button__icon {
+      width: 24px;
+      height: 24px;
+      
+      svg {
+        width: 20px;
+        height: 20px;
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+  
+  // Disabled state
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+    
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
+// Animation for icon on hover
+.back-button:hover .back-button__icon {
+  transform: translateX(-3px) scale(1.05);
+}
+
+// Ripple effect
+.back-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.back-button:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+// Focus styles for accessibility
+.back-button:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+// Page-specific overrides for better visibility
+.vip-member-header .back-button--ghost {
+  border: 0.25px solid rgba(255, 255, 255, 0.3) !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-radius: 8px !important;
+  padding: 6px !important; // Square shape for small size
+  
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.4) !important;
+    background: rgba(255, 255, 255, 0.3) !important;
+  }
+}
+
+.lucky-wheel-header .back-button--ghost {
+  border: 0.25px solid rgba(255, 255, 255, 0.3) !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-radius: 8px !important;
+  padding: 6px !important; // Square shape for small size
+  
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.4) !important;
+    background: rgba(255, 255, 255, 0.3) !important;
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .back-button--ghost {
+    background: rgba(255, 255, 255, 0.05);
+    color: #60a5fa;
+    border-color: rgba(96, 165, 250, 0.2);
+    
+    &:hover {
+      background: rgba(96, 165, 250, 0.1);
+      border-color: rgba(96, 165, 250, 0.3);
+    }
+  }
+  
+  .back-button--minimal {
+    color: #9ca3af;
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: #d1d5db;
+    }
+  }
+  
+  .back-button--secondary {
+    background: #374151;
+    color: #d1d5db;
+    border-color: #4b5563;
+    
+    &:hover {
+      background: #4b5563;
+      border-color: #6b7280;
+    }
+  }
+}

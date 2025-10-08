@@ -1,7 +1,8 @@
-import { ArrowLeft, CheckCircle2, Clock, Package, Truck } from 'lucide-react';
+import { CheckCircle2, Clock, Package, Truck } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Page } from 'zmp-ui';
+import BackButton from '../components/BackButton';
 import { useApp } from '../context/AppContext';
 
 const STATUS_LABEL = {
@@ -55,9 +56,12 @@ function OrderDetailPage() {
         <div className="order-detail-container">
           {/* Header với nút back */}
           <div className="order-header">
-            <button className="back-button" onClick={() => navigate(-1)} aria-label="Quay lại">
-              <ArrowLeft size={20} />
-            </button>
+            <BackButton 
+              text=""
+              variant="ghost"
+              size="small"
+              className="back-button"
+            />
             <h1 className="header-title">Chi tiết đơn hàng</h1>
             <div className="header-spacer"></div>
           </div>
@@ -72,9 +76,12 @@ function OrderDetailPage() {
       <div className="order-detail-container">
         {/* Header với nút back */}
         <div className="order-header">
-          <button className="back-button" onClick={() => navigate(-1)} aria-label="Quay lại">
-            <ArrowLeft size={20} />
-          </button>
+          <BackButton 
+            text=""
+            variant="ghost"
+            size="small"
+            className="back-button"
+          />
           <h1 className="header-title">Chi tiết đơn hàng</h1>
           <div className="header-spacer"></div>
         </div>

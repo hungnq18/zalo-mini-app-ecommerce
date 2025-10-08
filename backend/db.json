@@ -106,7 +106,17 @@
       "tags": [
         "hot",
         "sale"
-      ]
+      ],
+      "searchKeywords": [
+        "nước giặt",
+        "sapika",
+        "tẩy rửa",
+        "gia dụng",
+        "hóa chất",
+        "giặt quần áo"
+      ],
+      "isActive": true,
+      "isFeatured": true
     },
     {
       "id": "3",
@@ -132,7 +142,17 @@
       "tags": [
         "hot",
         "sale"
-      ]
+      ],
+      "searchKeywords": [
+        "kính mát",
+        "firebird",
+        "phụ kiện",
+        "thời trang",
+        "bảo vệ mắt",
+        "sunglasses"
+      ],
+      "isActive": true,
+      "isFeatured": false
     },
     {
       "id": "4",
@@ -180,7 +200,17 @@
       "tags": [
         "hot",
         "sale"
-      ]
+      ],
+      "searchKeywords": [
+        "đồng hồ",
+        "olevs",
+        "đeo tay",
+        "thời trang",
+        "phụ kiện nam",
+        "watch"
+      ],
+      "isActive": true,
+      "isFeatured": false
     },
     {
       "id": "5",
@@ -271,7 +301,7 @@
       "discount": 15,
       "image": "https://images.unsplash.com/photo-1523170335258-f5b6c6a4450b?w=400&h=400&fit=crop",
       "rating": 5,
-      "reviews": 1200,
+      "reviews": 1201,
       "description": "Đồng hồ nam Olevs chronograph với mặt xanh",
       "stock": 45,
       "categoryIds": [
@@ -280,6 +310,24 @@
       "tags": [
         "hot",
         "sale"
+      ],
+      "searchKeywords": [
+        "đồng hồ",
+        "olevs",
+        "chronograph",
+        "mặt xanh",
+        "thời trang",
+        "watch"
+      ],
+      "isActive": true,
+      "isFeatured": false,
+      "reviewsList": [
+        {
+          "author": "Người dùng",
+          "stars": 5,
+          "comment": "sản phẩm tốt quá",
+          "date": "8/10/2025"
+        }
       ]
     },
     {
@@ -434,7 +482,7 @@
       "id": "V002",
       "code": "DISCOUNT50K",
       "amount": 50000,
-      "quantity": 100,
+      "quantity": 99,
       "title": "Giảm 50.000đ"
     },
     {
@@ -497,7 +545,10 @@
     "level": "Bạc",
     "vouchers": [
       "wheel-voucher-vip",
-      "wheel-voucher-100k"
+      "wheel-voucher-100k",
+      "V004",
+      "V005",
+      "wheel-voucher-50k"
     ],
     "addressObject": {
       "id": "1759156742392",
@@ -532,12 +583,13 @@
     "defaultAddressId": "1759156742392",
     "usedVouchers": [
       "V001",
-      "V003"
+      "V003",
+      "V002"
     ],
     "dailySpins": 5,
-    "remainingSpins": 3,
-    "lastSpinDate": "2025-10-03",
-    "lastSpinAt": "2025-10-03T09:34:32.621Z",
+    "remainingSpins": 4,
+    "lastSpinDate": "2025-10-08",
+    "lastSpinAt": "2025-10-08T06:04:28.530Z",
     "success": true,
     "data": {
       "id": "user-001",
@@ -1440,13 +1492,95 @@
         "voucherId": "wheel-voucher-100k",
         "pointsEarned": 20,
         "timestamp": "2025-10-03T09:34:32.111Z"
+      },
+      {
+        "userId": "user-001",
+        "prizeId": null,
+        "prizeType": null,
+        "voucherId": null,
+        "pointsEarned": 0,
+        "timestamp": "2025-10-08T06:04:24.484Z"
+      },
+      {
+        "userId": "user-001",
+        "prizeId": 3,
+        "prizeType": "free_ship",
+        "voucherId": null,
+        "pointsEarned": 0,
+        "timestamp": "2025-10-08T06:04:28.013Z"
       }
     ]
   },
   "cart": {
-    "items": [],
-    "total": 0,
-    "itemCount": 0
+    "items": [
+      {
+        "productId": "1",
+        "quantity": 1,
+        "price": 52000,
+        "product": {
+          "id": "1",
+          "name": "Nước giặt xả Sapika 2 kg, hương nước hoa",
+          "categories": [
+            "Gia dụng",
+            "Tẩy rửa",
+            "Hóa chất"
+          ],
+          "price": 52000,
+          "originalPrice": 75000,
+          "discount": 31,
+          "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=400&fit=crop",
+          "rating": 5,
+          "reviews": 1250,
+          "reviewsList": [
+            {
+              "author": "Minh Trí",
+              "avatar": "https://i.pravatar.cc/100?img=12",
+              "stars": 5,
+              "comment": "Giặt sạch, thơm lâu, đáng tiền!",
+              "date": "2025-09-25"
+            },
+            {
+              "author": "Thu Hà",
+              "avatar": "https://i.pravatar.cc/100?img=32",
+              "stars": 4,
+              "comment": "Mùi dễ chịu, sẽ mua lại.",
+              "date": "2025-09-20"
+            },
+            {
+              "author": "Quang",
+              "avatar": "https://i.pravatar.cc/100?img=5",
+              "stars": 5,
+              "comment": "Giao hàng nhanh, đóng gói kỹ.",
+              "date": "2025-09-18"
+            }
+          ],
+          "description": "Nước giặt xả Sapika 2kg với hương nước hoa thơm ngát",
+          "detailedDescription": "Nước giặt xả Sapika 2kg là sản phẩm chăm sóc quần áo cao cấp với công thức đặc biệt giúp làm sạch hiệu quả và bảo vệ vải. Sản phẩm có khả năng loại bỏ vết bẩn cứng đầu, làm mềm vải và để lại hương thơm nước hoa quyến rũ suốt cả ngày.",
+          "stock": 50,
+          "categoryIds": [
+            "2",
+            "6",
+            "7"
+          ],
+          "tags": [
+            "hot",
+            "sale"
+          ],
+          "searchKeywords": [
+            "nước giặt",
+            "sapika",
+            "tẩy rửa",
+            "gia dụng",
+            "hóa chất",
+            "giặt quần áo"
+          ],
+          "isActive": true,
+          "isFeatured": true
+        }
+      }
+    ],
+    "total": 52000,
+    "itemCount": 1
   },
   "orders": [
     {
@@ -1829,6 +1963,69 @@
       "freeShipping": true,
       "orderNumber": "UM1759216723071",
       "date": "2025-09-30"
+    },
+    {
+      "items": [
+        {
+          "productId": "9",
+          "quantity": 1,
+          "price": 722500,
+          "product": {
+            "id": "9",
+            "name": "Đồng hồ đeo tay Olevs - 55569G03",
+            "category": "Đồng hồ",
+            "price": 722500,
+            "originalPrice": 850000,
+            "discount": 15,
+            "image": "https://images.unsplash.com/photo-1523170335258-f5b6c6a4450b?w=400&h=400&fit=crop",
+            "rating": 5,
+            "reviews": 1201,
+            "description": "Đồng hồ nam Olevs chronograph với mặt xanh",
+            "stock": 45,
+            "categoryIds": [
+              "8"
+            ],
+            "tags": [
+              "hot",
+              "sale"
+            ],
+            "searchKeywords": [
+              "đồng hồ",
+              "olevs",
+              "chronograph",
+              "mặt xanh",
+              "thời trang",
+              "watch"
+            ],
+            "isActive": true,
+            "isFeatured": false,
+            "reviewsList": [
+              {
+                "author": "Người dùng",
+                "stars": 5,
+                "comment": "sản phẩm tốt quá",
+                "date": "8/10/2025"
+              }
+            ]
+          }
+        }
+      ],
+      "total": 702500,
+      "status": "pending",
+      "shippingAddress": "Nguyễn Văn A - 0123456789 - dfdf, dfdf, dfdf, dfdf",
+      "voucher": {
+        "id": "V002",
+        "code": "DISCOUNT50K",
+        "discount": 50000,
+        "amount": 50000
+      },
+      "pointsUsed": 0,
+      "paymentMethod": "cod",
+      "shippingFee": 30000,
+      "freeShipping": false,
+      "id": 1759903841339,
+      "orderNumber": "UM1759903841339",
+      "date": "2025-10-08"
     }
   ]
 }

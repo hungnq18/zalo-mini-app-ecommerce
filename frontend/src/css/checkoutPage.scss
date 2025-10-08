@@ -20,22 +20,6 @@
 }
 .checkout-header h1 { margin: 0; font-size: 20px; font-weight: 700; color: white; }
 
-.back-button {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  border: none;
-  border-radius: 10px;
-  width: 36px;
-  height: 36px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.3);
-  }
-}
 
 .checkout-content { background: #fff; border-radius: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); padding: 16px; }
 

@@ -117,27 +117,7 @@
   z-index: 100;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   
-  .back-button {
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 8px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    &:hover {
-      background: rgba(255, 255, 255, 0.3);
-      transform: translateY(-1px);
-    }
-    
-    &:active {
-      transform: translateY(0);
-    }
-  }
+  /* Back button styles moved to BackButton component */
   
   .header-title {
     font-size: 16px;

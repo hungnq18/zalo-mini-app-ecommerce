@@ -1,7 +1,7 @@
-import { ArrowLeft } from 'lucide-react';
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Button, Page } from 'zmp-ui';
+import BackButton from '../components/BackButton';
 import { useApp } from '../context/AppContext';
 import '../css/checkoutPage.scss';
 
@@ -41,9 +41,12 @@ const AddressFormPage = () => {
     <Page className="checkout-page">
       <div className="checkout-container">
         <div className="checkout-header">
-          <button className="back-button" onClick={() => navigate(-1)} aria-label="Quay lại">
-            <ArrowLeft size={18} />
-          </button>
+          <BackButton 
+            text=""
+            variant="ghost"
+            size="small"
+            className="back-button"
+          />
           <h1>Địa chỉ giao hàng</h1>
         </div>
 

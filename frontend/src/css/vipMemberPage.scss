@@ -27,24 +27,10 @@
     font-weight: 700;
     color: white;
   }
+  
+  /* BackButton styles handled by BackButton component */
 }
 
-.back-button {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  border: none;
-  border-radius: 10px;
-  width: 36px;
-  height: 36px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.3);
-  }
-}
 
 // Hero Section
 .vip-hero {

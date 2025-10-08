@@ -1,17 +1,29 @@
 import { Crown, Gift, Heart, Star, Store, TrendingUp } from 'lucide-react';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
 import '../css/userInfoCard.scss';
 
 const UserInfoCard = () => {
   const { state } = useApp();
-  const [hoveredButton, setHoveredButton] = useState(null);
+  const [hoveredButton, setHoveredButton] = useState(null); 
+  const navigate = useNavigate();
 
   const user = state.user || {
     name: 'Khách hàng',
     points: 0,
     level: 'Bronze'
   };
+
+  // Calculate user level based on points
+  const getUserLevel = (points) => {
+    if (points >= 10000) return 'Diamond';
+    if (points >= 5000) return 'Gold';
+    if (points >= 1000) return 'Silver';
+    return 'Bronze';
+  };
+
+  const userLevel = getUserLevel(user.points || 0);
 
   const actionButtons = [
     { 
@@ -33,14 +45,16 @@ const UserInfoCard = () => {
       label: 'Vòng Quay May Mắn', 
       color: 'bg-purple-100', 
       iconColor: 'text-purple-600',
-      description: 'Quay thưởng ngay'
+      description: 'Quay thưởng ngay',
+      path: '/lucky-wheel'
     },
     { 
       icon: Heart, 
       label: 'Hội Viên Thân Thiết', 
       color: 'bg-pink-100', 
       iconColor: 'text-pink-600',
-      description: 'Ưu đãi đặc biệt'
+      description: 'Ưu đãi đặc biệt',
+      path: '/vip-member'
     }
   ];
 
@@ -65,7 +79,7 @@ const UserInfoCard = () => {
             <Star className="h-3 w-3 text-yellow-500" />
             <span className="text-gray-600 text-xs font-medium">Điểm thưởng: {Number(user.points || 0).toLocaleString('vi-VN')}đ</span>
           </div>
-          <div className="text-gray-500 text-xs">{user.level} Member</div>
+          <div className="text-gray-500 text-xs">{userLevel} Member</div>
         </div>
       </div>
 
@@ -81,6 +95,11 @@ const UserInfoCard = () => {
               }`}
               onMouseEnter={() => setHoveredButton(index)}
               onMouseLeave={() => setHoveredButton(null)}
+            onClick={() => {
+              if (button.path) {
+                navigate(button.path);
+              }
+            }}
             >
               <div className="flex items-center space-x-2 mb-1">
                 <div className={`${button.color} rounded-lg p-1.5 group-hover:scale-110 transition-transform duration-200`}>
@@ -125,9 +144,9 @@ const UserInfoCard = () => {
           </div>
           <div className="text-center">
             <div className="font-semibold text-purple-600">
-              {(state.user?.reviews || []).length}
+              {user.points || 0}
             </div>
-            <div>Đánh giá</div>
+            <div>Điểm tích lũy</div>
           </div>
         </div>
       </div>

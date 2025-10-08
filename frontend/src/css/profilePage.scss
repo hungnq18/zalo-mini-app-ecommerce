@@ -44,38 +44,7 @@
   }
 }
 
-/* Generic back button for settings-like pages - Updated for blue theme */
-.back-button {
-  background: rgba(255, 255, 255, 0.2) !important;
-  color: white !important;
-  border: none;
-  border-radius: 0;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  z-index: 10;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.3) !important;
-    transform: translateY(-1px);
-  }
-
-  &:active {
-    transform: translateY(0);
-  }
-
-  svg {
-    display: block !important;
-    width: 20px !important;
-    height: 20px !important;
-    color: white !important;
-    fill: currentColor;
-  }
-}
+/* Back button styles moved to BackButton component */
 
 /* View button styling */
 .view-button {
@@ -153,8 +122,12 @@
   background: rgba(255,255,255,0.15);
   border: 1px solid rgba(255,255,255,0.25);
   padding: 8px 12px;
-  border-radius: 0;
-  text-align: right;
+  border-radius: 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .points-label { font-size: 12px; opacity: 0.9; }
@@ -170,7 +143,7 @@
 
 .quick-card {
   background: #f9fafb;
-  border: none;
+  border: 1px solid #f1f5f9;
   border-radius: 12px;
   padding: 16px;
   display: flex;
@@ -178,6 +151,7 @@
   gap: 10px;
   cursor: pointer;
   transition: all 0.2s ease;
+  text-align: left;
   
   &:hover {
     background: #f3f4f6;
@@ -186,7 +160,7 @@
 }
 
 .quick-emoji { font-size: 16px; }
-.quick-text { font-weight: 600; color: #111827; }
+.quick-text { font-weight: 600; color: #111827; font-size: 14px; }
 
 /* Utilities */
 .section { margin-bottom: 16px; }
@@ -195,18 +169,19 @@
 .utilities-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 12px;
 }
 
 .utility-card {
   background: #fff;
   border: 1px solid #f1f5f9;
   border-radius: 12px;
-  padding: 12px;
+  padding: 16px;
   display: flex;
   gap: 10px;
   align-items: center;
   transition: all 0.2s ease;
+  text-align: left;
   
   &:hover {
     border-color: #3b82f6;
@@ -218,6 +193,7 @@
 .utility-title { 
   font-weight: 600; 
   color: #111827; 
+  font-size: 14px;
   word-wrap: break-word;
   overflow-wrap: break-word;
   line-height: 1.3;
@@ -231,34 +207,36 @@
 }
 
 /* Vouchers */
-.vouchers-list { display: flex; flex-direction: column; gap: 10px; }
+.vouchers-list { display: flex; flex-direction: column; gap: 12px; }
 .voucher-card {
   background: #fff;
-  border: 1px dashed #e5e7eb;
-  border-radius: 0;
-  padding: 12px;
+  border: 1px solid #f1f5f9;
+  border-radius: 12px;
+  padding: 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  text-align: left;
 }
 
 .voucher-left { max-width: 70%; }
-.voucher-title { font-weight: 700; color: #111827; }
+.voucher-title { font-weight: 700; color: #111827; font-size: 14px; }
 .voucher-desc { font-size: 12px; color: #6b7280; }
 .voucher-btn { background: #3b82f6; color: #fff; border: none; border-radius: 0; padding: 8px 12px; font-weight: 600; }
 
 /* Settings */
-.settings-list { display: flex; flex-direction: column; gap: 10px; }
+.settings-list { display: flex; flex-direction: column; gap: 12px; }
 .settings-item { 
   background: #fff; 
   border: 1px solid #f1f5f9; 
   border-radius: 12px; 
-  padding: 12px 14px; 
+  padding: 16px; 
   display: flex; 
   align-items: center; 
   justify-content: space-between;
   cursor: pointer;
   transition: all 0.2s ease;
+  text-align: left;
   
   &:hover {
     border-color: #3b82f6;
@@ -268,6 +246,7 @@
 .settings-text { 
   font-weight: 600; 
   color: #111827; 
+  font-size: 14px;
   word-wrap: break-word;
   overflow-wrap: break-word;
   flex: 1;
@@ -396,10 +375,11 @@
 // Member Progress Section
 .member-progress-section {
   background: white;
-  border-radius: 16px;
-  padding: 20px;
-  margin: 0 16px 16px 16px;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border: 1px solid #f1f5f9;
 }
 
 .progress-header {
@@ -447,8 +427,8 @@
 
 // Points System Info
 .points-system-info {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
   gap: 12px;
 }
 
@@ -526,11 +506,11 @@
 // Responsive for new sections
 @media (max-width: 768px) {
   .member-progress-section {
-    margin: 0 16px 16px 16px;
+    margin-bottom: 16px;
   }
   
   .points-system-info {
-    grid-template-columns: 1fr;
+    flex-direction: column;
   }
   
   .progress-header {

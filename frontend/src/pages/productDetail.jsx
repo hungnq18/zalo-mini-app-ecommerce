@@ -145,14 +145,21 @@ const ProductDetail = () => {
 
   const handleSubmitReview = async () => {
     if (!newReview.comment.trim()) return;
-    const res = await actions.api.addProductReview(product.id, newReview);
-    // Fallback if actions.api not available: call service directly
-    if (!res || !res.success) {
+    try {
       const { default: ApiService } = await import('../services/apiService');
-      const altRes = await ApiService.addProductReview(product.id, newReview);
-      if (altRes.success) setProduct(altRes.data);
-    } else {
-      setProduct(res.data);
+      const res = await ApiService.addProductReview(product.id, newReview);
+      if (res.success) {
+        setProduct(res.data);
+        setToast({ visible: true, text: 'Đánh giá đã được gửi', type: 'success' });
+        setTimeout(() => setToast(t => ({ ...t, visible: false })), 2000);
+      } else {
+        setToast({ visible: true, text: 'Gửi đánh giá thất bại', type: 'warning' });
+        setTimeout(() => setToast(t => ({ ...t, visible: false })), 2000);
+      }
+    } catch (error) {
+      console.error('Error submitting review:', error);
+      setToast({ visible: true, text: 'Có lỗi xảy ra', type: 'warning' });
+      setTimeout(() => setToast(t => ({ ...t, visible: false })), 2000);
     }
     handleCancelReview();
   };

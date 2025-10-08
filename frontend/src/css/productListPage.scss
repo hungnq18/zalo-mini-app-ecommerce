@@ -3,6 +3,32 @@
 @import './productGrid.scss';
 @import './sortDropdown.scss';
 
+/* Override for product list page */
+.product-list-page {
+  .products-container.list .product-card {
+    height: auto;
+    padding: 1px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+    .product-image {
+      width: 120px !important;
+      height: 120px !important;
+      margin-right: 6px !important;
+      flex-shrink: 0 !important;
+    }
+
+    .product-info {
+      padding: 8px 5px 2px 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: auto;
+    }
+  }
+}
+
 /* Product List Page Styles - Same pattern as cart page */
 .product-list-page {
   padding-top: 0; /* No top padding to avoid status bar - same as cart */

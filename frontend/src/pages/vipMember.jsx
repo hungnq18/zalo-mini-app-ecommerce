@@ -1,7 +1,8 @@
-import { ArrowLeft, Crown, Gift, Star, Users } from 'lucide-react';
+import { Crown, Gift, Star, Users } from 'lucide-react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Page } from 'zmp-ui';
+import BackButton from '../components/BackButton';
 import '../css/vipMemberPage.scss';
 
 const VipMemberPage = () => {
@@ -16,9 +17,12 @@ const VipMemberPage = () => {
       <div className="vip-member-container">
         {/* Header */}
         <div className="vip-member-header">
-          <button className="back-button" onClick={handleBack} aria-label="Quay lại">
-            <ArrowLeft size={18} />
-          </button>
+          <BackButton 
+            text=""
+            variant="ghost"
+            size="small"
+            className="back-button"
+          />
           <h1>Hội Viên Thân Thiết</h1>
         </div>
 

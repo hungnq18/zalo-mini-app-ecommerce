@@ -1,7 +1,8 @@
-import { ArrowLeft, TicketPercent } from 'lucide-react';
+import { TicketPercent } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Page } from 'zmp-ui';
+import BackButton from '../components/BackButton';
 import { useApp } from '../context/AppContext';
 import ApiService from '../services/apiService';
 
@@ -25,9 +26,12 @@ const VouchersPage = () => {
     <Page className="checkout-page">
       <div className="checkout-container">
         <div className="checkout-header">
-          <button className="back-button" onClick={() => navigate(-1)} aria-label="Quay lại">
-            <ArrowLeft size={18} />
-          </button>
+          <BackButton 
+            text=""
+            variant="ghost"
+            size="small"
+            className="back-button"
+          />
           <h1>Ưu đãi của bạn</h1>
         </div>
 

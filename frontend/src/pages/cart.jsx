@@ -108,10 +108,9 @@ const CartPage = () => {
                   <div className="cart-item-info">
                     <div className="cart-item-name">{it.product?.name || `Sản phẩm #${it.productId}`}</div>
                     <div className="cart-item-row">
-                      <div className="price-block pt-4"><span className="meta-label">Giá</span> {Number(it.price || 0).toLocaleString('vi-VN')}₫</div>
+                      <div className="price-block"><span className="meta-label">Giá</span> {Number(it.price || 0).toLocaleString('vi-VN')}₫</div>
                       <div className="qty-actions">
                         <div className="qty-controls">
-                          <span className="meta-label">SL</span>
                           <button
                             aria-label="Giảm"
                             onClick={() => {
@@ -158,7 +157,6 @@ const CartPage = () => {
                 )}
               </div>
               <div className="checkout-bar">
-                <div className="selected-info">{selectedIds.length} sản phẩm</div>
                 <button className="checkout-btn" disabled={selectedIds.length === 0} onClick={handleCheckout}>Thanh toán</button>
               </div>
             </div>

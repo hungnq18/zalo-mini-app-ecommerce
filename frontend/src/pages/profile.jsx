@@ -13,10 +13,10 @@ const ProfilePage = () => {
 
   // Calculate member level based on points
   const calculateMemberLevel = (points) => {
-    if (points >= 5000) return { level: 'Kim Cương', color: '#b9f2ff', icon: '💎', nextLevel: null, progress: 100 };
+    if (points >= 5000) return { level: 'Kim Cương', color: '#ff6b6b', icon: '💎', nextLevel: null, progress: 100 };
     if (points >= 3000) return { level: 'Vàng', color: '#ffd700', icon: '🥇', nextLevel: 'Kim Cương', progress: ((points - 3000) / 2000) * 100 };
-    if (points >= 1000) return { level: 'Bạc', color: '#c0c0c0', icon: '🥈', nextLevel: 'Vàng', progress: ((points - 1000) / 2000) * 100 };
-    if (points >= 0) return { level: 'Đồng', color: '#cd7f32', icon: '🥉', nextLevel: 'Bạc', progress: (points / 1000) * 100 };
+    if (points >= 1000) return { level: 'Bạc', color: '#4ecdc4', icon: '🥈', nextLevel: 'Vàng', progress: ((points - 1000) / 2000) * 100 };
+    if (points >= 0) return { level: 'Đồng', color: '#ff9f43', icon: '🥉', nextLevel: 'Bạc', progress: (points / 1000) * 100 };
     return { level: 'Thành viên', color: '#6b7280', icon: '👤', nextLevel: 'Đồng', progress: 0 };
   };
 

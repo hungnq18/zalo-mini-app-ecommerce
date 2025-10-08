@@ -27,16 +27,7 @@
     z-index: 1 !important;
   }
   
-  /* Force proper content alignment within full-width header */
-  .back-button {
-    background: rgba(255, 255, 255, 0.2) !important;
-    color: white !important;
-    border-radius: 6px !important;
-    
-    svg {
-      color: white !important;
-    }
-  }
+  /* Back button styles moved to BackButton component */
   
   h1 {
     color: white !important;
