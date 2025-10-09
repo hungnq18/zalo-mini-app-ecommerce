@@ -202,11 +202,21 @@ server.post('/api/lucky-wheel/spin', (req, res) => {
     const pointsEarned = Number(spinData.pointsEarned || 0);
     user.points = Number(user.points || 0) + pointsEarned;
 
-    // Apply voucher if provided
+    // Apply voucher if provided (auto-add to user's voucher collection)
     if (spinData.voucherId) {
       if (!Array.isArray(user.vouchers)) user.vouchers = [];
       if (!user.vouchers.includes(spinData.voucherId)) {
         user.vouchers.push(spinData.voucherId);
+        console.log(`Added voucher ${spinData.voucherId} to user ${user.id}`);
+      }
+    }
+    
+    // Auto-add voucher to user if prize is a voucher (from wheel spin)
+    if (spinData.prizeType === 'voucher' && spinData.voucherId) {
+      if (!Array.isArray(user.vouchers)) user.vouchers = [];
+      if (!user.vouchers.includes(spinData.voucherId)) {
+        user.vouchers.push(spinData.voucherId);
+        console.log(`Auto-added voucher ${spinData.voucherId} to user ${user.id} from wheel spin`);
       }
     }
 
@@ -231,6 +241,36 @@ server.post('/api/lucky-wheel/spin', (req, res) => {
     return res.json({ success: true, message: 'Spin accepted', data: { user, log: logEntry } });
   } catch (error) {
     console.error('Error processing spin:', error);
+    return res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+});
+
+// Add voucher to user endpoint
+server.post('/api/user/add-voucher', (req, res) => {
+  try {
+    const { userId, voucherId } = req.body;
+    const db = router.db;
+    
+    // Load user
+    const user = db.get('user').value() || {};
+    
+    if (!user.id || user.id !== userId) {
+      return res.status(404).json({ success: false, message: 'User not found' });
+    }
+    
+    // Add voucher to user's collection
+    if (!Array.isArray(user.vouchers)) user.vouchers = [];
+    if (!user.vouchers.includes(voucherId)) {
+      user.vouchers.push(voucherId);
+      console.log(`Added voucher ${voucherId} to user ${userId}`);
+    }
+    
+    // Persist user
+    db.set('user', user).write();
+    
+    return res.json({ success: true, message: 'Voucher added to user', data: { user } });
+  } catch (error) {
+    console.error('Error adding voucher to user:', error);
     return res.status(500).json({ success: false, message: 'Internal server error' });
   }
 });

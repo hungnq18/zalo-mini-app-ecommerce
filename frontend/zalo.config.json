@@ -7,21 +7,7 @@
     "appIcon": "icon.png"
   },
   "pages": [
-    "pages/index",
-    "pages/productList",
-    "pages/productDetail",
-    "pages/cart",
-    "pages/checkout",
-    "pages/orders",
-    "pages/orderDetail",
-    "pages/profile",
-    "pages/search",
-    "pages/notifications",
-    "pages/addresses",
-    "pages/addressForm",
-    "pages/vouchers",
-    "pages/myVouchers",
-    "pages/privacy"
+    "index"
   ],
   "window": {
     "navigationBarTitleText": "UnionMart",
@@ -33,34 +19,8 @@
     "custom": true,
     "list": [
       {
-        "pagePath": "pages/index",
-        "text": "Trang chủ",
-        "iconPath": "static/home.png",
-        "selectedIconPath": "static/home-active.png"
-      },
-      {
-        "pagePath": "pages/search",
-        "text": "Tìm kiếm",
-        "iconPath": "static/search.png",
-        "selectedIconPath": "static/search-active.png"
-      },
-      {
-        "pagePath": "pages/notifications",
-        "text": "Thông báo",
-        "iconPath": "static/notification.png",
-        "selectedIconPath": "static/notification-active.png"
-      },
-      {
-        "pagePath": "pages/cart",
-        "text": "Giỏ hàng",
-        "iconPath": "static/cart.png",
-        "selectedIconPath": "static/cart-active.png"
-      },
-      {
-        "pagePath": "pages/profile",
-        "text": "Cá nhân",
-        "iconPath": "static/profile.png",
-        "selectedIconPath": "static/profile-active.png"
+        "pagePath": "index",
+        "text": "Trang chủ"
       }
     ]
   },

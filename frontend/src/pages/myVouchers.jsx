@@ -85,6 +85,12 @@ const MyVouchersPage = () => {
                             {v.percent ? `Giảm ${v.percent}%` : v.amount ? `Giảm ${Number(v.amount).toLocaleString('vi-VN')}₫` : ''}
                             {v.minOrderAmount && ` • Đơn tối thiểu ${Number(v.minOrderAmount).toLocaleString('vi-VN')}₫`}
                             {v.expiresInDays && ` • HSD ${v.expiresInDays} ngày`}
+                            {/* Hiển thị nguồn gốc voucher */}
+                            {v.id.startsWith('wheel-voucher-') && (
+                              <span style={{ color: '#f59e0b', fontSize: '12px', fontWeight: '500' }}>
+                                {' '}• 🎡 Từ vòng quay
+                              </span>
+                            )}
                           </div>
                         </div>
                         <button className="btn-primary" onClick={() => navigate('/checkout', { state: { voucherId: v.id } })}>Dùng ngay</button>
@@ -110,6 +116,12 @@ const MyVouchersPage = () => {
                           <div className="meta">
                             {v.percent ? `Giảm ${v.percent}%` : v.amount ? `Giảm ${Number(v.amount).toLocaleString('vi-VN')}₫` : ''}
                             {v.minOrderAmount && ` • Đơn tối thiểu ${Number(v.minOrderAmount).toLocaleString('vi-VN')}₫`}
+                            {/* Hiển thị nguồn gốc voucher */}
+                            {v.id.startsWith('wheel-voucher-') && (
+                              <span style={{ color: '#f59e0b', fontSize: '12px', fontWeight: '500' }}>
+                                {' '}• 🎡 Từ vòng quay
+                              </span>
+                            )}
                           </div>
                         </div>
                         <button className="btn-primary" disabled>Đã dùng</button>

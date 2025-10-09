@@ -15,6 +15,10 @@ const ZaloContactPopup = () => {
       message += `Tôi đang xem sản phẩm và muốn được tư vấn thêm.\n\n`;
     } else if (currentPage.includes('/cart')) {
       message += `Tôi có sản phẩm trong giỏ hàng và cần hỗ trợ đặt hàng.\n\n`;
+    } else if (currentPage.includes('/lucky-wheel')) {
+      message += `Tôi vừa tham gia vòng quay may mắn và cần hỗ trợ về voucher.\n\n`;
+    } else if (currentPage.includes('/my-vouchers')) {
+      message += `Tôi đang xem voucher của mình và cần hỗ trợ sử dụng.\n\n`;
     } else {
       message += `Tôi quan tâm đến các sản phẩm trên ứng dụng và muốn được tư vấn.\n\n`;
     }
@@ -24,6 +28,7 @@ const ZaloContactPopup = () => {
 • Chính sách giao hàng  
 • Ưu đãi hiện tại
 • Phương thức thanh toán
+• Hỗ trợ voucher
 
 Cảm ơn bạn! 🛒`;
 
@@ -31,25 +36,40 @@ Cảm ơn bạn! 🛒`;
   };
 
   const handleZaloClick = () => {
-    // Lấy tin nhắn tự động (có thể tùy chỉnh theo trang)
-    const autoMessage = encodeURIComponent(getAutoMessage());
-
-    // CÁCH 1: Gửi tin nhắn qua Zalo OA (khuyến nghị)
+    // Tạo tin nhắn đơn giản để test
+    const simpleMessage = encodeURIComponent('Xin chào UnionMart! Tôi cần hỗ trợ.');
+    
+    // CÁCH 1: Thử mở Zalo OA trước
     const zaloOAId = 'unionmart'; // ⚠️ THAY ĐỔI ALIAS OA THỰC TẾ
-    const zaloOALink = `https://zalo.me/${zaloOAId}?message=${autoMessage}`;
+    const zaloOALink = `https://zalo.me/oa/${zaloOAId}?message=${simpleMessage}`;
     
-    // CÁCH 2: Gửi tin nhắn qua số điện thoại (backup)
-    const phoneNumber = '0123456789'; // ⚠️ THAY ĐỔI SỐ ĐIỆN THOẠI THỰC TẾ
-    const zaloPhoneLink = `https://zalo.me/${phoneNumber}?message=${autoMessage}`;
+    // CÁCH 2: Fallback với số điện thoại
+    const phoneNumber = '0917899282'; // ⚠️ THAY ĐỔI SỐ ĐIỆN THOẠI THỰC TẾ
+    const zaloPhoneLink = `https://zalo.me/${phoneNumber}?message=${simpleMessage}`;
     
-    // Thử mở Zalo OA trước, nếu không được thì dùng số điện thoại
-    try {
-      // Ưu tiên mở OA
+    console.log('Trying Zalo OA Link:', zaloOALink);
+    console.log('Fallback Phone Link:', zaloPhoneLink);
+    
+    // Kiểm tra xem có phải mobile không
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    // Thử mở Zalo OA trước
+    if (isMobile) {
+      // Trên mobile, mở app Zalo
+      window.location.href = zaloOALink;
+    } else {
+      // Trên desktop, mở tab mới
       window.open(zaloOALink, '_blank', 'noopener,noreferrer');
-    } catch (error) {
-      // Fallback: mở chat với số điện thoại
-      window.open(zaloPhoneLink, '_blank', 'noopener,noreferrer');
     }
+    
+    // Nếu không mở được OA, thử số điện thoại sau 2 giây
+    setTimeout(() => {
+      if (isMobile) {
+        window.location.href = zaloPhoneLink;
+      } else {
+        window.open(zaloPhoneLink, '_blank', 'noopener,noreferrer');
+      }
+    }, 2000);
   };
 
   const handleClose = () => {

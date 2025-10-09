@@ -5,7 +5,7 @@
   padding: 6px;
   transition: all 0.2s ease;
   cursor: pointer;
-  height: 220px;
+  height: 220px; /* Fixed height for consistency */
   display: flex;
   flex-direction: column;
   position: relative;
@@ -17,7 +17,7 @@
   }
 
   @media (max-width: 640px) {
-    height: 200px;
+    height: 200px; /* Fixed height for mobile consistency */
     padding: 4px;
     border-radius: 6px;
   }

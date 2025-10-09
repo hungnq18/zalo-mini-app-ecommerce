@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Page } from 'zmp-ui';
 import BottomNavigation from '../components/bottomNavigation';
 import PageHeader from '../components/PageHeader';
+import ZaloContactPopup from '../components/zaloContactPopup';
 import { useApp } from '../context/AppContext';
 import '../css/cartPage.scss';
 
@@ -164,6 +165,7 @@ const CartPage = () => {
         </div>
       </div>
       <BottomNavigation />
+      <ZaloContactPopup />
       {confirmOpen && (
         <div className="confirm-overlay" role="dialog" aria-modal="true">
           <div className="confirm-modal">

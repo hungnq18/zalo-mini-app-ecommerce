@@ -118,7 +118,7 @@
 
 // Pulse animation for attention
 .zalo-popup-button {
-  animation: pulse 2s infinite;
+  animation: pulse 2s infinite, bounce 3s infinite;
 }
 
 @keyframes pulse {
@@ -130,6 +130,18 @@
   }
   100% {
     box-shadow: 0 4px 16px rgba(0, 104, 255, 0.3);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
   }
 }
 

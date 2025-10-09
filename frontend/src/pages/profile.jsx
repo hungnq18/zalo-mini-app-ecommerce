@@ -56,7 +56,7 @@ const ProfilePage = () => {
         setClaimedVouchers([]);
       }
     })();
-  }, [state.user, state.user?.vouchers, state.utilities]);
+  }, [state.user, state.user?.vouchers]); // Remove state.utilities from dependencies
 
   const user = state.user || { name: 'Người dùng', level: 'Member', points: 0 };
   const utilities = state.utilities || [];

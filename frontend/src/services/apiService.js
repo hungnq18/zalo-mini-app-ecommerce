@@ -471,6 +471,13 @@ class ApiService {
     });
   }
 
+  static async addVoucherToUser(voucherData) {
+    return await apiCall('/api/user/add-voucher', {
+      method: 'POST',
+      body: JSON.stringify(voucherData)
+    });
+  }
+
   // Server-side spin: consume a spin, enforce cooldown/reset, update user and logs
   static async spinWheel(spinRequest) {
     return await apiCall('/lucky-wheel/spin', {

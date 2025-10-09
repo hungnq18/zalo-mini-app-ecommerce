@@ -14,7 +14,7 @@ const SuggestedUtilities = memo(({ shouldLoad = true }) => {
       console.log('Loading utilities...');
       actions.loadUtilities();
     }
-  }, [actions, state.utilities, shouldLoad]);
+  }, [shouldLoad]); // Remove state.utilities and actions from dependencies
 
   // Show loading state if utilities are loading
   if (state.loading.utilities) {

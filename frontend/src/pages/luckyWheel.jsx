@@ -3,6 +3,7 @@ import { memo, useCallback, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Page, useSnackbar } from 'zmp-ui';
 import BackButton from '../components/BackButton';
+import ZaloContactPopup from '../components/zaloContactPopup';
 import { useApp } from '../context/AppContext';
 import '../css/luckyWheelPage.scss';
 import ApiService from '../services/apiService';
@@ -75,18 +76,33 @@ const LuckyWheelPage = ({ shouldLoad = true }) => {
         console.log('Wheel data:', data);
         
         // Check if data is wrapped twice
+        let wheelPrizes = [];
+        let wheelConfig = {};
+        
         if (data.success && data.data) {
           console.log('Data is wrapped twice, using inner data');
           const innerData = data.data;
-          setPrizes(innerData.prizes || []);
-          setWheelConfig(innerData.config || {});
+          wheelPrizes = innerData.prizes || [];
+          wheelConfig = innerData.config || {};
           console.log('Wheel config set:', innerData.config);
         } else {
           // Normal structure
-          setPrizes(data.prizes || []);
-          setWheelConfig(data.config || {});
+          wheelPrizes = data.prizes || [];
+          wheelConfig = data.config || {};
           console.log('Wheel config set:', data.config);
         }
+        
+        // Filter out vouchers that user already has
+        const userVouchers = Array.isArray(state.user?.vouchers) ? state.user.vouchers : [];
+        const filteredPrizes = wheelPrizes.filter(prize => {
+          // Keep non-voucher prizes
+          if (prize.type !== 'voucher') return true;
+          // For voucher prizes, only show if user doesn't have it
+          return !userVouchers.includes(prize.voucherId);
+        });
+        
+        setPrizes(filteredPrizes);
+        setWheelConfig(wheelConfig);
         setDataLoaded(true); // Mark as loaded
       } else {
         console.error('API failed - no fallback data');
@@ -244,6 +260,27 @@ const LuckyWheelPage = ({ shouldLoad = true }) => {
     };
 
     const selectedPrize = getRandomPrize(prizes);
+    
+    // If it's a voucher prize, send the voucher info to server immediately
+    if (selectedPrize.type === 'voucher' && selectedPrize.voucherId) {
+      try {
+        await ApiService.addVoucherToUser({
+          userId: state.user?.id,
+          voucherId: selectedPrize.voucherId,
+          timestamp: new Date().toISOString()
+        });
+        console.log(`Added voucher ${selectedPrize.voucherId} to user ${state.user?.id}`);
+        
+        // Reload user data to get updated vouchers
+        await actions.loadUser();
+        
+        // Reload wheel data to remove won voucher from available prizes
+        setDataLoaded(false);
+        await loadWheelData();
+      } catch (error) {
+        console.error('Error adding voucher to user:', error);
+      }
+    }
 
     setTimeout(async () => {
       setCurrentPrize(selectedPrize);
@@ -259,6 +296,10 @@ const LuckyWheelPage = ({ shouldLoad = true }) => {
       } catch (e) {
         console.error('Error updating lastSpinAt:', e);
       }
+      
+      // Reload wheel data to update available prizes (remove won vouchers)
+      setDataLoaded(false);
+      await loadWheelData();
     }, 3000);
   };
 
@@ -288,12 +329,13 @@ const LuckyWheelPage = ({ shouldLoad = true }) => {
         });
       }
       
-      // Xử lý voucher nếu trúng voucher
+      // Xử lý voucher nếu trúng voucher (voucher đã được thêm vào user qua server)
       if (prize.type === 'voucher') {
-        await handleVoucherWin(prize);
+        // Voucher đã được thêm vào user qua server, chỉ cần hiển thị thông báo
+        console.log(`User won voucher: ${prize.voucherId}`);
       }
       
-      // Log spin result to API
+      // Log spin result to API and send voucher info to server
       await ApiService.logSpinResult({
         userId: currentUser.id,
         prizeId: prize.id,
@@ -556,6 +598,7 @@ const LuckyWheelPage = ({ shouldLoad = true }) => {
             </div>
           </div>
         )}
+        <ZaloContactPopup />
       </div>
     </Page>
   );

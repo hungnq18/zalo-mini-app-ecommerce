@@ -5,49 +5,49 @@
       "name": "Sắc đẹp",
       "icon": "https://file.uto.vn/image/fdcf8f5f896d761d7976efff1d681e5f?w=100&h=100&fit=crop",
       "color": "#3B82F6",
-      "productCount": 0
+      "productCount": 2
     },
     {
       "id": "2",
       "name": "Nhà cửa và đời sống",
       "icon": "https://file.uto.vn/image/f88a990ca959c083e0282e9d739e687c?w=100&h=100&fit=crop",
       "color": "#10B981",
-      "productCount": 0
+      "productCount": 2
     },
     {
       "id": "3",
       "name": "Sức khỏe",
       "icon": "https://file.uto.vn/image/c5ca5c4feb58cda64e897b8d94a7a621?w=100&h=100&fit=crop",
       "color": "#8B5CF6",
-      "productCount": 4
+      "productCount": 6
     },
     {
       "id": "4",
       "name": "Thực phẩm và đồ uống",
       "icon": "https://file.uto.vn/image/c27797e9fbf65db849775ca048a80317?w=100&h=100&fit=crop",
       "color": "#F59E0B",
-      "productCount": 0
+      "productCount": 2
     },
     {
       "id": "5",
       "name": "Mẹ và bé",
       "icon": "https://file.uto.vn/image/ab140eaa06018d5617c9fdb1f3667dec?w=100&h=100&fit=crop",
       "color": "#EF4444",
-      "productCount": 0
+      "productCount": 2
     },
     {
       "id": "6",
       "name": "Thời trang",
       "icon": "https://file.uto.vn/image/b4f78aeab94db586c9f2f374d2c8f2ad?w=100&h=100&fit=crop",
       "color": "#06B6D4",
-      "productCount": 8
+      "productCount": 10
     },
     {
       "id": "7",
       "name": "Phụ kiện",
       "icon": "https://file.uto.vn/image/584c0b5b800b11210bef0c44fa44c1bc?w=100&h=100&fit=crop",
       "color": "#84CC16",
-      "productCount": 1
+      "productCount": 3
     },
     {
       "id": "8",
@@ -388,6 +388,498 @@
         "hot",
         "sale"
       ]
+    },
+    {
+      "id": "13",
+      "name": "Kem dưỡng da mặt Innisfree Green Tea Seed Cream",
+      "categories": [
+        "Sắc đẹp",
+        "Chăm sóc da",
+        "Kem dưỡng"
+      ],
+      "price": 450000,
+      "originalPrice": 550000,
+      "discount": 18,
+      "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=400&fit=crop",
+      "rating": 4.8,
+      "reviews": 3200,
+      "reviewsList": [
+        {
+          "author": "Minh Anh",
+          "avatar": "https://i.pravatar.cc/100?img=15",
+          "stars": 5,
+          "comment": "Kem dưỡng rất tốt, da mịn màng hơn!",
+          "date": "2025-09-25"
+        },
+        {
+          "author": "Thu Trang",
+          "avatar": "https://i.pravatar.cc/100?img=25",
+          "stars": 4,
+          "comment": "Thấm nhanh, không bết dính.",
+          "date": "2025-09-20"
+        }
+      ],
+      "description": "Kem dưỡng da mặt Innisfree với chiết xuất trà xanh",
+      "detailedDescription": "Kem dưỡng da mặt Innisfree Green Tea Seed Cream với chiết xuất trà xanh tự nhiên, giúp cung cấp độ ẩm và làm mịn da. Sản phẩm phù hợp cho mọi loại da, đặc biệt da khô và da hỗn hợp.",
+      "stock": 80,
+      "categoryIds": [
+        "1"
+      ],
+      "tags": [
+        "hot",
+        "sale"
+      ],
+      "searchKeywords": [
+        "kem dưỡng",
+        "innisfree",
+        "trà xanh",
+        "chăm sóc da",
+        "sắc đẹp"
+      ],
+      "isActive": true,
+      "isFeatured": true
+    },
+    {
+      "id": "14",
+      "name": "Son môi 3CE Velvet Lip Tint",
+      "categories": [
+        "Sắc đẹp",
+        "Trang điểm",
+        "Son môi"
+      ],
+      "price": 320000,
+      "originalPrice": 380000,
+      "discount": 16,
+      "image": "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=400&h=400&fit=crop",
+      "rating": 4.7,
+      "reviews": 2800,
+      "description": "Son môi 3CE với màu sắc bền lâu",
+      "detailedDescription": "Son môi 3CE Velvet Lip Tint với công thức đặc biệt, màu sắc bền lâu và không bị trôi. Sản phẩm có nhiều màu sắc đa dạng, phù hợp cho mọi phong cách trang điểm.",
+      "stock": 120,
+      "categoryIds": [
+        "1"
+      ],
+      "tags": [
+        "hot",
+        "sale"
+      ],
+      "searchKeywords": [
+        "son môi",
+        "3ce",
+        "velvet",
+        "trang điểm",
+        "sắc đẹp"
+      ],
+      "isActive": true,
+      "isFeatured": false
+    },
+    {
+      "id": "15",
+      "name": "Máy hút bụi cầm tay Xiaomi Deerma DX115C",
+      "categories": [
+        "Nhà cửa và đời sống",
+        "Gia dụng",
+        "Máy hút bụi"
+      ],
+      "price": 1200000,
+      "originalPrice": 1500000,
+      "discount": 20,
+      "image": "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=400&fit=crop",
+      "rating": 4.6,
+      "reviews": 1800,
+      "description": "Máy hút bụi cầm tay Xiaomi tiện lợi",
+      "detailedDescription": "Máy hút bụi cầm tay Xiaomi Deerma DX115C với công suất mạnh, pin lithium bền bỉ. Thiết kế gọn nhẹ, dễ sử dụng cho việc dọn dẹp hàng ngày.",
+      "stock": 60,
+      "categoryIds": [
+        "2"
+      ],
+      "tags": [
+        "hot",
+        "sale"
+      ],
+      "searchKeywords": [
+        "máy hút bụi",
+        "xiaomi",
+        "deerma",
+        "gia dụng",
+        "nhà cửa"
+      ],
+      "isActive": true,
+      "isFeatured": true
+    },
+    {
+      "id": "16",
+      "name": "Nồi cơm điện tử Sharp KS-18HTH",
+      "categories": [
+        "Nhà cửa và đời sống",
+        "Gia dụng",
+        "Nồi cơm điện"
+      ],
+      "price": 2500000,
+      "originalPrice": 3000000,
+      "discount": 17,
+      "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&h=400&fit=crop",
+      "rating": 4.9,
+      "reviews": 2200,
+      "description": "Nồi cơm điện tử Sharp công nghệ cao",
+      "detailedDescription": "Nồi cơm điện tử Sharp KS-18HTH với công nghệ nấu cơm thông minh, dung tích 1.8L phù hợp gia đình 4-6 người. Thiết kế sang trọng, dễ sử dụng.",
+      "stock": 40,
+      "categoryIds": [
+        "2"
+      ],
+      "tags": [
+        "hot",
+        "sale"
+      ],
+      "searchKeywords": [
+        "nồi cơm điện",
+        "sharp",
+        "công nghệ cao",
+        "gia dụng",
+        "nhà cửa"
+      ],
+      "isActive": true,
+      "isFeatured": false
+    },
+    {
+      "id": "17",
+      "name": "Vitamin C 1000mg Nature Made",
+      "categories": [
+        "Sức khỏe",
+        "Thực phẩm chức năng",
+        "Vitamin"
+      ],
+      "price": 180000,
+      "originalPrice": 220000,
+      "discount": 18,
+      "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&h=400&fit=crop",
+      "rating": 4.7,
+      "reviews": 3500,
+      "description": "Vitamin C 1000mg tăng cường sức đề kháng",
+      "detailedDescription": "Vitamin C 1000mg Nature Made giúp tăng cường sức đề kháng, chống oxy hóa và hỗ trợ hệ miễn dịch. Sản phẩm được sản xuất tại Mỹ với tiêu chuẩn chất lượng cao.",
+      "stock": 200,
+      "categoryIds": [
+        "3"
+      ],
+      "tags": [
+        "hot",
+        "sale"
+      ],
+      "searchKeywords": [
+        "vitamin c",
+        "nature made",
+        "sức khỏe",
+        "tăng cường đề kháng",
+        "thực phẩm chức năng"
+      ],
+      "isActive": true,
+      "isFeatured": true
+    },
+    {
+      "id": "18",
+      "name": "Máy đo huyết áp Omron HEM-7136",
+      "categories": [
+        "Sức khỏe",
+        "Thiết bị y tế",
+        "Máy đo huyết áp"
+      ],
+      "price": 850000,
+      "originalPrice": 1000000,
+      "discount": 15,
+      "image": "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=400&fit=crop",
+      "rating": 4.8,
+      "reviews": 1200,
+      "description": "Máy đo huyết áp Omron chính xác cao",
+      "detailedDescription": "Máy đo huyết áp Omron HEM-7136 với công nghệ đo chính xác, dễ sử dụng. Thiết kế gọn nhẹ, phù hợp cho gia đình theo dõi sức khỏe hàng ngày.",
+      "stock": 90,
+      "categoryIds": [
+        "3"
+      ],
+      "tags": [
+        "hot",
+        "sale"
+      ],
+      "searchKeywords": [
+        "máy đo huyết áp",
+        "omron",
+        "sức khỏe",
+        "thiết bị y tế",
+        "theo dõi sức khỏe"
+      ],
+      "isActive": true,
+      "isFeatured": false
+    },
+    {
+      "id": "19",
+      "name": "Cà phê hạt Arabica Đắk Lắk 500g",
+      "categories": [
+        "Thực phẩm và đồ uống",
+        "Cà phê",
+        "Đồ uống"
+      ],
+      "price": 150000,
+      "originalPrice": 180000,
+      "discount": 17,
+      "image": "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400&h=400&fit=crop",
+      "rating": 4.9,
+      "reviews": 2800,
+      "description": "Cà phê hạt Arabica Đắk Lắk nguyên chất",
+      "detailedDescription": "Cà phê hạt Arabica Đắk Lắk 500g được trồng và chế biến tại vùng đất bazan màu mỡ. Hương vị đậm đà, thơm ngon đặc trưng của cà phê Việt Nam.",
+      "stock": 150,
+      "categoryIds": [
+        "4"
+      ],
+      "tags": [
+        "hot",
+        "sale"
+      ],
+      "searchKeywords": [
+        "cà phê",
+        "arabica",
+        "đắk lắk",
+        "thực phẩm",
+        "đồ uống"
+      ],
+      "isActive": true,
+      "isFeatured": true
+    },
+    {
+      "id": "20",
+      "name": "Trà sữa trân châu đường đen 500ml",
+      "categories": [
+        "Thực phẩm và đồ uống",
+        "Trà sữa",
+        "Đồ uống"
+      ],
+      "price": 35000,
+      "originalPrice": 45000,
+      "discount": 22,
+      "image": "https://images.unsplash.com/photo-1571934811356-5cc061b6821f?w=400&h=400&fit=crop",
+      "rating": 4.5,
+      "reviews": 1200,
+      "description": "Trà sữa trân châu đường đen thơm ngon",
+      "detailedDescription": "Trà sữa trân châu đường đen 500ml với hương vị đậm đà, trân châu dai ngon. Sản phẩm được pha chế theo công thức truyền thống, đảm bảo chất lượng và hương vị.",
+      "stock": 300,
+      "categoryIds": [
+        "4"
+      ],
+      "tags": [
+        "hot",
+        "sale"
+      ],
+      "searchKeywords": [
+        "trà sữa",
+        "trân châu",
+        "đường đen",
+        "thực phẩm",
+        "đồ uống"
+      ],
+      "isActive": true,
+      "isFeatured": false
+    },
+    {
+      "id": "21",
+      "name": "Sữa bột cho trẻ em Friso Gold 3 900g",
+      "categories": [
+        "Mẹ và bé",
+        "Sữa bột",
+        "Dinh dưỡng trẻ em"
+      ],
+      "price": 450000,
+      "originalPrice": 520000,
+      "discount": 13,
+      "image": "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=400&h=400&fit=crop",
+      "rating": 4.8,
+      "reviews": 1800,
+      "description": "Sữa bột Friso Gold 3 cho trẻ từ 1-3 tuổi",
+      "detailedDescription": "Sữa bột Friso Gold 3 900g với công thức dinh dưỡng đặc biệt cho trẻ từ 1-3 tuổi. Chứa DHA, ARA và các vitamin cần thiết cho sự phát triển toàn diện của trẻ.",
+      "stock": 100,
+      "categoryIds": [
+        "5"
+      ],
+      "tags": [
+        "hot",
+        "sale"
+      ],
+      "searchKeywords": [
+        "sữa bột",
+        "friso",
+        "trẻ em",
+        "dinh dưỡng",
+        "mẹ và bé"
+      ],
+      "isActive": true,
+      "isFeatured": true
+    },
+    {
+      "id": "22",
+      "name": "Tã quần Huggies Dry Comfort Size M 44 miếng",
+      "categories": [
+        "Mẹ và bé",
+        "Tã bỉm",
+        "Chăm sóc trẻ em"
+      ],
+      "price": 180000,
+      "originalPrice": 220000,
+      "discount": 18,
+      "image": "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=400&h=400&fit=crop",
+      "rating": 4.6,
+      "reviews": 2500,
+      "description": "Tã quần Huggies Dry Comfort cho trẻ 6-11kg",
+      "detailedDescription": "Tã quần Huggies Dry Comfort Size M 44 miếng với công nghệ thấm hút 3D, giúp da bé luôn khô thoáng. Thiết kế quần tã dễ mặc, phù hợp cho trẻ từ 6-11kg.",
+      "stock": 200,
+      "categoryIds": [
+        "5"
+      ],
+      "tags": [
+        "hot",
+        "sale"
+      ],
+      "searchKeywords": [
+        "tã quần",
+        "huggies",
+        "dry comfort",
+        "mẹ và bé",
+        "chăm sóc trẻ"
+      ],
+      "isActive": true,
+      "isFeatured": false
+    },
+    {
+      "id": "23",
+      "name": "Áo thun nam Uniqlo U Crew Neck",
+      "categories": [
+        "Thời trang",
+        "Áo thun",
+        "Thời trang nam"
+      ],
+      "price": 199000,
+      "originalPrice": 250000,
+      "discount": 20,
+      "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=400&fit=crop",
+      "rating": 4.7,
+      "reviews": 3200,
+      "description": "Áo thun nam Uniqlo U Crew Neck chất liệu cotton",
+      "detailedDescription": "Áo thun nam Uniqlo U Crew Neck với chất liệu cotton 100% mềm mại, thoáng khí. Thiết kế đơn giản, dễ phối đồ và phù hợp cho mọi hoạt động hàng ngày.",
+      "stock": 150,
+      "categoryIds": [
+        "6"
+      ],
+      "tags": [
+        "hot",
+        "sale"
+      ],
+      "searchKeywords": [
+        "áo thun",
+        "uniqlo",
+        "crew neck",
+        "thời trang nam",
+        "cotton"
+      ],
+      "isActive": true,
+      "isFeatured": true
+    },
+    {
+      "id": "24",
+      "name": "Quần jean nữ Zara High Waist",
+      "categories": [
+        "Thời trang",
+        "Quần jean",
+        "Thời trang nữ"
+      ],
+      "price": 450000,
+      "originalPrice": 550000,
+      "discount": 18,
+      "image": "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400&h=400&fit=crop",
+      "rating": 4.6,
+      "reviews": 1800,
+      "description": "Quần jean nữ Zara High Waist tôn dáng",
+      "detailedDescription": "Quần jean nữ Zara High Waist với thiết kế eo cao tôn dáng, chất liệu denim co giãn thoải mái. Phù hợp cho mọi phong cách thời trang từ casual đến smart casual.",
+      "stock": 80,
+      "categoryIds": [
+        "6"
+      ],
+      "tags": [
+        "hot",
+        "sale"
+      ],
+      "searchKeywords": [
+        "quần jean",
+        "zara",
+        "high waist",
+        "thời trang nữ",
+        "denim"
+      ],
+      "isActive": true,
+      "isFeatured": false
+    },
+    {
+      "id": "25",
+      "name": "Túi xách nữ Coach Signature",
+      "categories": [
+        "Phụ kiện",
+        "Túi xách",
+        "Thời trang nữ"
+      ],
+      "price": 8500000,
+      "originalPrice": 10000000,
+      "discount": 15,
+      "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop",
+      "rating": 4.9,
+      "reviews": 450,
+      "description": "Túi xách nữ Coach Signature cao cấp",
+      "detailedDescription": "Túi xách nữ Coach Signature với thiết kế sang trọng, chất liệu da cao cấp. Phù hợp cho các dịp đặc biệt và tạo điểm nhấn thời trang cho phụ nữ hiện đại.",
+      "stock": 25,
+      "categoryIds": [
+        "7"
+      ],
+      "tags": [
+        "hot",
+        "sale"
+      ],
+      "searchKeywords": [
+        "túi xách",
+        "coach",
+        "signature",
+        "phụ kiện nữ",
+        "thời trang cao cấp"
+      ],
+      "isActive": true,
+      "isFeatured": true
+    },
+    {
+      "id": "26",
+      "name": "Ví da nam Hermes Kelly",
+      "categories": [
+        "Phụ kiện",
+        "Ví da",
+        "Thời trang nam"
+      ],
+      "price": 12000000,
+      "originalPrice": 15000000,
+      "discount": 20,
+      "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=400&fit=crop",
+      "rating": 4.8,
+      "reviews": 320,
+      "description": "Ví da nam Hermes Kelly cao cấp",
+      "detailedDescription": "Ví da nam Hermes Kelly với chất liệu da cao cấp, thiết kế tinh tế và sang trọng. Phù hợp cho nam giới thành đạt, tạo phong cách lịch lãm và chuyên nghiệp.",
+      "stock": 15,
+      "categoryIds": [
+        "7"
+      ],
+      "tags": [
+        "hot",
+        "sale"
+      ],
+      "searchKeywords": [
+        "ví da",
+        "hermes",
+        "kelly",
+        "phụ kiện nam",
+        "thời trang cao cấp"
+      ],
+      "isActive": true,
+      "isFeatured": false
     }
   ],
   "promotions": [
@@ -541,7 +1033,7 @@
     "id": "user-001",
     "name": "Nguyễn Văn A",
     "phone": "0123456789",
-    "points": 70,
+    "points": 75,
     "level": "Bạc",
     "vouchers": [
       "wheel-voucher-vip",
@@ -588,8 +1080,8 @@
     ],
     "dailySpins": 5,
     "remainingSpins": 4,
-    "lastSpinDate": "2025-10-08",
-    "lastSpinAt": "2025-10-08T06:04:28.530Z",
+    "lastSpinDate": "2025-10-09",
+    "lastSpinAt": "2025-10-09T07:18:25.794Z",
     "success": true,
     "data": {
       "id": "user-001",
@@ -1508,6 +2000,22 @@
         "voucherId": null,
         "pointsEarned": 0,
         "timestamp": "2025-10-08T06:04:28.013Z"
+      },
+      {
+        "userId": "user-001",
+        "prizeId": null,
+        "prizeType": null,
+        "voucherId": null,
+        "pointsEarned": 0,
+        "timestamp": "2025-10-09T07:18:20.709Z"
+      },
+      {
+        "userId": "user-001",
+        "prizeId": 2,
+        "prizeType": "discount",
+        "voucherId": null,
+        "pointsEarned": 5,
+        "timestamp": "2025-10-09T07:18:25.285Z"
       }
     ]
   },
