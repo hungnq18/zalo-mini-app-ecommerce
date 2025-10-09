@@ -6,14 +6,66 @@ const server = jsonServer.create();
 const router = jsonServer.router('db.json');
 const middlewares = jsonServer.defaults();
 
-// Enable CORS for all origins
+// Enable CORS for all origins including Zalo Mini App
 server.use(cors({
-  origin: true,
-  credentials: true
+  origin: [
+    'https://zalo.me',
+    'https://*.zalo.me',
+    'https://zalo.me/s/543739863337914011',
+    'https://zalo.me/s/*',
+    'https://zaloapp.com',
+    'https://*.zaloapp.com',
+    'https://zaloapp.com:3000',
+    'https://zaloapp.com:3001',
+    'https://zaloapp.com:5173',
+    'http://localhost:3000',
+    'http://localhost:3001',
+    'http://localhost:5173',
+    'http://127.0.0.1:3000',
+    'http://127.0.0.1:3001',
+    'http://127.0.0.1:5173',
+    true // Allow all origins for development
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin'],
+  optionsSuccessStatus: 200
 }));
 
 // Set default middlewares (logger, static, cors and no-cache)
 server.use(middlewares);
+
+// Handle preflight requests for Zalo Mini App
+server.options('*', (req, res) => {
+  res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Accept, Origin');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.status(200).end();
+});
+
+// Special middleware for Zalo Mini App
+server.use((req, res, next) => {
+  // Log Zalo Mini App requests
+  if (req.headers.origin && req.headers.origin.includes('zalo.me')) {
+    console.log('Zalo Mini App request:', {
+      origin: req.headers.origin,
+      method: req.method,
+      url: req.url,
+      userAgent: req.headers['user-agent']
+    });
+  }
+  
+  // Set CORS headers for Zalo Mini App
+  if (req.headers.origin && req.headers.origin.includes('zalo.me')) {
+    res.header('Access-Control-Allow-Origin', req.headers.origin);
+    res.header('Access-Control-Allow-Credentials', 'true');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Accept, Origin');
+  }
+  
+  next();
+});
 
 // Add custom routes before JSON Server router
 server.use(jsonServer.bodyParser);
@@ -33,7 +85,22 @@ server.get('/api/health', (req, res) => {
   res.json({ 
     status: 'OK', 
     message: 'UnionMart API Server is running',
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
+    origin: req.headers.origin || 'unknown'
+  });
+});
+
+// Zalo Mini App test endpoint
+server.get('/api/zalo-test', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Zalo Mini App connection successful',
+    data: {
+      timestamp: new Date().toISOString(),
+      origin: req.headers.origin,
+      userAgent: req.headers['user-agent'],
+      zaloAppId: '543739863337914011'
+    }
   });
 });
 
