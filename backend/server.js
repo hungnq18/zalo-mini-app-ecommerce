@@ -6,9 +6,10 @@ const server = jsonServer.create();
 const router = jsonServer.router('db.json');
 const middlewares = jsonServer.defaults();
 
-// Enable CORS for all origins including Zalo Mini App
+// Enable CORS for all origins including Zalo Mini App and Vercel
 server.use(cors({
   origin: [
+    // Zalo Mini App domains
     'https://zalo.me',
     'https://*.zalo.me',
     'https://zalo.me/s/543739863337914011',
@@ -18,17 +19,38 @@ server.use(cors({
     'https://zaloapp.com:3000',
     'https://zaloapp.com:3001',
     'https://zaloapp.com:5173',
+    
+    // Vercel domains
+    'https://*.vercel.app',
+    'https://unionmart.vercel.app',
+    'https://unionmart-frontend.vercel.app',
+    'https://unionmart-backend.vercel.app',
+    'https://zalo-mini-app-ecommerce.vercel.app',
+    'https://zalo-mini-app-ecommerce.vercel.app/',
+    
+    // Netlify domains
+    'https://*.netlify.app',
+    'https://unionmart.netlify.app',
+    'https://unionmart-frontend.netlify.app',
+    
+    // Render domains
+    'https://*.onrender.com',
+    'https://zalo-mini-app-ecommerce.onrender.com',
+    
+    // Local development
     'http://localhost:3000',
     'http://localhost:3001',
     'http://localhost:5173',
     'http://127.0.0.1:3000',
     'http://127.0.0.1:3001',
     'http://127.0.0.1:5173',
-    true // Allow all origins for development
+    
+    // Allow all origins for development
+    true
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin', 'Cache-Control', 'Pragma', 'Expires'],
   optionsSuccessStatus: 200
 }));
 
@@ -39,29 +61,36 @@ server.use(middlewares);
 server.options('*', (req, res) => {
   res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Accept, Origin');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Accept, Origin, Cache-Control, Pragma, Expires');
   res.header('Access-Control-Allow-Credentials', 'true');
   res.status(200).end();
 });
 
-// Special middleware for Zalo Mini App
+// Special middleware for Zalo Mini App and Vercel
 server.use((req, res, next) => {
-  // Log Zalo Mini App requests
-  if (req.headers.origin && req.headers.origin.includes('zalo.me')) {
-    console.log('Zalo Mini App request:', {
-      origin: req.headers.origin,
+  const origin = req.headers.origin;
+  
+  // Log requests from Zalo Mini App and Vercel
+  if (origin && (origin.includes('zalo.me') || origin.includes('vercel.app') || origin.includes('netlify.app') || origin.includes('onrender.com'))) {
+    console.log('External request:', {
+      origin: origin,
       method: req.method,
       url: req.url,
       userAgent: req.headers['user-agent']
     });
   }
   
-  // Set CORS headers for Zalo Mini App
-  if (req.headers.origin && req.headers.origin.includes('zalo.me')) {
-    res.header('Access-Control-Allow-Origin', req.headers.origin);
+  // Set CORS headers for external domains
+  if (origin && (
+    origin.includes('zalo.me') || 
+    origin.includes('vercel.app') || 
+    origin.includes('netlify.app') || 
+    origin.includes('onrender.com')
+  )) {
+    res.header('Access-Control-Allow-Origin', origin);
     res.header('Access-Control-Allow-Credentials', 'true');
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Accept, Origin');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Accept, Origin, Cache-Control, Pragma, Expires');
   }
   
   next();

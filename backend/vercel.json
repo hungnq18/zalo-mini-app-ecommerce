@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/server.js"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production",
+    "PORT": "3001",
+    "CORS_ORIGIN": "https://zalo.me,https://*.zalo.me,https://zalo.me/s/543739863337914011,https://zalo.me/s/*,https://zaloapp.com,https://*.zaloapp.com,https://*.vercel.app,https://unionmart.vercel.app,https://unionmart-frontend.vercel.app,https://unionmart-backend.vercel.app,https://zalo-mini-app-ecommerce.vercel.app,https://zalo-mini-app-ecommerce.vercel.app/,https://*.netlify.app,https://unionmart.netlify.app,https://unionmart-frontend.netlify.app,https://*.onrender.com,https://zalo-mini-app-ecommerce.onrender.com",
+    "ZALO_APP_ID": "543739863337914011"
+  }
+}
