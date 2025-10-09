@@ -3,7 +3,7 @@ export const API_CONFIG = {
   BASE_URL: import.meta.env.VITE_API_BASE_URL || 
     (import.meta.env.MODE === 'production' 
       ? 'https://zalo-mini-app-ecommerce.onrender.com/api'
-      : 'http://localhost:3001/api'),
+      : 'https://zalo-mini-app-ecommerce.onrender.com/api'), // Use production API for development too
   ENDPOINTS: {
     PRODUCTS: '/products',
     CATEGORIES: '/categories',

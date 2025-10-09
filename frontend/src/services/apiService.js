@@ -5,6 +5,14 @@ import { API_CONFIG } from '../config/api';
 const apiCall = async (endpoint, options = {}) => {
   const url = `${API_CONFIG.BASE_URL}${endpoint}${endpoint.includes('?') ? '&' : '?'}t=${Date.now()}`;
   
+  console.log('🚀 API Call:', {
+    url,
+    endpoint,
+    baseUrl: API_CONFIG.BASE_URL,
+    mode: import.meta.env.MODE,
+    options
+  });
+  
   const defaultOptions = {
     headers: {
       'Content-Type': 'application/json',
@@ -16,20 +24,37 @@ const apiCall = async (endpoint, options = {}) => {
   const config = { ...defaultOptions, ...options };
   
   try {
+    console.log('📡 Making request to:', url);
     const response = await fetch(url, config);
     
+    console.log('📥 Response received:', {
+      status: response.status,
+      statusText: response.statusText,
+      ok: response.ok,
+      headers: Object.fromEntries(response.headers.entries())
+    });
+    
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      const errorText = await response.text();
+      console.error('❌ HTTP Error:', {
+        status: response.status,
+        statusText: response.statusText,
+        body: errorText
+      });
+      throw new Error(`HTTP error! status: ${response.status} - ${response.statusText}`);
     }
     
     // Check if response has content
     const text = await response.text();
+    console.log('📄 Response text:', text);
+    
     if (!text || text === 'undefined') {
       throw new Error('Empty or undefined response');
     }
     
     const data = JSON.parse(text);
-    console.log('API Response parsed:', data);
+    console.log('✅ API Response parsed:', data);
+    
     // If server already wraps responses in { success: true, data: ... }, unwrap once
     if (data && typeof data === 'object' && data.success && data.data !== undefined) {
       return { success: true, data: data.data };
@@ -39,7 +64,12 @@ const apiCall = async (endpoint, options = {}) => {
       data: data
     };
   } catch (error) {
-    console.error('API call failed:', error);
+    console.error('❌ API call failed:', {
+      error: error.message,
+      url,
+      endpoint,
+      baseUrl: API_CONFIG.BASE_URL
+    });
     return {
       success: false,
       error: error.message
@@ -48,6 +78,18 @@ const apiCall = async (endpoint, options = {}) => {
 };
 
 class ApiService {
+  // Test API connection
+  static async testConnection() {
+    console.log('🧪 Testing API connection...');
+    return await apiCall('/health');
+  }
+
+  // Test Zalo Mini App connection
+  static async testZaloConnection() {
+    console.log('🧪 Testing Zalo Mini App connection...');
+    return await apiCall('/zalo-test');
+  }
+
   // Products API - Optimized with caching and better filtering
   static async getProducts(filters = {}) {
     let endpoint = API_CONFIG.ENDPOINTS.PRODUCTS;
