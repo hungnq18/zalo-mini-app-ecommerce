@@ -1,6 +1,6 @@
 {
   "app": {
-    "appId": "your-zalo-app-id",
+    "appId": "543739863337914011",
     "appName": "UnionMall",
     "appDescription": "Ứng dụng mua sắm trực tuyến UnionMall",
     "appVersion": "1.0.0",
@@ -29,6 +29,7 @@
     "navigationBarTextStyle": "white",
     "backgroundColor": "#f5f5f5"
   },
+  "permissions": ["network"],
   "tabBar": {
     "custom": true,
     "list": [

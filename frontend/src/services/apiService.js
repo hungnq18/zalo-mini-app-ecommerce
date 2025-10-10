@@ -14,6 +14,7 @@ const apiCall = async (endpoint, options = {}) => {
   });
   
   const defaultOptions = {
+    mode: 'cors',
     headers: {
       'Content-Type': 'application/json',
       'Cache-Control': 'no-cache',
